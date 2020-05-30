@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{927ECE70-4F61-4325-891A-A02A45025E8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OutwardDiabloMod</RootNamespace>
+    <AssemblyName>OutwardDiabloMod</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\Games\Outward Hardcore\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\Games\Outward Hardcore\Outward_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="SideLoader">
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\BepInEx\plugins\SideLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
+    <Compile Include="database\IWeighted.cs" />
+    <Compile Include="database\registers\Suffixes.cs" />
+    <Compile Include="ISaveToString.cs" />
+    <Compile Include="SuffixData.cs" />
+    <Compile Include="database\affixes\Affix.cs" />
+    <Compile Include="database\affixes\Prefix.cs" />
+    <Compile Include="database\affixes\Suffix.cs" />
+    <Compile Include="database\affixes\suffixes\OfMinorHealth.cs" />
+    <Compile Include="database\gear_types\base\GearType.cs" />
+    <Compile Include="database\gear_types\armors\Boots.cs" />
+    <Compile Include="database\gear_types\armors\Chest.cs" />
+    <Compile Include="database\gear_types\armors\Helmet.cs" />
+    <Compile Include="database\gear_types\armors\Pants.cs" />
+    <Compile Include="database\gear_types\weapons\OneHandWeapon.cs" />
+    <Compile Include="database\gear_types\weapons\TwoHandWeapon.cs" />
+    <Compile Include="database\registers\GearTypes.cs" />
+    <Compile Include="database\Registry.cs" />
+    <Compile Include="database\RegistryHolder.cs" />
+    <Compile Include="database\RegistryRegister.cs" />
+    <Compile Include="database\vanilla_stats\Base\ElementVanillaStat.cs" />
+    <Compile Include="database\vanilla_stats\Base\VanillaStat.cs" />
+    <Compile Include="database\vanilla_stats\Base\BasicVanillaStat.cs" />
+    <Compile Include="database\registers\VanillaStats.cs" />
+    <Compile Include="DiabloItemExtension.cs" />
+    <Compile Include="utils\EnumUtils.cs" />
+    <Compile Include="harmony_patches\HarderSurvival\BuyFromMerchantPatch.cs" />
+    <Compile Include="harmony_patches\HarderSurvival\NoRegenInHomeBed.cs" />
+    <Compile Include="utils\ItemUtils.cs" />
+    <Compile Include="reflection\Fields.cs" />
+    <Compile Include="harmony_patches\Diablo\ItemTooltipPatch.cs" />
+    <Compile Include="harmony_patches\Diablo\EquipmentNamePatch.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reflection\Methods.cs" />
+    <Compile Include="reflection\SafeField.cs" />
+    <Compile Include="reflection\ReflectionUtils.cs" />
+    <Compile Include="reflection\SafeMethod.cs" />
+    <Compile Include="database\RegistryEntry.cs" />
+    <Compile Include="utils\RandomUtils.cs" />
+    <Compile Include="VanillaStatMod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="database\affixes\prefixes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
