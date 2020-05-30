@@ -11,7 +11,10 @@ namespace outward_diablo.database.gear_types.weapons
         {
             return "one_hand_wep";
         }
-
+        public override int GetWeight()
+        {
+            return 1000;
+        }
         public override bool isType(Item item)
         {
             if (item is Weapon weapon)

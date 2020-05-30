@@ -53,16 +53,13 @@ namespace outward_diablo
 
         private void SL_OnPacksLoaded()
         {
-            using (Dictionary<string, Item>.ValueCollection.Enumerator enumerator = (typeof(ResourcesPrefabManager).GetField("ITEM_PREFABS", ReflectionUtils.flags).GetValue(null) as Dictionary<string, Item>).Values.GetEnumerator())
+
+            foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
             {
-                while (enumerator.MoveNext())
+                if (ItemUtils.IsGear(item))
                 {
-                    Item item = enumerator.Current;
-                    if (ItemUtils.IsGear(item))
-                    {                     
-                        UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
-                        //Debug.Log("Added diablo item extension to: " + item.name);
-                    }
+                    UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
+                    //Debug.Log("Added diablo item extension to: " + item.name);
                 }
             }
 

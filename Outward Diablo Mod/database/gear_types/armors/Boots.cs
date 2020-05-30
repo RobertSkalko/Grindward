@@ -11,6 +11,10 @@ namespace outward_diablo.database.gear_types
         {
             return "boots";
         }
+        public override int GetWeight()
+        {
+            return 1000;
+        }
 
         public override bool isType(Item item)
         {

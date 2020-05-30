@@ -12,6 +12,11 @@ namespace outward_diablo.database.gear_types
             return "chest";
         }
 
+        public override int GetWeight()
+        {
+            return 1000;
+        }
+
         public override bool isType(Item item)
         {
             if (item is Armor armor)
