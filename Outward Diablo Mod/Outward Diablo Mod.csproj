@@ -69,6 +69,7 @@
     <Compile Include="database\registers\Suffixes.cs" />
     <Compile Include="harmony_patches\Diablo\OnMobDeathPatch.cs" />
     <Compile Include="ISaveToString.cs" />
+    <Compile Include="MarkObject.cs" />
     <Compile Include="SuffixData.cs" />
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />

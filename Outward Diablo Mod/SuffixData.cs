@@ -75,11 +75,14 @@ namespace OutwardDiabloMod
             {
                 UnityEngine.Debug.Log(str);
 
-                String[] parts = str.Split('_');
+                String[] parts = str.Split('#');
                 if (parts.Length == 2)
                 {
                     this.id = parts[0];
                     this.percent = int.Parse(parts[1]);
+
+                    UnityEngine.Debug.Log("Loaded suffix: " + id + " " + percent);
+
                 }
             }
             catch (Exception e)
@@ -98,7 +101,7 @@ namespace OutwardDiabloMod
                 return "";
             }
 
-            return id + "_" + percent;
+            return id + "#" + percent;
 
             
         }

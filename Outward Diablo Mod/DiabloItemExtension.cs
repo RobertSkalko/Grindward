@@ -35,13 +35,7 @@ namespace outward_diablo
         }
 
         public override void InitFromItem()
-        {
-                        
-            if (true)
-            {
-                return;
-            }
-
+        {                                 
             if (init)
             {
                 return; 
@@ -52,9 +46,19 @@ namespace outward_diablo
                 
                 this.suffix = new SuffixData();
                 suffix.Randomize(this.Item);
-                suffix.ApplyToItem((Equipment)Item);
-                
+
+                this.ApplyStats();
+
                 this.init = true;                
+            }
+
+        }
+
+        public void ApplyStats()
+        {
+            if (suffix != null)
+            {
+                suffix.ApplyToItem((Equipment)Item);
             }
 
         }
@@ -69,10 +73,10 @@ namespace outward_diablo
 
 
                 if (str.Length > 0)
-                {                                       
+                {
                     int boolInt = 0;
                     int.TryParse(str[(int)SyncOrder.Init], out boolInt);
-                    this.init = boolInt == 1 ? true : false;                    
+                    this.init = boolInt == 1 ? true : false;
                 }
 
                 if (str.Length > 1)
@@ -80,18 +84,30 @@ namespace outward_diablo
                     String suffixsave = str[(int)SyncOrder.Suffix];
                     if (suffixsave.Length > 0)
                     {
+                        Debug.Log("Loading suffix: " + suffixsave);
+
                         this.suffix = new SuffixData();
                         suffix.LoadFromString(suffixsave);
                     }
                 }
+
+                if (str.Length > 2)
+                {
+                    String sourcesave = str[(int)SyncOrder.Source];
+                    if (sourcesave.Length > 0)
+                    {
+                        this.source = (ItemSource)Enum.Parse(typeof(SyncOrder), sourcesave);
+                    }
+                }
+
+
+                ApplyStats();
 
             }
             catch (Exception e)
             {
                 throw;
             }
-
-
         }
 
         public override string ToNetworkInfo()
@@ -109,8 +125,9 @@ namespace outward_diablo
 
             list[(int)SyncOrder.Init] = initsave;
             list[(int)SyncOrder.Suffix] = suffixsave;
+            list[(int)SyncOrder.Source] = ((int)source)+ "";
+           
 
-                        
             return String.Join(";", list);
 
         }
@@ -119,6 +136,7 @@ namespace outward_diablo
         {
             Init = 0,
             Suffix =  1,
+            Source = 2,
         }
 
         public enum ItemSource
