@@ -37,6 +37,11 @@ namespace outward_diablo
         public override void InitFromItem()
         {
                         
+            if (true)
+            {
+                return;
+            }
+
             if (init)
             {
                 return; 

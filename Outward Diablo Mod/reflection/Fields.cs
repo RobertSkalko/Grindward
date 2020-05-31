@@ -14,9 +14,12 @@ namespace outward_diablo
 
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");
-       
+
         public SafeField<Dropable, List<DropTable>> Dropable_lootables = new SafeField<Dropable, List<DropTable>>("m_mainDropTables");
-                
+        public SafeField<Dropable, List<GuaranteedDrop>> Dropable_guaranteedDrops = new SafeField<Dropable, List<GuaranteedDrop>>("m_allGuaranteedDrops");
+
+
+        
 
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageProtection = new SafeField<EquipmentStats, float[]>("m_damageProtection");
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageAttack = new SafeField<EquipmentStats, float[]>("m_damageAttack");

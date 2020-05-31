@@ -2,8 +2,10 @@
 using SideLoader;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace outward_diablo.database.gear_types
 {
@@ -16,7 +18,14 @@ namespace outward_diablo.database.gear_types
 
         public List<Item> GetAllItems()
         {
-            return CustomItems.RPM_ITEM_PREFABS.Values.Where(x => isType(x)).ToList();
+            List<Item> list= CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsGear(x) && isType(x)).ToList();
+
+            if (list.Count  < 1)
+            {
+                UnityEngine.Debug.Log("There are 0 items of type: " + GetId() + ". This shouldn't be possible!!");
+            }
+
+            return list;
         }
     }
 }

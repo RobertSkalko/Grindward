@@ -14,7 +14,7 @@ namespace outward_diablo.database.registers
 
         public GearTypes()
         {
-            armors = new List<GearType>{ helmet,chest, boots, pants };
+            armors = new List<GearType>{ helmet,chest, boots };
             weapons = new List<GearType> { oneHandWeapon, twoHandWeapon };           
         }
 
@@ -23,8 +23,7 @@ namespace outward_diablo.database.registers
         public GearType helmet = Registry.GearTypes.Register(new Helmet());
         public GearType chest = Registry.GearTypes.Register(new Chest());
         public GearType boots = Registry.GearTypes.Register(new Boots());
-        public GearType pants = Registry.GearTypes.Register(new Pants());
-
+     
         public GearType oneHandWeapon = Registry.GearTypes.Register(new OneHandWeapon());
         public GearType twoHandWeapon = Registry.GearTypes.Register(new TwoHandWeapon());
 

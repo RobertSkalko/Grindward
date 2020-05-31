@@ -15,35 +15,53 @@ using Registry = outward_diablo.database.Registry;
 namespace OutwardDiabloMod.harmony_patches.Diablo
 {
   
-    [HarmonyPatch(typeof(LootableOnDeath), "Start")]
+    [HarmonyPatch(typeof(LootableOnDeath), "OnDeath")]
     public class OnMobDeathPatch
     {
-        [HarmonyPostfix]
-        public static void Postfix(LootableOnDeath __instance)
+
+        [HarmonyPrefix]
+        public static void Prefix(LootableOnDeath __instance, bool __0, ref bool __state)
         {
+            __state = Fields.INSTANCE.LootableOnDeath_WasAlive.GetValue(__instance);
+        }
 
-            if (__instance.gameObject.GetComponent<MyDropable>() == null)
+        [HarmonyPostfix]
+        public static void Postfix(LootableOnDeath __instance,  ref bool __state)
+        {
+            if (__state != Fields.INSTANCE.LootableOnDeath_WasAlive.GetValue(__instance))
             {
+                ItemContainer _container = __instance.Character.Inventory.Pouch;
 
-                MyDropable drop = __instance.gameObject.AddComponent<MyDropable>();
-                drop.transform.ResetLocal(true);
-                drop.name = "diablo_mod_random_loot";
-                drop.SetUID(__instance.Character.UID + "_diablo_loot_");
-                drop.UpdateSelf = false;
+                GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
 
-                Dropable[] list = Fields.INSTANCE.LootableOnDeath_lootDroppers.GetValue(__instance);
+                UnityEngine.Debug.Log("random gear type gotten");
 
-                List<DropTable> tables = Fields.INSTANCE.Dropable_lootables.GetValue(drop);
-                MyItemDropper mydropper = drop.gameObject.AddComponent<MyItemDropper>();
-                tables.Add(mydropper);
-                list.AddItem(drop);
+                Item randomItem = RandomUtils.RandomFromList(type.GetAllItems()); // this seems null
 
-                Fields.INSTANCE.Dropable_lootables.SetValue(drop, tables);
-                Fields.INSTANCE.LootableOnDeath_lootDroppers.SetValue(__instance, list);
+                UnityEngine.Debug.Log("random item gotten");
 
-                UnityEngine.Debug.Log("Added lootable");
+                Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
 
+                UnityEngine.Debug.Log("item gened");
+
+                if (generatedItem != null)
+                {
+                    //generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
+
+                    UnityEngine.Debug.Log("The ext is there");
+
+                    _container.AddItem(generatedItem);
+
+                    _container.AddSilver(500);
+
+                    UnityEngine.Debug.Log("added item to pouch");
+                }
             }
+            else
+            {
+                UnityEngine.Debug.Log("Cant gen loot anymore");
+            }
+         
         }
     }
 }

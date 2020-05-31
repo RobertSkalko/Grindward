@@ -69,8 +69,6 @@
     <Compile Include="database\registers\Suffixes.cs" />
     <Compile Include="harmony_patches\Diablo\OnMobDeathPatch.cs" />
     <Compile Include="ISaveToString.cs" />
-    <Compile Include="MyDropable.cs" />
-    <Compile Include="MyItemDropper.cs" />
     <Compile Include="SuffixData.cs" />
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />
@@ -80,7 +78,6 @@
     <Compile Include="database\gear_types\armors\Boots.cs" />
     <Compile Include="database\gear_types\armors\Chest.cs" />
     <Compile Include="database\gear_types\armors\Helmet.cs" />
-    <Compile Include="database\gear_types\armors\Pants.cs" />
     <Compile Include="database\gear_types\weapons\OneHandWeapon.cs" />
     <Compile Include="database\gear_types\weapons\TwoHandWeapon.cs" />
     <Compile Include="database\registers\GearTypes.cs" />

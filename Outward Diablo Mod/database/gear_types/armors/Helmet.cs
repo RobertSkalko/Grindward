@@ -17,7 +17,7 @@ namespace outward_diablo.database.gear_types
         }
         public override bool isType(Item item)
         {
-            if (item is Armor armor)
+            if (item is Equipment armor)
             {
                 return armor.EquipSlot == EquipmentSlot.EquipmentSlotIDs.Helmet;
             }
