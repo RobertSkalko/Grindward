@@ -1,4 +1,5 @@
 ﻿using OutwardDiabloMod.database;
+using SideLoader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,10 @@ namespace outward_diablo.database.gear_types
         public abstract bool isType(Item item);
         public abstract string GetId();
         public abstract int GetWeight();
+
+        public List<Item> GetAllItems()
+        {
+            return CustomItems.RPM_ITEM_PREFABS.Values.Where(x => isType(x)).ToList();
+        }
     }
 }

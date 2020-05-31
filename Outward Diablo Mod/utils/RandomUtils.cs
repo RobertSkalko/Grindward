@@ -10,12 +10,22 @@ namespace OutwardDiabloMod.utils
     {
         
 
-        public static T weightedRandom<T>(List<T> coll) where T : IWeighted
+        public static T WeightedRandom<T>(List<T> coll) where T : IWeighted
         {
             return WeightedRandom(coll, new Random().NextDouble());
         }
 
-      
+        public static T RandomFromList<T>(List<T> list)
+        {
+            if (list == null || list.Count ==0)
+            {
+                return default(T);
+            }
+
+            int random = new Random().Next(0, list.Count - 1);
+            return list[random];
+
+        }
         private static T WeightedRandom<T>(List<T> lootTable, double nextDouble) where T : IWeighted
         {
 

@@ -16,6 +16,8 @@ namespace outward_diablo
 
         public SuffixData suffix = null;
 
+        public ItemSource source = ItemSource.None;
+
         public bool init = false;
 
         public static DiabloItemExtension AddToItem(Item item)
@@ -40,16 +42,14 @@ namespace outward_diablo
                 return; 
             }
 
-            if (true) // todo chances
+            if (source == ItemSource.ChestLoot || source == ItemSource.MobDrop) 
             {   
                 
                 this.suffix = new SuffixData();
                 suffix.Randomize(this.Item);
                 suffix.ApplyToItem((Equipment)Item);
-
-
-                this.init = true;
                 
+                this.init = true;                
             }
 
         }
@@ -114,6 +114,16 @@ namespace outward_diablo
         {
             Init = 0,
             Suffix =  1,
+        }
+
+        public enum ItemSource
+        {
+            MobDrop,
+            ChestLoot,
+            Crafting, 
+            Shop,
+            Quest,
+            None
         }
 
     }

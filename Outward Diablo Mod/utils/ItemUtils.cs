@@ -10,7 +10,8 @@ using System.Text;
 namespace outward_diablo
 {
     class ItemUtils { 
-      public static GearType GetGearType(Item item)
+
+        public static GearType GetGearType(Item item)
     {
           foreach( GearType type in database.Registry.GearTypes.GetAll()){
                 if (type.isType(item))

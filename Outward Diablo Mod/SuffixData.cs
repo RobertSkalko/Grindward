@@ -46,7 +46,7 @@ namespace OutwardDiabloMod
 
             if (possible.Count > 0)
             {
-                Suffix suffix = RandomUtils.weightedRandom(possible);
+                Suffix suffix = RandomUtils.WeightedRandom(possible);
 
                 this.id = suffix.GetId();
                 this.percent = new System.Random().Next(25, 100);
