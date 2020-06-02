@@ -1,13 +1,13 @@
 ﻿using Microsoft.Win32;
-using outward_diablo.database;
-using outward_diablo.database.gear_types;
-using outward_diablo.database.registers;
+using grindward.database;
+using grindward.database.gear_types;
+using grindward.database.registers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo
+namespace grindward
 {
     class ItemUtils { 
 

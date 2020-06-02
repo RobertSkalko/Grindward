@@ -1,4 +1,4 @@
-﻿using OutwardDiabloMod.database;
+﻿using grindward.database;
 using SideLoader;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace outward_diablo.database.gear_types
+namespace grindward.database.gear_types
 {
     public abstract class GearType : RegistryEntry , IWeighted
     {

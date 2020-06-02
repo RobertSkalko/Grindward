@@ -1,10 +1,10 @@
-﻿using outward_diablo.database;
+﻿using grindward.database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OutwardDiabloMod
+namespace grindward
 {
     public class VanillaStatMod
     {

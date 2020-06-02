@@ -1,23 +1,23 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using outward_diablo.database;
-using outward_diablo.Reflection;
+using grindward.database;
+using grindward.Reflection;
 using SideLoader;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace outward_diablo
+namespace grindward
 {
     [BepInPlugin(ID, NAME, VERSION)]
     class Main : BaseUnityPlugin
     {
-        const string ID = "com.treborx555.outward_diablo_mod"; 
-        const string NAME = "Outward Diablo Mod";
+        const string ID = "com.treborx555.grindward"; 
+        const string NAME = "Grindward";
         const string VERSION = "1.0";
 
-         public static  String MODID = "outward_diablo";
+         public static  String MODID = "grindward";
 
         internal void Awake()
         {

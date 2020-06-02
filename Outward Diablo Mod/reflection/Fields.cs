@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo
+namespace grindward
 {
     class Fields
     {
@@ -32,8 +32,7 @@ namespace outward_diablo
       
         public SafeField<EquipmentStats, float> EquipmentStats_m_movementPenalty = new SafeField<EquipmentStats, float>("m_movementPenalty");
         
-        //public SafeField<EquipmentStats, float> EquipmentStats_m_heatRegenPenalty = new SafeField<EquipmentStats, float>("m_heatRegenPenalty");
-       
+     
         public SafeField<EquipmentStats, float> EquipmentStats_m_manaUseModifier = new SafeField<EquipmentStats, float>("m_manaUseModifier");
         public SafeField<EquipmentStats, float> EquipmentStats_m_staminaUsePenalty = new SafeField<EquipmentStats, float>("m_staminaUsePenalty");
 

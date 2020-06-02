@@ -1,12 +1,12 @@
-﻿using outward_diablo.database.affixes;
-using OutwardDiabloMod;
+﻿using grindward.database.affixes;
+using grindward;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace outward_diablo
+namespace grindward
 {
     class DiabloItemExtension : ItemExtension
     {

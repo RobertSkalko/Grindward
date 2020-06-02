@@ -1,11 +1,11 @@
 ﻿using HarmonyLib;
-using outward_diablo.Reflection;
+using grindward.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.HarmonyPatches
+namespace grindward.HarmonyPatches.harder_survival
 {
 
     /// <summary>

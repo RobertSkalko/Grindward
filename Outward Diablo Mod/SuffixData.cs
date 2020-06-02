@@ -1,9 +1,9 @@
-﻿using outward_diablo;
-using outward_diablo.database;
-using outward_diablo.database.affixes;
-using outward_diablo.database.gear_types;
-using OutwardDiabloMod.database;
-using OutwardDiabloMod.utils;
+﻿using grindward;
+using grindward.database;
+using grindward.database.affixes;
+using grindward.database.gear_types;
+using grindward.database;
+using grindward.utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace OutwardDiabloMod
+namespace grindward
 {
     public class SuffixData : ISaveToString<SuffixData> 
     {

@@ -1,11 +1,11 @@
-﻿using outward_diablo.database.affixes;
-using outward_diablo.database.gear_types;
+﻿using grindward.database.affixes;
+using grindward.database.gear_types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.database
+namespace grindward.database
 {
     public static class Registry
     {

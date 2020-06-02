@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace outward_diablo.Reflection
+namespace grindward.Reflection
 {
     public class SafeMethod<ReflectedClassType, MethodReturnType>
     {

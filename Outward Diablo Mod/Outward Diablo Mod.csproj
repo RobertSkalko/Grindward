@@ -67,7 +67,8 @@
     <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
     <Compile Include="database\IWeighted.cs" />
     <Compile Include="database\registers\Suffixes.cs" />
-    <Compile Include="harmony_patches\Diablo\OnMobDeathPatch.cs" />
+    <Compile Include="harmony_patches\diablo\OnMobDeathPatch.cs" />
+    <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
     <Compile Include="ISaveToString.cs" />
     <Compile Include="MarkObject.cs" />
     <Compile Include="SuffixData.cs" />
@@ -91,12 +92,12 @@
     <Compile Include="database\registers\VanillaStats.cs" />
     <Compile Include="DiabloItemExtension.cs" />
     <Compile Include="utils\EnumUtils.cs" />
-    <Compile Include="harmony_patches\HarderSurvival\BuyFromMerchantPatch.cs" />
-    <Compile Include="harmony_patches\HarderSurvival\NoRegenInHomeBed.cs" />
+    <Compile Include="harmony_patches\harder_survival\BuyFromMerchantPatch.cs" />
+    <Compile Include="harmony_patches\harder_survival\NoRegenInHomeBed.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="reflection\Fields.cs" />
-    <Compile Include="harmony_patches\Diablo\ItemTooltipPatch.cs" />
-    <Compile Include="harmony_patches\Diablo\EquipmentNamePatch.cs" />
+    <Compile Include="harmony_patches\diablo\ItemTooltipPatch.cs" />
+    <Compile Include="harmony_patches\diablo\EquipmentNamePatch.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reflection\Methods.cs" />

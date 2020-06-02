@@ -1,12 +1,12 @@
-﻿using outward_diablo.database;
-using outward_diablo.database.affixes;
-using OutwardDiabloMod.database.affixes.suffixes;
+﻿using grindward.database;
+using grindward.database.affixes;
+using grindward.database.affixes.suffixes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OutwardDiabloMod.database.registers
+namespace grindward.database.registers
 {
     public class Suffixes
     {

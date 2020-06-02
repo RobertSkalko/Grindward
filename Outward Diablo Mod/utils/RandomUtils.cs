@@ -1,10 +1,10 @@
-﻿using OutwardDiabloMod.database;
+﻿using grindward.database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OutwardDiabloMod.utils
+namespace grindward.utils
 {
     class RandomUtils
     {

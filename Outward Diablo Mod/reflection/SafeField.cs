@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace outward_diablo
+namespace grindward
 {
     public class SafeField<ReflectedClassType, FieldType>
     {       

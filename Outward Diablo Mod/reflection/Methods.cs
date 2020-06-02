@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.Reflection
+namespace grindward.Reflection
 {
    public class Methods
     {

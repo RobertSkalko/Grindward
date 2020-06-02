@@ -1,10 +1,10 @@
-﻿using outward_diablo.database.affixes;
+﻿using grindward.database.affixes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.database
+namespace grindward.database
 {
     public class RegistryHolder<T>  where T: RegistryEntry
     {     

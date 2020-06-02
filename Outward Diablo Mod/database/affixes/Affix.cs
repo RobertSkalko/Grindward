@@ -1,12 +1,12 @@
-﻿using outward_diablo.database.gear_types;
-using OutwardDiabloMod;
-using OutwardDiabloMod.database;
+﻿using grindward.database.gear_types;
+using grindward;
+using grindward.database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo
+namespace grindward
 {
     public abstract class Affix : RegistryEntry , IWeighted
     {

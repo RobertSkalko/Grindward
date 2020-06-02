@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
-using outward_diablo.database.affixes;
+using grindward.database.affixes;
 using System;
 
 
-namespace outward_diablo
+namespace grindward
 
 {
     [HarmonyPatch(typeof(Item), "Name", MethodType.Getter)]

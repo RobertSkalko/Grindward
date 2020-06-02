@@ -1,12 +1,12 @@
-﻿using outward_diablo.database.gear_types;
-using outward_diablo.database.gear_types.weapons;
+﻿using grindward.database.gear_types;
+using grindward.database.gear_types.weapons;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.database.registers
+namespace grindward.database.registers
 {
     public class GearTypes
     {

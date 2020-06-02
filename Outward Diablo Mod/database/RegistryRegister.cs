@@ -1,14 +1,14 @@
 ﻿
 
 
-using outward_diablo.database.registers;
-using OutwardDiabloMod.database.registers;
+using grindward.database.registers;
+using grindward.database.registers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.database
+namespace grindward.database
 {
     class RegistryRegister
     {

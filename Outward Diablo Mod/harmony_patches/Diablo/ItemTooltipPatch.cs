@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using outward_diablo.Reflection;
+using grindward.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace outward_diablo
+namespace grindward.harmony_patches.diablo
 {
     [HarmonyPatch(typeof(ItemDetailsDisplay), "RefreshDetails")]
     public class ItemTooltipPatch

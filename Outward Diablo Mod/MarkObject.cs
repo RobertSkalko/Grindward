@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace OutwardDiabloMod
+namespace grindward
 {
     class MarkObject : MonoBehaviour
     {

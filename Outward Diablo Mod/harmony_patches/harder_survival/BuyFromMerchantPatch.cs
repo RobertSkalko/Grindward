@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace outward_diablo.HarmonyPatches
+namespace grindward.harmony_patches.harder_survival
 {
     [HarmonyPatch(typeof(Item), "GetBuyValue")]
     public class BuyFromMerchantPatch
