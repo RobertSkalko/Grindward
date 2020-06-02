@@ -23,7 +23,7 @@ namespace grindward
 
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageProtection = new SafeField<EquipmentStats, float[]>("m_damageProtection");
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageAttack = new SafeField<EquipmentStats, float[]>("m_damageAttack");
-        
+       
         public SafeField<EquipmentStats, float> EquipmentStats_m_impactResistance = new SafeField<EquipmentStats, float>("m_impactResistance");
         
         public SafeField<EquipmentStats, float> EquipmentStats_m_heatProtection = new SafeField<EquipmentStats, float>("m_heatProtection");

@@ -2,14 +2,11 @@
 using grindward.database;
 using grindward.database.affixes;
 using grindward.database.gear_types;
-using grindward.database;
 using grindward.utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using UnityEngine;
 
 namespace grindward
 {

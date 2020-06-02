@@ -12,7 +12,7 @@ namespace grindward.harmony_patches.harder_survival
         // make shop sell prices higher.
 
         [HarmonyPostfix]
-        public static void Postfix(Item __instance, ref int __result)
+         public  static void Postfix(Item __instance, ref int __result)
         {
             if (__instance.IsEquippable)
             {

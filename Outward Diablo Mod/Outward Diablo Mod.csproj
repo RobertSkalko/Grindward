@@ -7,8 +7,8 @@
     <ProjectGuid>{927ECE70-4F61-4325-891A-A02A45025E8F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OutwardDiabloMod</RootNamespace>
-    <AssemblyName>OutwardDiabloMod</AssemblyName>
+    <RootNamespace>grindward</RootNamespace>
+    <AssemblyName>Grindward</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -71,6 +71,7 @@
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
     <Compile Include="ISaveToString.cs" />
     <Compile Include="MarkObject.cs" />
+    <Compile Include="MobClassifier.cs" />
     <Compile Include="SuffixData.cs" />
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />

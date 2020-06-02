@@ -45,36 +45,38 @@ namespace grindward.harmony_patches.diablo
                 return;
             }
 
-
-            ItemContainer _container = __instance.Character.Inventory.Pouch;
-
-            GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
-
-            UnityEngine.Debug.Log("random gear type gotten");
-
-            Item randomItem = RandomUtils.RandomFromList(type.GetAllItems());
-
-            UnityEngine.Debug.Log("random item gotten");
-
-            Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
-
-            if (generatedItem != null)
+            for (int i = 0; i < 50; i++)
             {
-                UnityEngine.Debug.Log("item gened");
 
-                generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
+                ItemContainer _container = __instance.Character.Inventory.Pouch;
 
-                UnityEngine.Debug.Log("The ext is there");
+                GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
 
-                generatedItem.ChangeParent(_container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
+                UnityEngine.Debug.Log("random gear type gotten");
 
-                _container.AddSilver(500);
+                Item randomItem = RandomUtils.RandomFromList(type.GetAllItems());
 
-                UnityEngine.Debug.Log("added item to pouch");
+                UnityEngine.Debug.Log("random item gotten");
+
+                Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
+
+                if (generatedItem != null)
+                {
+                    UnityEngine.Debug.Log("item gened");
+
+                    generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
+
+                    UnityEngine.Debug.Log("The ext is there");
+
+                    generatedItem.ChangeParent(_container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
+
+                    _container.AddSilver(500);
+
+                    UnityEngine.Debug.Log("added item to pouch");
+
+                }
 
             }
-
-                
             
         }
     }

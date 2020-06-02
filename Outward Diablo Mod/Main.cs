@@ -7,6 +7,7 @@ using SideLoader;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using grindward;
 
 namespace grindward
 {
@@ -33,7 +34,6 @@ namespace grindward
 
                 SL.OnPacksLoaded += SL_OnPacksLoaded;
 
-
                 var harmony = new Harmony(ID);
                 harmony.PatchAll();
 
@@ -52,8 +52,7 @@ namespace grindward
         }
 
         private void SL_OnPacksLoaded()
-        {
-
+        {           
             foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
             {
                 if (ItemUtils.IsGear(item))
@@ -62,8 +61,10 @@ namespace grindward
                     //Debug.Log("Added diablo item extension to: " + item.name);
                 }
             }
-
+            
             Debug.Log("Finished Adding diablo item extension to all gear items.");
+                       
+
         }
     }
 }

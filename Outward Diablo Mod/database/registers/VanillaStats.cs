@@ -13,19 +13,20 @@ namespace grindward.database.registers
         {
 
             protections = new Dictionary<DamageType.Types, ElementVanillaStat>();
-            ele_damages = new Dictionary<DamageType.Types, ElementVanillaStat>();
+            ele_damageBoosts = new Dictionary<DamageType.Types, ElementVanillaStat>();
 
             foreach (DamageType.Types type in EnumUtils.Elements())
             {
                 protections.Add(type, (ElementVanillaStat)Registry.VanillaStats.Register(new ElementVanillaStat(Fields.INSTANCE.EquipmentStats_m_damageProtection, type, type.ToString().ToLower() + "_" + "protection")));
-                ele_damages.Add(type, (ElementVanillaStat)Registry.VanillaStats.Register(new ElementVanillaStat(Fields.INSTANCE.EquipmentStats_m_damageAttack, type, type.ToString().ToLower() + "_" + "damage")));
-                       
+                ele_damageBoosts.Add(type, (ElementVanillaStat)Registry.VanillaStats.Register(new ElementVanillaStat(Fields.INSTANCE.EquipmentStats_m_damageAttack, type, type.ToString().ToLower() + "_" + "damage_boost")));
+               
             }
 
         }
 
         public Dictionary<DamageType.Types, ElementVanillaStat> protections;
-        public Dictionary<DamageType.Types, ElementVanillaStat> ele_damages;
+        public Dictionary<DamageType.Types, ElementVanillaStat> ele_damageBoosts;
+        //public Dictionary<DamageType.Types, ElementVanillaStat> eleAttackDamage;
 
         public BasicVanillaStat heatProtection = (BasicVanillaStat)Registry.VanillaStats.Register(new BasicVanillaStat(Fields.INSTANCE.EquipmentStats_m_heatProtection, "heat_protection"));
         public BasicVanillaStat coldProtection = (BasicVanillaStat)Registry.VanillaStats.Register(new BasicVanillaStat(Fields.INSTANCE.EquipmentStats_m_coldProtection, "cold_protection"));
