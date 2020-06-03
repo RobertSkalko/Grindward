@@ -20,7 +20,7 @@ namespace grindward.database.tiers
 
         public override float GetTierReq()
         {
-            return 0.9F;
+            return 0.7F;
         }
     }
 }

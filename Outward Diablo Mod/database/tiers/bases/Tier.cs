@@ -1,4 +1,5 @@
-﻿using grindward.database.registers;
+﻿using grindward.database.gear_types;
+using grindward.database.registers;
 using grindward.utils;
 using SideLoader;
 using System;
@@ -40,7 +41,9 @@ namespace grindward.database.tiers.bases
         public static float GetPowerLevelEstimateOfItem(Item item)
         {
 
-            float highestPrice = CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsGear(x)).Max(x => x.Value);
+            GearType type = ItemUtils.GetGearType(item);
+
+            float highestPrice = type.GetAllItems().Max(x => x.Value);
 
             Log.Debug("Highest value gear: " + highestPrice);
 
@@ -49,7 +52,7 @@ namespace grindward.database.tiers.bases
             float priceMulti = currentPrice / highestPrice;
 
 
-            float highestDurability = CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsGear(x) && !x.IsIndestructible).Max(x => x.MaxDurability);
+            float highestDurability = type.GetAllItems().Where(x => !x.IsIndestructible).Max(x => x.MaxDurability);
 
             Log.Debug("Highest durab gear: " + highestDurability);
 

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using grindward;
+using grindward.utils;
 
 namespace grindward
 {
@@ -24,8 +25,7 @@ namespace grindward
          public static  String MODID = "grindward";
 
         internal void Awake()
-        {
-          
+        {          
 
             try
             {
@@ -55,16 +55,44 @@ namespace grindward
         }
 
         private void SL_OnPacksLoaded()
-        {           
+        {
+
+            List<Item> correct = new List<Item>();
+            List<Item> incorrect = new List<Item>();
+
+
             foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
             {
-                if (ItemUtils.IsGear(item))
+                if (ItemUtils.IsGear(item,true))
                 {
-                    UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
-                    //Debug.Log("Added diablo item extension to: " + item.name);
+                    correct.Add(item);
+                }
+                else
+                {                   
+                    if (item is Equipment)
+                    {
+                        incorrect.Add(item);
+                        
+                    }
                 }
             }
-            
+            Log.Debug("Items considered correct gears: ");
+
+            foreach (Item item in correct)
+            {
+                UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
+
+                Log.Debug(item.name + ": Value: " + item.Value + " Durability: " + item.MaxDurability);
+
+            }
+            Log.Debug("Items that aren't considered correct gears: ");
+
+            foreach (Item item in incorrect)
+            {
+                Log.Debug(item.name + " is an unused gear item. ID: " + item.ItemID);
+
+            }
+
             Debug.Log("Finished Adding diablo item extension to all gear items.");
                        
 
