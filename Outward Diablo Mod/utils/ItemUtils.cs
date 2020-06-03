@@ -26,6 +26,24 @@ namespace grindward
 
         public static bool IsGear(Item item)
         {
+
+            if (item.Name.Length < 3)
+            {
+                return false;
+            }
+            if (item.Name.ToLower().Contains("standard"))
+            {
+                return false;
+            }     
+            if (Fields.INSTANCE.Item_Icon.GetValue(item) == null)
+            {
+                return false;
+            }
+            if (item.Tags != null && item.Tags.Any(x => x.TagName.ToLower().Contains("monster")))
+            {
+                return false;
+            }
+
             return item.IsEquippable && item is Equipment && item.GetComponent<EquipmentStats>() != null;
 
         }

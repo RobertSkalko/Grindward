@@ -8,11 +8,12 @@ namespace grindward.utils
 {
     class RandomUtils
     {
-        
+        static System.Random ran = new System.Random(Guid.NewGuid().GetHashCode());
 
         public static T WeightedRandom<T>(List<T> coll) where T : IWeighted
         {
-            return WeightedRandom(coll, new Random().NextDouble());
+           
+            return WeightedRandom(coll, ran.NextDouble());
         }
 
         public static T RandomFromList<T>(List<T> list)
@@ -22,7 +23,7 @@ namespace grindward.utils
                 return default(T);
             }
 
-            int random = new Random().Next(0, list.Count - 1);
+            int random = ran.Next(0, list.Count - 1);
             return list[random];
 
         }

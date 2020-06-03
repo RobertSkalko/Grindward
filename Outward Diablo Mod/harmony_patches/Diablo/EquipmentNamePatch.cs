@@ -11,9 +11,7 @@ namespace grindward
     {
         [HarmonyPostfix]
         public static void Postfix(Item __instance, ref string __result)
-        {
-            if (ItemUtils.IsGear(__instance))
-            {
+        {           
                 DiabloItemExtension ext = __instance.gameObject.GetComponent<DiabloItemExtension>();
 
                 if (ext != null)
@@ -26,8 +24,7 @@ namespace grindward
                     }
 
                     __result = __result + " " + suffix;
-                }
-            }
+                }            
         }
     }
 

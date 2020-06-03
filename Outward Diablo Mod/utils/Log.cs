@@ -7,16 +7,18 @@ namespace grindward.utils
 {
     class Log
     {
+
+        static String PREFIX = "[Grindward]: ";
         public static  void Print(String str)
         {
-            Console.Write(str);
+            Console.WriteLine(PREFIX + str);
         }
 
         public static void Debug(String str)
         {
             if (Main.DEBUG)
             {
-                Console.Write(str);
+                Console.WriteLine(PREFIX + str);
             }
         }
     }

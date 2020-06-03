@@ -7,7 +7,7 @@ using System.Text;
 namespace grindward.harmony_patches.diablo
 {
     
-    [HarmonyPatch(typeof(Area), "ResetTime")]
+    [HarmonyPatch(typeof(Area), "ResetTime", MethodType.Getter)]
     public class FasterAreaRespawns
     {
         [HarmonyPostfix]

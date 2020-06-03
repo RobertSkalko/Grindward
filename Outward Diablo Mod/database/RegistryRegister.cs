@@ -1,7 +1,4 @@
 ﻿
-
-
-using grindward.database.registers;
 using grindward.database.registers;
 using System;
 using System.Collections.Generic;
@@ -18,7 +15,9 @@ namespace grindward.database
             VanillaStats.Instance = new VanillaStats();
             GearTypes.Instance = new GearTypes();
             Suffixes.Instance = new Suffixes();
+            Tiers.Instance = new Tiers();
 
         }
+
     }
 }

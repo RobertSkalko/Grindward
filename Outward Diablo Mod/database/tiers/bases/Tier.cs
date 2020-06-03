@@ -1,4 +1,5 @@
 ﻿using grindward.database.registers;
+using grindward.utils;
 using SideLoader;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace grindward.database.tiers.bases
         public static Tier GetTierOfItem(Item item)
         {
             float powerlvl = GetPowerLevelEstimateOfItem(item);
+
+            Log.Debug("Item power lvl: " + powerlvl);
 
             Tier tier = Tiers.Instance.Weak;
 
@@ -39,12 +42,16 @@ namespace grindward.database.tiers.bases
 
             float highestPrice = CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsGear(x)).Max(x => x.Value);
 
+            Log.Debug("Highest value gear: " + highestPrice);
+
             float currentPrice = item.Value;
 
             float priceMulti = currentPrice / highestPrice;
 
 
             float highestDurability = CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsGear(x) && !x.IsIndestructible).Max(x => x.MaxDurability);
+
+            Log.Debug("Highest durab gear: " + highestDurability);
 
             float currentDurability = item.MaxDurability;
 
@@ -56,12 +63,9 @@ namespace grindward.database.tiers.bases
             }
 
 
-            List<float> multis = new List<float>();
+            return (durabilityMulti + priceMulti) / 2F;
 
-            multis.Add(durabilityMulti);
-            multis.Add(priceMulti);
-
-            return multis.Average();
+          
         }
 
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace grindward
 {
@@ -18,8 +19,7 @@ namespace grindward
         public SafeField<Dropable, List<DropTable>> Dropable_lootables = new SafeField<Dropable, List<DropTable>>("m_mainDropTables");
         public SafeField<Dropable, List<GuaranteedDrop>> Dropable_guaranteedDrops = new SafeField<Dropable, List<GuaranteedDrop>>("m_allGuaranteedDrops");
 
-
-        
+        public SafeField<Item, Sprite> Item_Icon = new SafeField<Item, Sprite>("m_itemIcon"); 
 
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageProtection = new SafeField<EquipmentStats, float[]>("m_damageProtection");
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageAttack = new SafeField<EquipmentStats, float[]>("m_damageAttack");

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using grindward.database.tiers.bases;
 
 namespace grindward.harmony_patches.diablo
 {
@@ -34,12 +35,22 @@ namespace grindward.harmony_patches.diablo
 
             if (__instance.LastItemDisplay.RefItem is Equipment item)
             {
+                if (!ItemUtils.IsGear(item))
+                {
+                    return;
+                }
+
                 int hp = (int)item.Stats.MaxHealthBonus;
                 if (hp != 0)
                 {
                     AddStatTooltip(__instance, "Bonus Health", hp);
                 }
 
+                if (Main.DEBUG)
+                {
+                    Tier tier = Tier.GetTierOfItem(item);
+                    AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber());
+                }
             }
         }
 
