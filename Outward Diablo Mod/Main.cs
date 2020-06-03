@@ -14,6 +14,9 @@ namespace grindward
     [BepInPlugin(ID, NAME, VERSION)]
     class Main : BaseUnityPlugin
     {
+        public static bool DEBUG = true;
+
+      
         const string ID = "com.treborx555.grindward"; 
         const string NAME = "Grindward";
         const string VERSION = "1.0";

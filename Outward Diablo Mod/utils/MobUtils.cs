@@ -8,12 +8,12 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using UnityEngine;
 
-namespace grindward
+namespace grindward.utils
 {
-    public class MobClassifier
+    public class MobUtils
     {
         
-
+        
         static float HP = 0.005F;
         static float RES = 0.001F;
         static float PROTECTION = 0.05F;
