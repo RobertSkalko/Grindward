@@ -51,13 +51,10 @@ namespace grindward.database.vanilla_stats.Base
                 }
                 else
                 {
-                    wep.Stats.BaseDamage.Add(new List<DamageType> { new DamageType(type,val) });
-                }
+                    wep.Stats.BaseDamage.Add(new DamageType(type, val));                                         
+                }              
 
                 wep.Stats.Attacks = SL_WeaponStats.GetScaledAttackData(wep);
-
-
-
 
             }
         }
