@@ -14,13 +14,43 @@ namespace grindward.database.tiers.bases
         public abstract string GetId();
 
         public abstract int GetTierNumber();
-        public abstract float GetTierReq();
+        public abstract float GetItemTierReq();
+        public abstract float GetMobTierReq();
 
-        public static Tier GetTierOfItem(Item item)
+
+        public abstract List<Weighted<Tier>> GetItemTierDropChances();
+
+        public Tier GetRandomItemDropTier()
+        {
+            return RandomUtils.WeightedRandom(GetItemTierDropChances()).Get();
+        }
+
+        public static Tier TierGetTierOfMob(Character mob)
+        {            
+                float powerlvl = MobUtils.GetLootMulti(mob);
+
+                Log.Debug(mob.Name + " Mob power lvl: " + powerlvl);
+
+                Tier tier = Tiers.Instance.Weak;
+
+                foreach (Tier t in Registry.Tiers.GetAll())
+                {
+                    if (t.GetTierNumber() > tier.GetTierNumber())
+                    {
+                        if (powerlvl >= t.GetItemTierReq())
+                        {
+                            tier = t;
+                        }
+                    }
+            }            
+            return tier;
+        }
+
+            public static Tier GetTierOfItem(Item item)
         {
             float powerlvl = GetPowerLevelEstimateOfItem(item);
 
-            Log.Debug("Item power lvl: " + powerlvl);
+            //Log.Debug(item.Name + " Item power lvl: " + powerlvl);
 
             Tier tier = Tiers.Instance.Weak;
 
@@ -28,7 +58,7 @@ namespace grindward.database.tiers.bases
             {
                 if (t.GetTierNumber() > tier.GetTierNumber())
                 {
-                    if (powerlvl >= t.GetTierReq())
+                    if (powerlvl >= t.GetItemTierReq())
                     {
                         tier = t;
                     }
@@ -45,7 +75,7 @@ namespace grindward.database.tiers.bases
 
             float highestPrice = type.GetAllItems().Max(x => x.Value);
 
-            Log.Debug("Highest value gear: " + highestPrice);
+            //Log.Debug("Highest value gear: " + highestPrice);
 
             float currentPrice = item.Value;
 
@@ -54,7 +84,7 @@ namespace grindward.database.tiers.bases
 
             float highestDurability = type.GetAllItems().Where(x => !x.IsIndestructible).Max(x => x.MaxDurability);
 
-            Log.Debug("Highest durab gear: " + highestDurability);
+            //Log.Debug("Highest durab gear: " + highestDurability);
 
             float currentDurability = item.MaxDurability;
 

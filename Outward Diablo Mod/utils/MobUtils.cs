@@ -1,4 +1,6 @@
-﻿using SideLoader;
+﻿using grindward.database.registers;
+using grindward.database.tiers.bases;
+using SideLoader;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,6 +20,14 @@ namespace grindward.utils
         static float RES = 0.001F;
         static float PROTECTION = 0.05F;
 
+        
+        public static Tier GetMobTier(Character mob)
+        {
+            Tier tier = Tiers.Instance.Weak;
+
+            return tier;
+        }
+
         public static float GetLootMulti(Character mob)
         {
             float multi = 1;
@@ -30,9 +40,9 @@ namespace grindward.utils
 
             foreach (DamageType.Types type in EnumUtils.Elements())
             {
-                 res += mob.Stats.GetDamageResistance(type);               
-
+                 res += mob.Stats.GetDamageResistance(type);
             }
+
             multi += RES * res;
 
 

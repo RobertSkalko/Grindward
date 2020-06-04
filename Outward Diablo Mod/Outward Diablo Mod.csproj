@@ -116,6 +116,7 @@
     <Compile Include="database\RegistryEntry.cs" />
     <Compile Include="utils\RandomUtils.cs" />
     <Compile Include="VanillaStatMod.cs" />
+    <Compile Include="Weighted.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="database\affixes\prefixes\" />

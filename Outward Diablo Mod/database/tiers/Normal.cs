@@ -1,4 +1,5 @@
-﻿using grindward.database.tiers.bases;
+﻿using grindward.database.registers;
+using grindward.database.tiers.bases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,25 @@ namespace grindward.database.tiers
         {
             return "normal";
         }
-
+        public override List<Weighted<Tier>> GetItemTierDropChances()
+        {
+            return new List<Weighted<Tier>>() {
+                new Weighted<Tier>(this, 100),
+                new Weighted<Tier>(Tiers.Instance.Weak, 20),
+                new Weighted<Tier>(Tiers.Instance.HighEnd, 20),
+            };
+        }
         public override int GetTierNumber()
         {
             return 1;
         }
-        public override float GetTierReq()
+        public override float GetItemTierReq()
         {
             return 0.2F;
+        }
+        public override float GetMobTierReq()
+        {
+            return 1.25F;
         }
     }
 }

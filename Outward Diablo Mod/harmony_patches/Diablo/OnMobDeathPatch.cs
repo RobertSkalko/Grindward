@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Registry = grindward.database.Registry;
+using grindward.database.tiers.bases;
 
 namespace grindward.harmony_patches.diablo
 {
@@ -45,7 +46,11 @@ namespace grindward.harmony_patches.diablo
                 return;
             }
 
-            for (int i = 0; i < 50; i++)
+            Tier tier = Tier.TierGetTierOfMob(__instance.Character);
+
+            Tier itemTier = tier.GetRandomItemDropTier();
+
+            for (int i = 0; i < 15; i++)
             {
 
                 ItemContainer _container = __instance.Character.Inventory.Pouch;
@@ -54,7 +59,7 @@ namespace grindward.harmony_patches.diablo
 
                 UnityEngine.Debug.Log("random gear type gotten");
 
-                Item randomItem = RandomUtils.RandomFromList(type.GetAllItems());
+                Item randomItem = RandomUtils.RandomFromList(type.GetAllItemsOfTier(itemTier));
 
                 UnityEngine.Debug.Log("random item gotten");
 
