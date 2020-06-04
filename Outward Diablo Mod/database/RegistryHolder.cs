@@ -14,8 +14,11 @@ namespace grindward.database
 
         public T Get(String id)
         {
-
-            return map[id];
+            if (map.ContainsKey(id))
+            {
+                return map[id];
+            }
+            return default(T);
         }
 
         public T Register(T entry)

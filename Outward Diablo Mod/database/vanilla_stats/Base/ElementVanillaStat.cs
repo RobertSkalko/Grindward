@@ -17,17 +17,17 @@ namespace grindward.database.registers.Base
             this.type = type;
         }
 
-        public override void SetStat(EquipmentStats stats, float val)
+        public override void SetStat(Equipment item, float val)
         {
-            float[] vals = info.GetValue(stats);
+            float[] vals = info.GetValue(item.Stats);
 
             vals[(int)type] = val;
 
-            info.SetValue(stats, vals);
+            info.SetValue(item.Stats, vals);
         }
-        public override float GetStat(EquipmentStats stats)
+        public override float GetStat(Equipment item)
         {
-            return info.GetValue(stats)[(int)type];
+            return info.GetValue(item.Stats)[(int)type];
         }
 
     

@@ -64,8 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAffixData.cs" />
+    <Compile Include="database\affixes\prefixes\Chilling.cs" />
     <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
     <Compile Include="database\IWeighted.cs" />
+    <Compile Include="database\registers\Prefixes.cs" />
     <Compile Include="database\registers\Suffixes.cs" />
     <Compile Include="database\registers\Tiers.cs" />
     <Compile Include="database\tiers\Endgame.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
     <Compile Include="ISaveToString.cs" />
     <Compile Include="MarkObject.cs" />
+    <Compile Include="PrefixData.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\MobUtils.cs" />
     <Compile Include="SuffixData.cs" />
@@ -119,8 +123,6 @@
     <Compile Include="VanillaStatMod.cs" />
     <Compile Include="Weighted.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="database\affixes\prefixes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

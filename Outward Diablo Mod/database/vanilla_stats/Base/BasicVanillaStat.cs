@@ -15,13 +15,13 @@ namespace grindward.database.registers.Base
             this.info = info;
         }
                 
-        public  override void SetStat(EquipmentStats stats, float val)
+        public  override void SetStat(Equipment item, float val)
         {
-            info.SetValue(stats, val);
+            info.SetValue(item.Stats, val);
         }
-        public override float GetStat(EquipmentStats stats)
+        public override float GetStat(Equipment item)
         {
-            return info.GetValue(stats);
+            return info.GetValue(item.Stats);
         }
 
     }

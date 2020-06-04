@@ -25,7 +25,7 @@ namespace grindward
         {
             int val = (int)GetValue(percent);
 
-            stat.SetStat(item.Stats, stat.GetStat(item.Stats) + val);
+            stat.SetStat(item, stat.GetStat(item) + val);
 
         }
 

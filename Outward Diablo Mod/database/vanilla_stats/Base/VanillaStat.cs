@@ -15,8 +15,8 @@ namespace grindward.database
             this.id = id;
         }
 
-        public abstract void SetStat(EquipmentStats stats, float val);
-        public abstract float GetStat(EquipmentStats stats);
+        public abstract void SetStat(Equipment item, float val);
+        public abstract float GetStat(Equipment item);
         public  string GetId()
         {
             return id;

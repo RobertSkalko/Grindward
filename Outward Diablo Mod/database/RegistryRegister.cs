@@ -15,8 +15,8 @@ namespace grindward.database
             VanillaStats.Instance = new VanillaStats();
             GearTypes.Instance = new GearTypes();
             Suffixes.Instance = new Suffixes();
+            Prefixes.Instance = new Prefixes();
             Tiers.Instance = new Tiers();
-
         }
 
     }

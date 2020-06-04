@@ -5,11 +5,11 @@ using System.Text;
 
 namespace grindward
 {
-    public interface ISaveToString<T>
+    public interface ISaveToString
     {
          String GetSaveString();
 
-        T LoadFromString(String str);
+        void LoadFromString(String str);
 
 
     }

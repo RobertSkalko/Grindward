@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using ExitGames.Client.Photon;
+using MapMagic;
 
 namespace grindward
 {
@@ -15,6 +17,7 @@ namespace grindward
         static string ID = Main.MODID + ":random_stats";
 
         public SuffixData suffix = null;
+        public PrefixData prefix = null;
 
         public ItemSource source = ItemSource.None;
 
@@ -47,6 +50,11 @@ namespace grindward
                 this.suffix = new SuffixData();
                 suffix.Randomize(this.Item);
 
+                this.prefix = new PrefixData();
+                prefix.Randomize(this.Item);
+
+
+
                 this.ApplyStats();
 
                 this.init = true;                
@@ -60,7 +68,10 @@ namespace grindward
             {
                 suffix.ApplyToItem((Equipment)Item);
             }
-
+            if (prefix != null)
+            {
+                prefix.ApplyToItem((Equipment)Item);
+            }
         }
 
         public override void OnReceiveNetworkSync(string[] str)
@@ -99,13 +110,32 @@ namespace grindward
                         this.source = (ItemSource)Enum.Parse(typeof(SyncOrder), sourcesave);
                     }
                 }
+                if (str.Length > 3)
+                {
+                    String save = str[(int)SyncOrder.Prefix];
+                    if (save.Length > 0)
+                    {
+                        Debug.Log("Loading prefix: " + save);
 
-
-                ApplyStats();
+                        this.prefix = new PrefixData();
+                        prefix.LoadFromString(save);
+                    }
+                }                                          
 
             }
             catch (Exception e)
             {
+                Debug.Log("Error updating item from network packet");
+                throw;
+            }
+
+            try
+            {
+                ApplyStats();
+            }
+            catch
+            {
+                Debug.Log("Error applying stats");
                 throw;
             }
         }
@@ -123,10 +153,17 @@ namespace grindward
                suffixsave =  suffix.GetSaveString();
             }
 
+            String prefixsave = "";
+            if (prefix != null)
+            {
+                prefixsave = prefix.GetSaveString();
+            }
+
             list[(int)SyncOrder.Init] = initsave;
             list[(int)SyncOrder.Suffix] = suffixsave;
             list[(int)SyncOrder.Source] = ((int)source)+ "";
-           
+            list[(int)SyncOrder.Prefix] = prefixsave;
+
 
             return String.Join(";", list);
 
@@ -137,6 +174,7 @@ namespace grindward
             Init = 0,
             Suffix =  1,
             Source = 2,
+            Prefix = 3,
         }
 
         public enum ItemSource

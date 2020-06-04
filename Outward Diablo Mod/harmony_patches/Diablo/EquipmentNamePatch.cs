@@ -16,14 +16,20 @@ namespace grindward
 
                 if (ext != null)
                 {
-                    String suffix = "";
+                String suffix = "";
+                String prefix = "";
 
-                    if (ext.suffix != null && ext.suffix.GetSuffix() != null)
-                    {
-                        suffix = " " + ext.suffix.GetSuffix().GetName();
-                    }
+                if (ext.suffix != null && ext.suffix.GetAffix() != null)
+                {
+                    suffix = " " + ext.suffix.GetAffix().GetName();
+                }
+                if (ext.prefix != null && ext.prefix.GetAffix() != null)
+                {
+                    prefix =  ext.prefix.GetAffix().GetName() + " ";
+                }
 
-                    __result = __result + " " + suffix;
+                __result = prefix + __result + suffix;
+
                 }            
         }
     }

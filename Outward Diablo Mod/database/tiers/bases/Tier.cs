@@ -71,7 +71,17 @@ namespace grindward.database.tiers.bases
         public static float GetPowerLevelEstimateOfItem(Item item)
         {
 
+            if (item == null)
+            {
+                return 0;
+            }
+
             GearType type = ItemUtils.GetGearType(item);
+
+            if (type == null)
+            {
+                return 0;
+            }
 
             float highestPrice = type.GetAllItems().Max(x => x.Value);
 

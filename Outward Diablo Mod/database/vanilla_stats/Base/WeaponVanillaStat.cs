@@ -1,6 +1,8 @@
-﻿using System;
+﻿using SideLoader;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace grindward.database.vanilla_stats.Base
@@ -14,32 +16,70 @@ namespace grindward.database.vanilla_stats.Base
             this.type = type;
         }
 
-        public override void SetStat(EquipmentStats stats, float val)
+        public override void SetStat(Equipment item, float val)
         {
-            if (stats is WeaponStats wep)
-            {
-                foreach (WeaponStats.AttackData data in wep.Attacks)
+            if (item is Weapon wep) {
+
+                /*
+                SL_WeaponStats holder = new SL_WeaponStats();
+                SL_WeaponStats.ParseWeaponStats(wep.Stats, holder);
+
+                int index = (int)type;
+
+                var opt = holder.BaseDamage.Find(x => x.Type == type);
+
+                if (opt == null)
                 {
-                    data.Damage[(int)type] = val;
+                    SL_Damage dmg = new SL_Damage();
+                    dmg.Type = type;
+                    dmg.Damage = val;
+
+                    holder.BaseDamage.Add(dmg);
+                }
+                else
+                {
+                    opt.Damage = val;
+                }          
+
+                holder.ApplyToItem(wep.Stats);
+                */
+
+               
+                if (wep.Stats.BaseDamage.Contains(type))
+                {
+                    wep.Stats.BaseDamage[type].Damage = val;
+                }
+                else
+                {
+                    wep.Stats.BaseDamage.Add(new List<DamageType> { new DamageType(type,val) });
                 }
 
-                wep.BaseDamage[type].Damage = val;
-            }         
-        }
-        public override float GetStat(EquipmentStats stats)
-        {            
-            if (stats is WeaponStats wepstats)
-            {
-                if (Fields.INSTANCE.ItemStats_Item.GetValue(wepstats) is Weapon wep)
-                {
-                    return wep.GetDamageOfType(type);
-                }                                
+                wep.Stats.Attacks = SL_WeaponStats.GetScaledAttackData(wep);
+
+
+
+
             }
-
-            return 0;
         }
+        public override float GetStat(Equipment item)
+        {
+            if (item.Stats is WeaponStats stats)
+            {
+                
+                if (item is Weapon weapon)
+                {
+                    return weapon.GetDamageAttack(type);
+                }
 
 
+                //SL_WeaponStats holder = new SL_WeaponStats();
+                //SL_WeaponStats.ParseWeaponStats(stats, holder);                                                                      
+
+               //return holder.BaseDamage[(int)type].Damage;
+            }
+           
+           return 0;
+        }
     }
 
 }

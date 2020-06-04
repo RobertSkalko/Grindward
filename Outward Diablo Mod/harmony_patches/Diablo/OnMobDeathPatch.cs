@@ -50,7 +50,7 @@ namespace grindward.harmony_patches.diablo
 
             Tier itemTier = tier.GetRandomItemDropTier();
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 10; i++)
             {
 
                 ItemContainer _container = __instance.Character.Inventory.Pouch;
