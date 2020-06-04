@@ -11,9 +11,9 @@ namespace grindward.database.vanilla_stats.Base
     {
          DamageType.Types type;
 
-        public WeaponVanillaStat(DamageType.Types type, String id) : base(id)
+        public WeaponVanillaStat(DamageType.Types type, String id, int place, VanillaStat.Type stattype) : base(id,place, stattype)
         {           
-            this.type = type;
+            this.type = type;         
         }
 
         public override void SetStat(Equipment item, float val)
@@ -63,18 +63,14 @@ namespace grindward.database.vanilla_stats.Base
         public override float GetStat(Equipment item)
         {
             if (item.Stats is WeaponStats stats)
-            {
-                
+            {                
                 if (item is Weapon weapon)
-                {
-                    return weapon.GetDamageAttack(type);
-                }
-
-
-                //SL_WeaponStats holder = new SL_WeaponStats();
-                //SL_WeaponStats.ParseWeaponStats(stats, holder);                                                                      
-
-               //return holder.BaseDamage[(int)type].Damage;
+                {                  
+                    if (stats.BaseDamage.Contains(type))
+                    {
+                        return stats.BaseDamage[type].Damage;
+                    }                    
+                }                               
             }
            
            return 0;

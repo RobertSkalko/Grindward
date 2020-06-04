@@ -10,7 +10,7 @@ namespace grindward.database.registers.Base
     {
         SafeField<EquipmentStats, float> info;
 
-        public BasicVanillaStat(SafeField<EquipmentStats, float> info, String id) : base(id)
+        public BasicVanillaStat(SafeField<EquipmentStats, float> info, String id, int place, VanillaStat.Type stattype) : base(id,place, stattype)
         {         
             this.info = info;
         }
@@ -24,5 +24,6 @@ namespace grindward.database.registers.Base
             return info.GetValue(item.Stats);
         }
 
+    
     }
 }

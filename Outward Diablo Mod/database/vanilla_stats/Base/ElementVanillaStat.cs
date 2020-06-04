@@ -11,7 +11,7 @@ namespace grindward.database.registers.Base
         SafeField<EquipmentStats, float[]> info;
         DamageType.Types type;
 
-        public ElementVanillaStat(SafeField<EquipmentStats, float[]> info, DamageType.Types type,String id) : base(id)
+        public ElementVanillaStat(SafeField<EquipmentStats, float[]> info, DamageType.Types type,String id,int place, VanillaStat.Type stattype) : base(id,place, stattype)
         {
             this.info = info;
             this.type = type;

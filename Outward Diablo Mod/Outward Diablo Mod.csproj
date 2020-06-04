@@ -64,7 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseAffixData.cs" />
+    <Compile Include="save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
     <Compile Include="database\affixes\prefixes\Chilling.cs" />
     <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
@@ -83,10 +83,11 @@
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
     <Compile Include="ISaveToString.cs" />
     <Compile Include="MarkObject.cs" />
-    <Compile Include="PrefixData.cs" />
+    <Compile Include="save_data\PrefixData.cs" />
+    <Compile Include="save_data\RandomStatsData.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\MobUtils.cs" />
-    <Compile Include="SuffixData.cs" />
+    <Compile Include="save_data\SuffixData.cs" />
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />
     <Compile Include="database\affixes\Suffix.cs" />

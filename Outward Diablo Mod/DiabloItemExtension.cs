@@ -7,6 +7,8 @@ using System.Text;
 using UnityEngine;
 using ExitGames.Client.Photon;
 using MapMagic;
+using grindward.save_data;
+using grindward.utils;
 
 namespace grindward
 {
@@ -18,6 +20,8 @@ namespace grindward
 
         public SuffixData suffix = null;
         public PrefixData prefix = null;
+
+        public RandomStatsData randomStats = new RandomStatsData();
 
         public ItemSource source = ItemSource.None;
 
@@ -44,6 +48,9 @@ namespace grindward
                 return; 
             }
 
+            this.randomStats = new RandomStatsData();
+            this.randomStats.Randomize((Equipment)this.Item);
+
             if (source == ItemSource.ChestLoot || source == ItemSource.MobDrop) 
             {   
                 
@@ -52,8 +59,6 @@ namespace grindward
 
                 this.prefix = new PrefixData();
                 prefix.Randomize(this.Item);
-
-
 
                 this.ApplyStats();
 
@@ -64,6 +69,8 @@ namespace grindward
 
         public void ApplyStats()
         {
+            randomStats.ApplyToItem((Equipment)Item);
+
             if (suffix != null)
             {
                 suffix.ApplyToItem((Equipment)Item);
@@ -72,6 +79,8 @@ namespace grindward
             {
                 prefix.ApplyToItem((Equipment)Item);
             }
+
+            
         }
 
         public override void OnReceiveNetworkSync(string[] str)
@@ -120,7 +129,18 @@ namespace grindward
                         this.prefix = new PrefixData();
                         prefix.LoadFromString(save);
                     }
-                }                                          
+                }
+                if (str.Length > 4)
+                {
+                    String save = str[(int)SyncOrder.RandomStats];
+                    if (save.Length > 0)
+                    {
+                        Log.Debug("Loading random stats: " + save);
+
+                        this.randomStats = new RandomStatsData();
+                        randomStats.LoadFromString(save);
+                    }
+                }
 
             }
             catch (Exception e)
@@ -159,11 +179,13 @@ namespace grindward
                 prefixsave = prefix.GetSaveString();
             }
 
+            String randomsave = this.randomStats.GetSaveString();
+
             list[(int)SyncOrder.Init] = initsave;
             list[(int)SyncOrder.Suffix] = suffixsave;
             list[(int)SyncOrder.Source] = ((int)source)+ "";
             list[(int)SyncOrder.Prefix] = prefixsave;
-
+            list[(int)SyncOrder.RandomStats] = randomsave;
 
             return String.Join(";", list);
 
@@ -175,6 +197,7 @@ namespace grindward
             Suffix =  1,
             Source = 2,
             Prefix = 3,
+            RandomStats = 4,
         }
 
         public enum ItemSource

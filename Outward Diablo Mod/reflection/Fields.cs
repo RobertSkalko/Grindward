@@ -20,9 +20,11 @@ namespace grindward
         public SafeField<Dropable, List<DropTable>> Dropable_lootables = new SafeField<Dropable, List<DropTable>>("m_mainDropTables");
         public SafeField<Dropable, List<GuaranteedDrop>> Dropable_guaranteedDrops = new SafeField<Dropable, List<GuaranteedDrop>>("m_allGuaranteedDrops");
 
-        public SafeField<Item, Sprite> Item_Icon = new SafeField<Item, Sprite>("m_itemIcon"); 
+        public SafeField<Item, Sprite> Item_Icon = new SafeField<Item, Sprite>("m_itemIcon");
 
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageProtection = new SafeField<EquipmentStats, float[]>("m_damageProtection");
+        public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageResistance = new SafeField<EquipmentStats, float[]>("m_damageResistance");
+                
         public SafeField<EquipmentStats, float[]> EquipmentStats_m_damageAttack = new SafeField<EquipmentStats, float[]>("m_damageAttack");
        
         public SafeField<EquipmentStats, float> EquipmentStats_m_impactResistance = new SafeField<EquipmentStats, float>("m_impactResistance");
@@ -34,7 +36,7 @@ namespace grindward
         public SafeField<EquipmentStats, float> EquipmentStats_m_movementPenalty = new SafeField<EquipmentStats, float>("m_movementPenalty");
         
      
-        public SafeField<EquipmentStats, float> EquipmentStats_m_manaUseModifier = new SafeField<EquipmentStats, float>("m_manaUseModifier");
+        public SafeField<EquipmentStats, float> EquipmentStats_m_manaUsePenalty = new SafeField<EquipmentStats, float>("m_realManaUseModifier");
         public SafeField<EquipmentStats, float> EquipmentStats_m_staminaUsePenalty = new SafeField<EquipmentStats, float>("m_staminaUsePenalty");
 
         public SafeField<EquipmentStats, float> EquipmentStats_m_maxHealthBonus = new SafeField<EquipmentStats, float>("m_maxHealthBonus"); 

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using grindward;
 using grindward.utils;
+using grindward.database.tiers.bases;
+using grindward.database.registers;
 
 namespace grindward
 {
@@ -56,6 +58,46 @@ namespace grindward
 
         }
 
+        private void DoTests()
+        {
+            Log.Debug("Starting tests");
+
+            Weapon wep = (Weapon)ItemManager.Instance.GenerateItemNetwork(GearTypes.Instance.oneHandWeapon.GetAllItems()[0].ItemID);
+            Armor armor = (Armor)ItemManager.Instance.GenerateItemNetwork(GearTypes.Instance.boots.GetAllItems()[0].ItemID);
+
+            if (wep == null || armor == null)
+            {
+                Log.Debug("Error, Test items are null!!");
+
+            }
+
+            Log.Debug("Setup test items");
+
+
+            foreach (VanillaStat stat in Registry.VanillaStats.GetAll())
+            {
+
+                if (stat.StatType == VanillaStat.Type.GearStat)
+                {
+                    stat.TestIfWorks(wep);
+                    stat.TestIfWorks(armor);
+                }
+                else if (stat.StatType == VanillaStat.Type.ArmorStat)
+                {
+                    stat.TestIfWorks(armor);
+                }
+                else if (stat.StatType == VanillaStat.Type.WeaponStat)
+                {
+                    stat.TestIfWorks(wep);
+
+                }
+            }
+
+            Log.Debug("Tests finished");
+
+        }
+
+
         private void SL_OnPacksLoaded()
         {
 
@@ -98,6 +140,10 @@ namespace grindward
                 }
 
                 Debug.Log("Finished Adding diablo item extension to all gear items.");
+
+
+                DoTests();
+
             }
             catch
             {
