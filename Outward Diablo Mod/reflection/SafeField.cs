@@ -13,6 +13,11 @@ namespace grindward
 
         public SafeField(String fieldName){
             this.field = typeof(ReflectedClassType).GetField(fieldName, ReflectionUtils.flags);            
+
+            if (field == null)
+            {
+                throw new Exception("Field :" + fieldName + " is null!");
+            }
         }
 
         public FieldType GetValue(ReflectedClassType obj)
@@ -41,6 +46,15 @@ namespace grindward
 
         public void SetValue(ReflectedClassType obj, FieldType value)
         {
+            if (obj == null)
+            {
+                throw new Exception("Obj is null");
+            }
+            if (value == null)
+            {
+                throw new Exception("Value is null");
+            }
+
             field.SetValue(obj, value);
         }
 

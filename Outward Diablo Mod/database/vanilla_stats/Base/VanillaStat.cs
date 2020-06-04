@@ -43,27 +43,33 @@ namespace grindward.database
 
         public void TestIfWorks(Equipment item)
         {
-            Log.Debug(GetId() + " starting test");
-
-            int num = 32;
-
-            Log.Debug(GetId() + " setting");
-
-            SetStat(item, num);
-
-            Log.Debug(GetId() + " getting");
-
-            int after = (int)GetStat(item);
-
-            if (num != after)
+            try
             {
-                Log.Print("[ERROR] " + GetId() + " stat doesn't appear to correctly get or set values!");
+                //Log.Debug(GetId() + " starting test on " + item.Name);
+
+                int num = 32;
+
+                //Log.Debug(GetId() + " setting");
+
+                SetStat(item, num);
+
+                //Log.Debug(GetId() + " getting");
+
+                int after = (int)GetStat(item);
+
+                if (num != after)
+                {
+                    Log.Print("[ERROR] " + GetId() + " stat doesn't appear to correctly get or set values!");
+                }
+                else
+                {
+                    Log.Debug(GetId() + " stat works fine");
+                }
             }
-            else
+            catch(Exception e)
             {
-                Log.Debug(GetId() + " stat works fine");
-            }           
-
+                throw e;
+            }
 
         }
 

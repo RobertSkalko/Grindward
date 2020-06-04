@@ -7,10 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using grindward.utils;
+using SideLoader;
 
 namespace grindward
 {
     public class ItemUtils { 
+
+
+        public static Dictionary<string, Item> GetAllItemPrefabs()
+        {
+            return CustomItems.RPM_ITEM_PREFABS;
+                  
+
+                
+        }
 
         public static GearType GetGearType(Item item)
     {
@@ -43,6 +53,10 @@ namespace grindward
            
                 String name = item.Name.ToLower();
 
+                if (item.Stats == null)
+                {
+                return LogWhy(item, "No item stats", log);
+                }
                 if (name.Length < 3)
                 {
                     return LogWhy(item, "Name Length too short", log);

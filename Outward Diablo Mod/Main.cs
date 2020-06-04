@@ -44,6 +44,7 @@ namespace grindward
                 var harmony = new Harmony(ID);
                 harmony.PatchAll();
 
+               
                 Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod is done initiating.");
             }
             catch(Exception e)
@@ -53,8 +54,7 @@ namespace grindward
 
             }
 
-
-        
+           
 
         }
 
@@ -65,10 +65,17 @@ namespace grindward
             Weapon wep = (Weapon)ItemManager.Instance.GenerateItemNetwork(GearTypes.Instance.oneHandWeapon.GetAllItems()[0].ItemID);
             Armor armor = (Armor)ItemManager.Instance.GenerateItemNetwork(GearTypes.Instance.boots.GetAllItems()[0].ItemID);
 
+            wep.ProcessInit();
+            armor.ProcessInit();
+
             if (wep == null || armor == null)
             {
-                Log.Debug("Error, Test items are null!!");
-
+            Log.Debug("Error, Test items are null!!");
+            }            
+                           
+            if (wep.Stats == null || armor.Stats == null)
+            {
+            Log.Debug("Error, Test item stats are null!!");
             }
 
             Log.Debug("Setup test items");
@@ -76,7 +83,6 @@ namespace grindward
 
             foreach (VanillaStat stat in Registry.VanillaStats.GetAll())
             {
-
                 if (stat.StatType == VanillaStat.Type.GearStat)
                 {
                     stat.TestIfWorks(wep);
@@ -145,10 +151,10 @@ namespace grindward
                 DoTests();
 
             }
-            catch
+            catch(Exception e)
             {
                 Debug.Log("FAILED TO LOAD GRINDWARD!!!");
-                throw;
+                Console.Write(e.ToString());
             }
 
         }
