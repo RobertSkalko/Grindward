@@ -73,6 +73,7 @@
     <Compile Include="database\tiers\Normal.cs" />
     <Compile Include="database\tiers\bases\Tier.cs" />
     <Compile Include="database\tiers\Weak.cs" />
+    <Compile Include="database\vanilla_stats\Base\WeaponVanillaStat.cs" />
     <Compile Include="harmony_patches\diablo\FasterAreaRespawns.cs" />
     <Compile Include="harmony_patches\diablo\OnMobDeathPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />

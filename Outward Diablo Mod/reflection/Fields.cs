@@ -13,6 +13,8 @@ namespace grindward
 
         public SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>> TOOLTIP = new SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>>("m_detailRows");
 
+        public SafeField<ItemStats, Item> ItemStats_Item = new SafeField<ItemStats, Item>("m_item");
+        
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");
 
