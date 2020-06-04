@@ -27,7 +27,7 @@ namespace grindward.database.affixes.prefixes
         public override List<VanillaStatMod> GetVanillaStatMods()
         {
             return new List<VanillaStatMod> { 
-                new VanillaStatMod(2F, 5F, VanillaStats.Instance.eleAttackDamage[DamageType.Types.Frost])
+                new VanillaStatMod(2, 5, VanillaStats.Instance.eleAttackDamage[DamageType.Types.Frost])
             };
         }
 

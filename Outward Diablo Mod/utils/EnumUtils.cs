@@ -5,7 +5,7 @@ using System.Text;
 
 namespace grindward
 {
-    class EnumUtils
+    public class EnumUtils
     {
 
         public static List<DamageType.Types> Elements()

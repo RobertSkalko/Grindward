@@ -6,7 +6,7 @@ using System.Text;
 
 namespace grindward.utils
 {
-    class RandomUtils
+    public class RandomUtils
     {
         static System.Random ran = new System.Random(Guid.NewGuid().GetHashCode());
 

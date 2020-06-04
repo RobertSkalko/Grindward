@@ -5,7 +5,7 @@ using System.Text;
 
 namespace grindward.utils
 {
-    class Log
+   public class Log
     {
 
         static String PREFIX = "[Grindward]: ";

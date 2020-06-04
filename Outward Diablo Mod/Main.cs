@@ -29,6 +29,8 @@ namespace grindward
 
             try
             {
+                Cached.Instance = new Cached();
+
                 Fields.INSTANCE = new Fields();
                 Methods.INSTANCE = new Methods();
 
@@ -57,44 +59,51 @@ namespace grindward
         private void SL_OnPacksLoaded()
         {
 
-            List<Item> correct = new List<Item>();
-            List<Item> incorrect = new List<Item>();
-
-
-            foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
+            try
             {
-                if (ItemUtils.IsGear(item,true))
+                List<Item> correct = new List<Item>();
+                List<Item> incorrect = new List<Item>();
+
+
+                foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
                 {
-                    correct.Add(item);
-                }
-                else
-                {                   
-                    if (item is Equipment)
+                    if (ItemUtils.IsGear(item, true))
                     {
-                        incorrect.Add(item);
-                        
+                        correct.Add(item);
+                    }
+                    else
+                    {
+                        if (item is Equipment)
+                        {
+                            incorrect.Add(item);
+
+                        }
                     }
                 }
-            }
-            Log.Debug("Items considered correct gears: ");
+                Log.Debug("Items considered correct gears: ");
 
-            foreach (Item item in correct)
+                foreach (Item item in correct)
+                {
+                    UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
+
+                    Log.Debug(item.name + ": Value: " + item.Value + " Durability: " + item.MaxDurability);
+
+                }
+                Log.Debug("Items that aren't considered correct gears: ");
+
+                foreach (Item item in incorrect)
+                {
+                    Log.Debug(item.name + " is an unused gear item. ID: " + item.ItemID);
+
+                }
+
+                Debug.Log("Finished Adding diablo item extension to all gear items.");
+            }
+            catch
             {
-                UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
-
-                Log.Debug(item.name + ": Value: " + item.Value + " Durability: " + item.MaxDurability);
-
+                Debug.Log("FAILED TO LOAD GRINDWARD!!!");
+                throw;
             }
-            Log.Debug("Items that aren't considered correct gears: ");
-
-            foreach (Item item in incorrect)
-            {
-                Log.Debug(item.name + " is an unused gear item. ID: " + item.ItemID);
-
-            }
-
-            Debug.Log("Finished Adding diablo item extension to all gear items.");
-                       
 
         }
     }

@@ -68,12 +68,16 @@ namespace grindward.database.tiers.bases
             return tier;
         }
 
+       
         public static float GetPowerLevelEstimateOfItem(Item item)
         {
-
             if (item == null)
             {
                 return 0;
+            }
+
+            if (Cached.Instance.ITEM_POWER_LVL.ContainsKey(item.ItemID)){
+                return Cached.Instance.ITEM_POWER_LVL[item.ItemID];
             }
 
             GearType type = ItemUtils.GetGearType(item);
@@ -105,10 +109,12 @@ namespace grindward.database.tiers.bases
                 durabilityMulti = 1F;
             }
 
+            float result= (durabilityMulti + priceMulti) / 2F;
 
-            return (durabilityMulti + priceMulti) / 2F;
+            Cached.Instance.ITEM_POWER_LVL.Add(item.ItemID, result);
 
-          
+            return result;
+                      
         }
 
     }

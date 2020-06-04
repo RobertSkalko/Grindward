@@ -56,6 +56,8 @@ namespace grindward.database.vanilla_stats.Base
 
                 wep.Stats.Attacks = SL_WeaponStats.GetScaledAttackData(wep);
 
+                wep.InitCachedInfos();
+
             }
         }
         public override float GetStat(Equipment item)

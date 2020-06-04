@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseAffixData.cs" />
+    <Compile Include="Cached.cs" />
     <Compile Include="database\affixes\prefixes\Chilling.cs" />
     <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
     <Compile Include="database\IWeighted.cs" />
