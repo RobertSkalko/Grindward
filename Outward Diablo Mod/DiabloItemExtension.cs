@@ -27,6 +27,15 @@ namespace grindward
 
         public bool init = false;
 
+        public bool HasSuffix()
+        {
+            return suffix != null && suffix.GetAffix() != null;
+       }
+        public bool HasPrefix()
+        {
+            return prefix != null && prefix.GetAffix() != null;
+        }
+
         public static DiabloItemExtension AddToItem(Item item)
         {
             if (item.GetExtension(ID) is DiabloItemExtension extension)

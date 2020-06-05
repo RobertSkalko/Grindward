@@ -29,6 +29,11 @@ namespace grindward.database
         }     
         
 
+        public bool Has(Equipment item)
+        {
+            return GetStat(item) != 0;
+        }
+
         public abstract void SetStat(Equipment item, float val);
         public abstract float GetStat(Equipment item);
         public  string GetId()

@@ -7,8 +7,17 @@ using System.Text;
 
 namespace grindward.database.affixes.prefixes
 {
-    class Chilling : Prefix
+    public  class ElelWepDmgPrefix : Prefix
     {
+        DamageType.Types type;
+        string name;
+
+        public ElelWepDmgPrefix(DamageType.Types type, string name)
+        {
+            this.type = type;
+            this.name = name;
+        }
+
         public override List<GearType> GetGearTypesAllowedOn()
         {
             return GearTypes.Instance.weapons;
@@ -16,24 +25,24 @@ namespace grindward.database.affixes.prefixes
 
         public override string GetId()
         {
-            return "chilling";
+            return type.ToString() + "_wep_dmg";
         }
 
         public override string GetName()
         {
-            return "Chilling";
+            return name;
         }
 
         public override List<VanillaStatMod> GetVanillaStatMods()
         {
             return new List<VanillaStatMod> { 
-                new VanillaStatMod(2, 5, VanillaStats.Instance.eleAttackDamage[DamageType.Types.Frost])
+                new VanillaStatMod(2, 5, VanillaStats.Instance.eleAttackDamage[type])
             };
         }
 
         public override int GetWeight()
         {
-            return 1000;
+            return 1000 / EnumUtils.NON_PHYS_ELEMENTS_COUNT;
         }
     }
 }

@@ -18,8 +18,22 @@ namespace grindward
         {
             return CustomItems.RPM_ITEM_PREFABS;
                   
-
                 
+        }
+
+        public static int GetStatAmount(Equipment item)
+        {
+
+            int amount = 0;
+
+            foreach (VanillaStat stat in database.Registry.VanillaStats.GetAll())
+            {
+                if (stat.Has(item)){
+                    amount++;
+                }
+            }
+
+            return amount;
         }
 
         public static GearType GetGearType(Item item)
@@ -32,9 +46,7 @@ namespace grindward
 
             }
             return null;
-
     }
-
         
         public static bool IsGear(Item item, bool log = false)
         {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using grindward.database.tiers.bases;
+using grindward.database.affixes;
 
 namespace grindward.harmony_patches.diablo
 {
@@ -43,18 +44,42 @@ namespace grindward.harmony_patches.diablo
                 int hp = (int)item.Stats.MaxHealthBonus;
                 if (hp != 0)
                 {
-                    AddStatTooltip(__instance, "Bonus Health", hp);
+                    AddStatTooltip(__instance, "Bonus Health", hp + "");
+                }
+
+
+                DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
+
+                if (ext != null)
+                {
+                    /*
+                    if (ext.HasPrefix() || ext.HasSuffix())
+                    {
+                        AddStatTooltip(__instance, "","");
+                    }
+
+                    if (ext.HasSuffix())
+                    {
+                        AddStatTooltip(__instance, "Suffix:", ext.suffix.GetAffix().GetName());
+                         }
+                    if (ext.HasPrefix())
+                    {
+                        AddStatTooltip(__instance, "Prefix:", ext.prefix.GetAffix().GetName());
+                           }
+
+                    */
+                  
                 }
 
                 if (Main.DEBUG)
                 {
                     Tier tier = Tier.GetTierOfItem(item);
-                    AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber());
+                    //AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber() + "");
                 }
             }
         }
 
-        private static void AddStatTooltip(ItemDetailsDisplay __instance, String stat, int val)
+        private static void AddStatTooltip(ItemDetailsDisplay __instance, String stat, string val)
         {
             List<ItemDetailRowDisplay> tooltip = Fields.INSTANCE.TOOLTIP.GetValue(__instance);
 
@@ -64,8 +89,8 @@ namespace grindward.harmony_patches.diablo
 
             ItemDetailRowDisplay durability = tooltip[tooltip.Count - 2];
 
-            tooltip[tooltip.Count - 2] = statRow;
-            tooltip[tooltip.Count - 1] = durability;
+            //tooltip[tooltip.Count - 2] = statRow;
+            //tooltip[tooltip.Count - 1] = durability;
 
             Fields.INSTANCE.TOOLTIP.SetValue(__instance, tooltip);
         }

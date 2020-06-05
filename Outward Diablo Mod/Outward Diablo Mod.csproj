@@ -64,10 +64,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
+    <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
+    <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
     <Compile Include="save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
-    <Compile Include="database\affixes\prefixes\Chilling.cs" />
-    <Compile Include="database\affixes\suffixes\OfWarmth.cs" />
+    <Compile Include="database\affixes\prefixes\ElelWepDmgPrefix.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfWarmth.cs" />
     <Compile Include="database\IWeighted.cs" />
     <Compile Include="database\registers\Prefixes.cs" />
     <Compile Include="database\registers\Suffixes.cs" />
@@ -91,7 +94,7 @@
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />
     <Compile Include="database\affixes\Suffix.cs" />
-    <Compile Include="database\affixes\suffixes\OfMinorHealth.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfMinorHealth.cs" />
     <Compile Include="database\gear_types\base\GearType.cs" />
     <Compile Include="database\gear_types\armors\Boots.cs" />
     <Compile Include="database\gear_types\armors\Chest.cs" />
@@ -125,6 +128,9 @@
     <Compile Include="VanillaStatMod.cs" />
     <Compile Include="Weighted.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="database\affixes\prefixes\armor\" />
+    <Folder Include="database\affixes\prefixes\weapon\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
