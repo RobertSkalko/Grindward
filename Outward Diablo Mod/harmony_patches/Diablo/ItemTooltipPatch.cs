@@ -36,7 +36,7 @@ namespace grindward.harmony_patches.diablo
 
             if (__instance.LastItemDisplay.RefItem is Equipment item)
             {
-                if (!ItemUtils.IsGear(item))
+                if (!ItemUtils.IsValidGear(item))
                 {
                     return;
                 }

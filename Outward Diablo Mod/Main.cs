@@ -26,6 +26,11 @@ namespace grindward
 
          public static  String MODID = "grindward";
 
+        void Crash()
+        {
+            Application.Quit();
+        }
+
         internal void Awake()
         {          
 
@@ -50,11 +55,9 @@ namespace grindward
             catch(Exception e)
             {               
                 Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod had failed to init!");
-                throw e;
-
-            }
-
-           
+                Console.Write(e.ToString());
+                Crash();                  
+            }          
 
         }
 
@@ -115,7 +118,7 @@ namespace grindward
 
                 foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
                 {
-                    if (ItemUtils.IsGear(item, true))
+                    if (ItemUtils.IsValidGear(item, true))
                     {
                         correct.Add(item);
                     }
@@ -134,7 +137,7 @@ namespace grindward
                 {
                     UnityEngine.Object.DontDestroyOnLoad(DiabloItemExtension.AddToItem(item));
 
-                    Log.Debug(item.name + ": Value: " + item.Value + " Durability: " + item.MaxDurability);
+                    Log.Debug("ID:" + item.ItemID + " Name:"  + item.Name + " : Value: " + item.Value + " Durability: " + item.MaxDurability);
 
                 }
                 Log.Debug("Items that aren't considered correct gears: ");
@@ -154,7 +157,8 @@ namespace grindward
             catch(Exception e)
             {
                 Debug.Log("FAILED TO LOAD GRINDWARD!!!");
-                Console.Write(e.ToString());
+                Console.Write(e.ToString());               
+                Crash();
             }
 
         }

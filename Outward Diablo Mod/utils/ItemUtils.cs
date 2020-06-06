@@ -48,7 +48,8 @@ namespace grindward
             return null;
     }
         
-        public static bool IsGear(Item item, bool log = false)
+        // some gears are excluded, like dev items, cosmetics etc
+        public static bool IsValidGear(Item item, bool log = false)
         {
             if (Cached.Instance.ITEM_IS_GEAR.ContainsKey(item.ItemID))
             {
@@ -61,13 +62,16 @@ namespace grindward
                 return false;               
                 //return LogWhy(item, "Not equipment", log);
             }
-
-           
+                       
                 String name = item.Name.ToLower();
 
                 if (item.Stats == null)
                 {
                 return LogWhy(item, "No item stats", log);
+                }
+                if (item.Value < 1)
+                {
+                return LogWhy(item, "Value is less than 1", log);
                 }
                 if (name.Length < 3)
                 {

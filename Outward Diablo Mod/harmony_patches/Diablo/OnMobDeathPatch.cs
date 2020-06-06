@@ -57,27 +57,27 @@ namespace grindward.harmony_patches.diablo
 
                 GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
 
-                UnityEngine.Debug.Log("random gear type gotten");
+                //Log.Debug("random gear type gotten");
 
                 Item randomItem = RandomUtils.RandomFromList(type.GetAllItemsOfTier(itemTier));
 
-                UnityEngine.Debug.Log("random item gotten");
+                //Log.Debug("random item gotten");
 
                 Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
 
                 if (generatedItem != null)
                 {
-                    UnityEngine.Debug.Log("item gened");
+                    //Log.Debug("item gened");
 
                     generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
 
-                    UnityEngine.Debug.Log("The ext is there");
+                    //Log.Debug("The ext is there");
 
                     generatedItem.ChangeParent(_container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
 
                     _container.AddSilver(500);
 
-                    UnityEngine.Debug.Log("added item to pouch");
+                    //Log.Debug("added item to pouch");
 
                 }
 

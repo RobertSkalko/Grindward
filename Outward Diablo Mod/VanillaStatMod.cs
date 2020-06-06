@@ -25,6 +25,11 @@ namespace grindward
         {
             int val = (int)GetValue(percent);
 
+            if (item.TwoHanded)
+            {
+                val *= 2; // if it's 2 handed weapon, make the stat boost double.
+            }
+
             stat.SetStat(item, stat.GetStat(item) + val);
 
         }

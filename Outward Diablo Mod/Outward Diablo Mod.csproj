@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Weighted.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="database\affixes\prefixes\armor\" />
     <Folder Include="database\affixes\prefixes\weapon\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
