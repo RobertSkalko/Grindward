@@ -68,7 +68,7 @@
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
-    <Compile Include="save_data\BaseAffixData.cs" />
+    <Compile Include="item_ext\save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
     <Compile Include="database\affixes\prefixes\ElelWepDmgPrefix.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfWarmth.cs" />
@@ -85,13 +85,12 @@
     <Compile Include="harmony_patches\diablo\FasterAreaRespawns.cs" />
     <Compile Include="harmony_patches\diablo\OnMobDeathPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
-    <Compile Include="ISaveToString.cs" />
-    <Compile Include="MarkObject.cs" />
-    <Compile Include="save_data\PrefixData.cs" />
-    <Compile Include="save_data\RandomStatsData.cs" />
+    <Compile Include="item_ext\ISaveToString.cs" />
+    <Compile Include="item_ext\save_data\PrefixData.cs" />
+    <Compile Include="item_ext\save_data\RandomStatsData.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\MobUtils.cs" />
-    <Compile Include="save_data\SuffixData.cs" />
+    <Compile Include="item_ext\save_data\SuffixData.cs" />
     <Compile Include="database\affixes\Affix.cs" />
     <Compile Include="database\affixes\Prefix.cs" />
     <Compile Include="database\affixes\Suffix.cs" />
@@ -110,7 +109,7 @@
     <Compile Include="database\vanilla_stats\Base\VanillaStat.cs" />
     <Compile Include="database\vanilla_stats\Base\BasicVanillaStat.cs" />
     <Compile Include="database\registers\VanillaStats.cs" />
-    <Compile Include="DiabloItemExtension.cs" />
+    <Compile Include="item_ext\DiabloItemExtension.cs" />
     <Compile Include="utils\EnumUtils.cs" />
     <Compile Include="harmony_patches\harder_survival\BuyFromMerchantPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\NoRegenInHomeBed.cs" />

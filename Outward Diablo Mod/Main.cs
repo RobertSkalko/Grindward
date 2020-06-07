@@ -11,6 +11,7 @@ using grindward;
 using grindward.utils;
 using grindward.database.tiers.bases;
 using grindward.database.registers;
+using System.Reflection;
 
 namespace grindward
 {
@@ -25,6 +26,38 @@ namespace grindward
         const string VERSION = "1.0";
 
          public static  String MODID = "grindward";
+
+
+        String areaid = "";
+
+        void Update()
+        {
+            // TODO, figuring out how defeat scenarios work
+            if (DefeatScenariosManager.Instance != null && DefeatScenariosManager.Instance.Container != null)
+            {
+                if (AreaManager.Instance != null && AreaManager.Instance.CurrentArea != null)
+                {
+
+                    String current = areaid;
+                    areaid = AreaManager.Instance.CurrentArea.ID + "";
+
+                    if (areaid != current)
+                    {
+                        var cont = DefeatScenariosManager.Instance.Container;
+
+                        DictionaryExt<string, DefeatScenario> dict = (DictionaryExt<string, DefeatScenario>)typeof(DefeatScenariosContainer).GetField("m_events", ReflectionUtils.flags).GetValue(cont);
+
+                        Log.Print("Area: " + AreaManager.Instance.CurrentArea.GetName());
+
+                        foreach (DefeatScenario scen in dict.Values)
+                        {
+                            Log.Print(scen.name + " " + scen.ID + " " + scen.GetType().ToString());
+                        }
+                    }
+
+                }
+            }
+        }
 
         void Crash()
         {

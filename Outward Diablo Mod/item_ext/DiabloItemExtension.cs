@@ -18,8 +18,8 @@ namespace grindward
 
         static string ID = Main.MODID + ":random_stats";
 
-        public SuffixData suffix = null;
-        public PrefixData prefix = null;
+        public SuffixData suffix = new SuffixData();
+        public PrefixData prefix = new PrefixData();
 
         public RandomStatsData randomStats = new RandomStatsData();
 
@@ -34,6 +34,33 @@ namespace grindward
         public bool HasPrefix()
         {
             return prefix != null && prefix.GetAffix() != null;
+        }
+              
+
+        public ISaveToString Get(SyncOrder sync)
+        {
+
+            if (sync == SyncOrder.Prefix)
+            {
+                return prefix;
+            }
+            if (sync == SyncOrder.Suffix)
+            {
+                return suffix;
+            }
+            if (sync == SyncOrder.RandomStats)
+            {
+                return randomStats;
+            }
+
+            return null;
+        }
+
+
+
+        public List<SyncOrder> GetSavables()
+        {
+            return new List<SyncOrder>() { SyncOrder.Prefix, SyncOrder.Suffix, SyncOrder.RandomStats };
         }
 
         public static DiabloItemExtension AddToItem(Item item)
@@ -101,55 +128,34 @@ namespace grindward
                 Debug.Log(str);
 
 
-                if (str.Length > 0)
-                {
-                    int boolInt = 0;
-                    int.TryParse(str[(int)SyncOrder.Init], out boolInt);
-                    this.init = boolInt == 1 ? true : false;
-                }
-
-                if (str.Length > 1)
-                {
-                    String suffixsave = str[(int)SyncOrder.Suffix];
-                    if (suffixsave.Length > 0)
+                if (str.Length == Enum.GetNames(typeof(SyncOrder)).Length) 
                     {
-                        Debug.Log("Loading suffix: " + suffixsave);
+                        int boolInt = 0;
+                        int.TryParse(str[(int)SyncOrder.Init], out boolInt);
+                        this.init = boolInt == 1 ? true : false;
 
-                        this.suffix = new SuffixData();
-                        suffix.LoadFromString(suffixsave);
-                    }
-                }
 
-                if (str.Length > 2)
-                {
                     String sourcesave = str[(int)SyncOrder.Source];
                     if (sourcesave.Length > 0)
                     {
                         this.source = (ItemSource)Enum.Parse(typeof(SyncOrder), sourcesave);
                     }
-                }
-                if (str.Length > 3)
-                {
-                    String save = str[(int)SyncOrder.Prefix];
-                    if (save.Length > 0)
-                    {
-                        Debug.Log("Loading prefix: " + save);
 
-                        this.prefix = new PrefixData();
-                        prefix.LoadFromString(save);
-                    }
-                }
-                if (str.Length > 4)
-                {
-                    String save = str[(int)SyncOrder.RandomStats];
-                    if (save.Length > 0)
-                    {
-                        Log.Debug("Loading random stats: " + save);
+                    foreach (SyncOrder sync in GetSavables())
+                        {
 
-                        this.randomStats = new RandomStatsData();
-                        randomStats.LoadFromString(save);
+                        String savestr = str[(int)sync];
+                        Log.Debug("Loading " + sync.ToString() + savestr);
+                        Get(sync).LoadFromString(savestr);
+
+                        }                  
+                    
                     }
-                }
+                    else
+                    {
+                    Log.Print("Error, item didn't get enogh sync strings!");
+
+                    }
 
             }
             catch (Exception e)
@@ -177,13 +183,13 @@ namespace grindward
             String initsave = init.ToInt().ToString();
 
             String suffixsave = "";
-            if (suffix != null)
+            if (HasSuffix())
             {
                suffixsave =  suffix.GetSaveString();
             }
 
             String prefixsave = "";
-            if (prefix != null)
+            if (HasPrefix())
             {
                 prefixsave = prefix.GetSaveString();
             }
