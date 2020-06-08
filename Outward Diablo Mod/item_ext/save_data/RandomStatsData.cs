@@ -75,8 +75,19 @@ namespace grindward.save_data
         {
            foreach ( String s in str.Split('#'))
             {
-                int perc = int.Parse(s);
-                percents.Add(perc);
+                int perc = -1;
+                
+                int.TryParse(s, out perc);
+
+                if (perc > -1)
+                {
+                    percents.Add(perc);
+                }
+                else
+                {
+                    percents.Clear();
+                    Log.Print("Random stats failed to load: " + str);
+                }
             }
         }
     }

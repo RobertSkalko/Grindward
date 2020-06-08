@@ -107,15 +107,14 @@ namespace grindward
         {
             randomStats.ApplyToItem((Equipment)Item);
 
-            if (suffix != null)
+            if (HasSuffix())
             {
                 suffix.ApplyToItem((Equipment)Item);
             }
-            if (prefix != null)
+            if (HasPrefix())
             {
                 prefix.ApplyToItem((Equipment)Item);
             }
-
             
         }
 

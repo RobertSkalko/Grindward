@@ -17,8 +17,8 @@ namespace grindward.database.tiers
         {
             return new List<Weighted<Tier>>() {
                 new Weighted<Tier>(this, 100),
-                new Weighted<Tier>(Tiers.Instance.Weak, 20),
-                new Weighted<Tier>(Tiers.Instance.HighEnd, 20),
+                new Weighted<Tier>(Tiers.Instance.Weak, 40),
+                new Weighted<Tier>(Tiers.Instance.HighEnd, 5),
             };
         }
         public override int GetTierNumber()

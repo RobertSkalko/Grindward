@@ -20,6 +20,8 @@ namespace grindward
     {
         public static bool DEBUG = true;
 
+       public static Items Items;
+
       
         const string ID = "com.treborx555.grindward"; 
         const string NAME = "Grindward";
@@ -69,6 +71,7 @@ namespace grindward
 
             try
             {
+               
                 Cached.Instance = new Cached();
 
                 Fields.INSTANCE = new Fields();
@@ -145,6 +148,11 @@ namespace grindward
 
             try
             {
+
+                Items = new Items();
+                Log.Print("Items created");
+
+
                 List<Item> correct = new List<Item>();
                 List<Item> incorrect = new List<Item>();
 

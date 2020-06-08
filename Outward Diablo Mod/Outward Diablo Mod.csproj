@@ -68,6 +68,7 @@
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="item_ext\save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
     <Compile Include="database\affixes\prefixes\ElelWepDmgPrefix.cs" />

@@ -46,14 +46,22 @@ namespace grindward.harmony_patches.diablo
                 return;
             }
 
+            ItemContainer _container = __instance.Character.Inventory.Pouch;
+
+
             Tier tier = Tier.TierGetTierOfMob(__instance.Character);
 
             Tier itemTier = tier.GetRandomItemDropTier();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
+                Item generatedItem = ItemManager.Instance.GenerateItemNetwork(RandomUtils.WeightedRandom(Main.Items.GetHellStones()).Get().ItemID);
+                generatedItem.ChangeParent(_container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
 
-                ItemContainer _container = __instance.Character.Inventory.Pouch;
+            }
+
+            for (int i = 0; i < 50; i++)
+            {
 
                 GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
 
