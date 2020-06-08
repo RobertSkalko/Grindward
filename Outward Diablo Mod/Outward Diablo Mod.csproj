@@ -74,12 +74,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyEffect.cs" />
+    <Compile Include="harmony_patches\diablo\UsePatch.cs" />
     <Compile Include="CurrencyRecipe.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
-    <Compile Include="harmony_patches\diablo\RecipesPatch.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="item_ext\save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
