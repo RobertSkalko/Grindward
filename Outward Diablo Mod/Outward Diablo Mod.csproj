@@ -34,10 +34,14 @@
     <Reference Include="0Harmony">
       <HintPath>..\..\..\Games\Outward Hardcore\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Games\Outward Hardcore\Outward_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="BepInEx, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Steam\steamapps\common\Outward\BepInEx\core\BepInEx.dll</HintPath>
@@ -45,7 +49,12 @@
     <Reference Include="netstandard">
       <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\netstandard.dll</HintPath>
     </Reference>
-    <Reference Include="SideLoader">
+    <Reference Include="Photon3Unity3D, Version=4.1.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="SideLoader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Steam\steamapps\common\Outward\BepInEx\plugins\SideLoader.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -59,15 +68,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule">
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Steam\steamapps\common\Outward\Outward_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyRecipe.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
+    <Compile Include="harmony_patches\diablo\RecipesPatch.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="item_ext\save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
@@ -89,6 +101,7 @@
     <Compile Include="item_ext\ISaveToString.cs" />
     <Compile Include="item_ext\save_data\PrefixData.cs" />
     <Compile Include="item_ext\save_data\RandomStatsData.cs" />
+    <Compile Include="Recipes.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\MobUtils.cs" />
     <Compile Include="item_ext\save_data\SuffixData.cs" />

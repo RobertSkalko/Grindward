@@ -12,6 +12,7 @@ using grindward.utils;
 using grindward.database.tiers.bases;
 using grindward.database.registers;
 using System.Reflection;
+using System.Linq;
 
 namespace grindward
 {
@@ -21,6 +22,8 @@ namespace grindward
         public static bool DEBUG = true;
 
        public static Items Items;
+
+       
 
       
         const string ID = "com.treborx555.grindward"; 
@@ -191,6 +194,12 @@ namespace grindward
 
                 Debug.Log("Finished Adding diablo item extension to all gear items.");
 
+
+                Tag ingredient = TagSourceManager.GetCraftingIngredient(Recipe.CraftingType.Survival);
+                correct.Where(x=> !x.HasTag(ingredient)).ToList().ForEach(x => x.Tags.Add(ingredient));
+                Items.GetHellStones().ForEach(x => x.Get().Tags.Add(ingredient));
+                // adds ingredient tag so they can be added as ingredients
+               
 
                 DoTests();
 
