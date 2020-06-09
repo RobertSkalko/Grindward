@@ -1,5 +1,6 @@
 ﻿using SideLoader;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -48,11 +49,19 @@ namespace grindward.database.vanilla_stats.Base
                 if (wep.Stats.BaseDamage.Contains(type))
                 {
                     wep.Stats.BaseDamage[type].Damage = val;
+
+                    if (wep.Stats.BaseDamage[type].Damage == 0)
+                    {
+                        wep.Stats.BaseDamage.Remove(type); // so it doesnt show on tooltips
+                    }
+
                 }
                 else
                 {
                     wep.Stats.BaseDamage.Add(new DamageType(type, val));                                         
                 }              
+                              
+               
 
                 wep.Stats.Attacks = SL_WeaponStats.GetScaledAttackData(wep);
 

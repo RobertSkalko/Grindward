@@ -1,4 +1,5 @@
 ﻿using grindward.database;
+using grindward.item_ext.save_data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,8 @@ namespace grindward
         }
 
             
-        public void ApplyToItem(int percent, Equipment item)
-        {
+        public void ApplyToItem(int percent, Equipment item, StatChangeType type = StatChangeType.ADD)
+        {          
             int val = (int)GetValue(percent);
 
             if (item.TwoHanded)
@@ -30,9 +31,16 @@ namespace grindward
                 val *= 2; // if it's 2 handed weapon, make the stat boost double.
             }
 
+            if (type == StatChangeType.REMOVE)
+            {
+                val *= -1; // reverse to remove the stats
+            }
+
             stat.SetStat(item, stat.GetStat(item) + val);
 
         }
+
+
 
         public float GetValue(int percent)
         {

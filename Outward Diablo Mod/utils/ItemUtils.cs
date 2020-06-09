@@ -38,14 +38,25 @@ namespace grindward
 
         public static GearType GetGearType(Item item)
     {
+            if (Cached.Instance.ITEM_GEAR_TYPES.ContainsKey(item.ItemID))
+            {
+                return Cached.Instance.ITEM_GEAR_TYPES[item.ItemID];
+            }
+
+
+            GearType fintype = null;
+
           foreach( GearType type in database.Registry.GearTypes.GetAll()){
                 if (type.isType(item))
                 {
-                    return type;
+                    fintype =  type;
                 }
 
             }
-            return null;
+
+            Cached.Instance.ITEM_GEAR_TYPES.Add(item.ItemID, fintype);
+
+            return fintype;
     }
         
         // some gears are excluded, like dev items, cosmetics etc

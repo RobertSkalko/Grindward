@@ -100,6 +100,7 @@
     <Compile Include="harmony_patches\diablo\OnMobDeathPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\ExpensiveSkills.cs" />
     <Compile Include="item_ext\ISaveToString.cs" />
+    <Compile Include="item_ext\save_data\IApplyableItemStats.cs" />
     <Compile Include="item_ext\save_data\PrefixData.cs" />
     <Compile Include="item_ext\save_data\RandomStatsData.cs" />
     <Compile Include="Recipes.cs" />

@@ -1,4 +1,5 @@
 ﻿using grindward.database.gear_types;
+using grindward.item_ext.save_data;
 using grindward.utils;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,14 @@ using System.Text;
 
 namespace grindward
 {
-    public abstract class BaseAffixData<A> : ISaveToString where A : Affix 
+    public abstract class BaseAffixData<A> : ISaveToString , IApplyableItemStats where A : Affix
     {
 
         protected String id = "";
 
         int percent = 0;
+
+        bool addedStats = false;
 
 
         public abstract A GetAffix();
@@ -20,6 +23,9 @@ namespace grindward
 
         public void Randomize(Item item)
         {
+
+            ChangeItemStats((Equipment)item, StatChangeType.REMOVE);
+
 
             GearType type = ItemUtils.GetGearType(item);
 
@@ -41,20 +47,13 @@ namespace grindward
                 UnityEngine.Debug.Log("Affix generated succesfully");
             }
 
+            ChangeItemStats((Equipment)item, StatChangeType.ADD);
+
         }
 
-        public void ApplyToItem(Equipment item)
-        {
-            Affix affix = GetAffix();
 
-            if (affix != null)
-            {
-                affix.GetVanillaStatMods().ForEach(x => x.ApplyToItem(percent, item));
 
-            }
-        }
 
-       
 
         public string GetSaveString()
         {
@@ -90,6 +89,32 @@ namespace grindward
                     throw;
                 }
             
+        }   
+
+        public void ChangeItemStats(Equipment item, StatChangeType type)
+        {
+
+            if (type == StatChangeType.ADD && addedStats)
+            {
+                return;
+            }           
+
+            Affix affix = GetAffix();
+
+            if (affix != null)
+            {
+                affix.GetVanillaStatMods().ForEach(x => x.ApplyToItem(percent, item, type));
+             
+            }
+
+            if (type == StatChangeType.ADD)
+            {
+                addedStats = true;
+            }
+            if (type == StatChangeType.REMOVE)
+            {
+                addedStats = false;
+            }
         }
     }
 }

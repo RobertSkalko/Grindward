@@ -18,7 +18,7 @@ namespace grindward
 
 					if (items.Count() == 1)
 					{
-						UseOnGear((Equipment)items[0]);					
+						UseOnGear((Equipment)items[0]);	
 
 					}			
 
@@ -31,6 +31,7 @@ namespace grindward
 		{
 			DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
 
+			
 			if (ext.HasSuffix())
 			{
 				ext.suffix.Randomize(item);
@@ -39,9 +40,7 @@ namespace grindward
 			{
 				ext.prefix.Randomize(item);
 			}
-
-
-
+					
 
 		}
 	}

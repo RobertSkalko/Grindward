@@ -9,6 +9,7 @@ using ExitGames.Client.Photon;
 using MapMagic;
 using grindward.save_data;
 using grindward.utils;
+using grindward.item_ext.save_data;
 
 namespace grindward
 {
@@ -105,15 +106,15 @@ namespace grindward
 
         public void ApplyStats()
         {
-            randomStats.ApplyToItem((Equipment)Item);
+            randomStats.ChangeItemStats((Equipment)Item, StatChangeType.ADD);
 
             if (HasSuffix())
             {
-                suffix.ApplyToItem((Equipment)Item);
+                suffix.ChangeItemStats((Equipment)Item, StatChangeType.ADD);
             }
             if (HasPrefix())
             {
-                prefix.ApplyToItem((Equipment)Item);
+                prefix.ChangeItemStats((Equipment)Item, StatChangeType.ADD);
             }
             
         }

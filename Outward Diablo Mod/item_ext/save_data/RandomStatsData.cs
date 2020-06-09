@@ -1,5 +1,6 @@
 ﻿using grindward.database;
 using grindward.database.registers;
+using grindward.item_ext.save_data;
 using grindward.utils;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,18 @@ using UnityEngine;
 
 namespace grindward.save_data
 {
-    public class RandomStatsData : ISaveToString
+    public class RandomStatsData : ISaveToString , IApplyableItemStats
     {
         List<int> percents = new List<int>();
 
+        bool addedStats = false;
+
+
+
         public void Randomize(Equipment item)
         {
+            ChangeItemStats((Equipment)item, StatChangeType.REMOVE);
+
             Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
 
             foreach(VanillaStat stat in VanillaStats.Instance.GetAllStatsOrderedByIndex())
@@ -27,44 +34,14 @@ namespace grindward.save_data
                 }
             }
 
+            ChangeItemStats((Equipment)item, StatChangeType.ADD);
         }
 
         int RollPercent()
         {
             return UnityEngine.Random.Range(50, 100);
         }
-
-        public void ApplyToItem(Equipment item)
-        {
-            Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
-
-            int index = 0;
-
-            var stats = VanillaStats.Instance.GetAllStatsItemHasOrderedByIndex(item);
-
-            while( percents.Count < stats.Count)
-            {
-                percents.Add(RollPercent());
-            }
-
-            foreach (VanillaStat stat in stats)
-            {           
-                float defaultVal = stat.GetStat(def);
-
-                if (defaultVal != 0)
-                {
-                    float currentVal = stat.GetStat(item);
-
-                    float shouldBe = percents[index] * defaultVal / 100F ;
-
-                    int diff = (int)(shouldBe - defaultVal); // we want pretty numbers
-
-                    stat.SetStat(item, currentVal + diff);
-                }
-
-                index++;
-            }
-        }
+             
 
         public string GetSaveString()
         {
@@ -90,5 +67,61 @@ namespace grindward.save_data
                 }
             }
         }
+
+        public void ChangeItemStats(Equipment item, StatChangeType type)
+        {
+
+            if (type == StatChangeType.ADD && addedStats)
+            {
+                return;
+            }
+           
+
+            Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
+
+            int index = 0;
+
+            var stats = VanillaStats.Instance.GetAllStatsItemHasOrderedByIndex(item);
+
+            while (percents.Count < stats.Count)
+            {
+                percents.Add(RollPercent());
+            }
+
+            foreach (VanillaStat stat in stats)
+            {
+                float defaultVal = stat.GetStat(def);
+
+                if (defaultVal != 0)
+                {
+                    float currentVal = stat.GetStat(item);
+
+                    float shouldBe = percents[index] * defaultVal / 100F;
+
+                    int diff = (int)(shouldBe - defaultVal); // we want pretty numbers
+
+                    if (type == StatChangeType.REMOVE)
+                    {
+                        diff *= -1;
+                    }
+
+                    stat.SetStat(item, currentVal + diff);
+                }
+
+                index++;
+            }
+
+            if (type == StatChangeType.ADD)
+            {
+                addedStats = true;
+            }
+            if (type == StatChangeType.REMOVE)
+            {
+                addedStats = false;
+            }
+
+        }
+
+
     }
 }
