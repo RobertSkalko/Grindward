@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace grindward.utils
@@ -10,6 +11,11 @@ namespace grindward.utils
     {
         static System.Random ran = new System.Random(Guid.NewGuid().GetHashCode());
 
+        public static bool Roll(float chance)
+        {
+            return UnityEngine.Random.Range(0, 100) >= chance;
+
+        }
         public static T WeightedRandom<T>(List<T> coll) where T : IWeighted
         {
            

@@ -37,6 +37,25 @@ namespace grindward.save_data
             ChangeItemStats((Equipment)item, StatChangeType.ADD);
         }
 
+        public void AddToAllPercents(Equipment item, int amount)
+        {
+            ChangeItemStats(item, StatChangeType.REMOVE);
+
+            int i = 0;
+            foreach (int percent in percents.ToList())
+            {
+                int modified = percent + amount;
+
+                modified = Mathf.Clamp(modified, 0, 100);
+
+                percents[i] = modified;
+
+                i++;
+            }
+
+            ChangeItemStats(item, StatChangeType.ADD);
+        }
+
         int RollPercent()
         {
             return UnityEngine.Random.Range(50, 100);

@@ -74,9 +74,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurrencyEffect.cs" />
+    <Compile Include="currency\ChanceToDestroy.cs" />
+    <Compile Include="currency\ChanceToIncreaseStats.cs" />
+    <Compile Include="currency\ChanceToLowerStats.cs" />
+    <Compile Include="currency\ChanceToRemoveAffixes.cs" />
+    <Compile Include="currency\CurrencyEffectComponent.cs" />
+    <Compile Include="currency\CurrencyEffects.cs" />
+    <Compile Include="currency\ItemChanger.cs" />
+    <Compile Include="currency\RerollAffixes.cs" />
+    <Compile Include="database\affixes\prefixes\armor\Acrobats.cs" />
+    <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
     <Compile Include="harmony_patches\diablo\UsePatch.cs" />
-    <Compile Include="CurrencyRecipe.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />

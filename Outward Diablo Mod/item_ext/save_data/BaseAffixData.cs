@@ -21,6 +21,16 @@ namespace grindward
         public abstract A GetAffix();
         public abstract List<A> GetAll();
 
+
+        public void ClearAffix(Equipment item)
+        {
+            this.ChangeItemStats(item, StatChangeType.REMOVE);
+
+            this.percent = 0;
+            this.id = "";
+
+        }
+
         public void Randomize(Item item)
         {
 

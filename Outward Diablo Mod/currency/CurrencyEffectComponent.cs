@@ -1,15 +1,16 @@
-﻿using System;
+﻿using grindward.currency;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace grindward
 {
-    public class CurrencyEffect : Effect
+    public class CurrencyEffectComponent : Effect
     {
         protected override void ActivateLocally(Character _affectedCharacter, object[] _infos)
-		{
-			
+		{			
 				Character character = _affectedCharacter;
 
 				if (character && character.Inventory && character.Inventory.Pouch)
@@ -20,27 +21,15 @@ namespace grindward
 					{
 						UseOnGear((Equipment)items[0]);	
 
-					}			
-
-
-				}
-			
+					}								
+			}			
 		}
 
-		public static void UseOnGear(Equipment item)
+		public  void UseOnGear(Equipment item)
 		{
-			DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
+			var list = CurrencyEffects.ALL[this.ParentItem.ItemID];
 
-			
-			if (ext.HasSuffix())
-			{
-				ext.suffix.Randomize(item);
-			}
-			if (ext.HasPrefix())
-			{
-				ext.prefix.Randomize(item);
-			}
-					
+			list.ForEach(x => x.ChangeItem(item));			
 
 		}
 	}
