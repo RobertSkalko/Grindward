@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static grindward.ItemIDs;
 using UnityEngine;
 
 namespace grindward
@@ -12,17 +13,14 @@ namespace grindward
     {
         public static string CURRENCY_TAG_ID = "craft_currency";
         public static Tag CURRENCY_TAG = new Tag("craft_currency");
-        static int HACKMANITE_ID = 6200130;
-
-
+     
         public static int HELLSTONE_OF_WITHDRAWAL_ID = 999321;      
         public Item HELLSTONE_OF_WITHDRAWAL;
        
-
         public Items() {
                      
            
-            HELLSTONE_OF_WITHDRAWAL = NewHellstone(HACKMANITE_ID, HELLSTONE_OF_WITHDRAWAL_ID, "Hellstone of Withdrawal", "This gem seems to contain power to untangle that which is entangled." );
+            HELLSTONE_OF_WITHDRAWAL = NewHellstone(HACKMANITE, HELLSTONE_OF_WITHDRAWAL_ID, "Hellstone of Withdrawal", "This gem seems to contain power to untangle that which is entangled." );
 
         }
 
@@ -32,17 +30,22 @@ namespace grindward
 
             CurrencyEffects.ALL[newItemId].ForEach(x => desc += "\n" + x.GetDescription() + "\n");
 
-            Item item = CustomItems.CreateCustomItem(baseItemID, newItemId, name);
+            desc += "\n Use when your desired gear is in your pouch (and no other gear there).";
+                      
+            var template = new SL_Item()
+            {
+            Name = name,
+            Description = desc,
+            Target_ItemID = baseItemID,
+            New_ItemID = newItemId,
+            Tags = new List<string>()
+            {
+            CURRENCY_TAG_ID,
+            },
+            IsUsable = true
+            };
 
-            SL_Item helper = SL_Item.ParseItemToTemplate(item);
-            helper.Name = name;
-            helper.Description = desc;
-            helper.New_ItemID = newItemId;
-            helper.Target_ItemID = newItemId;
-
-            helper.Tags.Add(CURRENCY_TAG_ID);
-            helper.IsUsable = true;
-            helper.ApplyTemplateToItem();
+            var item = CustomItems.CreateCustomItem(template);
 
             var effects = item.transform.Find("Effects");
             if (effects == null)
@@ -54,7 +57,10 @@ namespace grindward
             }
             CurrencyEffectComponent eff = effects.gameObject.AddComponent<CurrencyEffectComponent>();
             UnityEngine.Object.DontDestroyOnLoad(eff);
-          
+
+            var png = CustomTextures.LoadTexture(@"BepInEx\plugins\Grindward\Icons\" + newItemId + ".png", false, false);
+            var sprite = CustomTextures.CreateSprite(png, CustomTextures.SpriteBorderTypes.ItemIcon);
+            At.SetValue(sprite, typeof(Item), item, "m_itemIcon");
 
             return item;
 
