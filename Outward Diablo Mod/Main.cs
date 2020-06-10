@@ -195,11 +195,14 @@ namespace grindward
                 Debug.Log("Finished Adding diablo item extension to all gear items.");
 
 
+                /*
                 Tag ingredient = TagSourceManager.GetCraftingIngredient(Recipe.CraftingType.Survival);
                 correct.Where(x=> !x.HasTag(ingredient)).ToList().ForEach(x => x.Tags.Add(ingredient));
                 Items.GetHellStones().ForEach(x => x.Get().Tags.Add(ingredient));
                 // adds ingredient tag so they can be added as ingredients
-               
+                */
+
+                Recipes.Init();
 
                 DoTests();
 

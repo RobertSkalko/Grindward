@@ -1,4 +1,5 @@
 ﻿using grindward.database.affixes;
+using grindward.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,18 @@ namespace grindward.currency
 
         public override void ChangeItem(Equipment item)
         {
-            DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
+            if (RandomUtils.Roll(chance))
+            {
+                DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
 
-            if (ext.HasSuffix())
-            {
-                ext.suffix.ClearAffix(item);
-            }
-            if (ext.HasPrefix())
-            {
-                ext.prefix.ClearAffix(item);
+                if (ext.HasSuffix())
+                {
+                    ext.suffix.ClearAffix(item);
+                }
+                if (ext.HasPrefix())
+                {
+                    ext.prefix.ClearAffix(item);
+                }
             }
         }
 

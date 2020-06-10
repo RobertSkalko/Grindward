@@ -28,14 +28,18 @@ namespace grindward
 
         private static Item NewHellstone(int baseItemID, int newItemId, String name, String desc)
         {
-            CurrencyEffects.ALL[baseItemID].ForEach(x => desc += "\n" + x.GetDescription() + "\n");
+            desc += "\n";
 
-            Item item = CustomItems.CreateCustomItem(newItemId, newItemId, "Hellstone of Withdrawal");
+            CurrencyEffects.ALL[newItemId].ForEach(x => desc += "\n" + x.GetDescription() + "\n");
+
+            Item item = CustomItems.CreateCustomItem(baseItemID, newItemId, name);
 
             SL_Item helper = SL_Item.ParseItemToTemplate(item);
             helper.Name = name;
             helper.Description = desc;
             helper.New_ItemID = newItemId;
+            helper.Target_ItemID = newItemId;
+
             helper.Tags.Add(CURRENCY_TAG_ID);
             helper.IsUsable = true;
             helper.ApplyTemplateToItem();
