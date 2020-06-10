@@ -14,9 +14,10 @@ namespace grindward
       
         public static void Init()
         {
-            Create(Items.HELLSTONE_OF_WITHDRAWAL_ID, new List<int>() { HACKMANITE, OCCULT_REMAINS,  CRYSTAL_POWDER, SMALL_SAPPHIRE });
+            Create(Items.HELLSTONE_OF_WITHDRAWAL_ID, new List<int>() { HACKMANITE, OCCULT_REMAINS, CRYSTAL_POWDER, SMALL_SAPPHIRE });
+            Create(Items.HELLSTONE_OF_TEMPERING_ID, new List<int>() { LARGE_EMERALD, GOLD_LICH_MECHANISM, CRYSTAL_POWDER, OBSIDIAN_SHARD });
 
-          
+
         }
 
         private static void Create(int result, List<int> ingredients)

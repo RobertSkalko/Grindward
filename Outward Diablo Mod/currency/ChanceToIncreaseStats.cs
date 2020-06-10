@@ -9,8 +9,9 @@ namespace grindward.currency
     class ChanceToIncreaseStats : ItemChanger
     {
         int chance;
+        int amount = 5;
 
-        public ChanceToIncreaseStats(int chance)
+        public ChanceToIncreaseStats(int chance, int amount = 5)
         {
             this.chance = chance;
         }
@@ -21,14 +22,14 @@ namespace grindward.currency
             {
                 DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
 
-                ext.randomStats.AddToAllPercents(item, 5);
+                ext.randomStats.AddToAllPercents(item, amount);
 
             }
         }
 
         public override string GetDescription()
         {
-            return chance + "% Chance to Increase the random stats.";
+            return chance + "% Chance to Increase the random stats by " + amount + ".";
         }
     }
 }

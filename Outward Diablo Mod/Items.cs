@@ -13,14 +13,18 @@ namespace grindward
     {
         public static string CURRENCY_TAG_ID = "craft_currency";
         public static Tag CURRENCY_TAG = new Tag("craft_currency");
-     
-        public static int HELLSTONE_OF_WITHDRAWAL_ID = 999321;      
+
+        public static int HELLSTONE_OF_WITHDRAWAL_ID = 999321;
+        public static int HELLSTONE_OF_TEMPERING_ID = 999322;
+
         public Item HELLSTONE_OF_WITHDRAWAL;
-       
+        public Item HELLSTONE_OF_TEMPERING;
+
         public Items() {
-                     
-           
-            HELLSTONE_OF_WITHDRAWAL = NewHellstone(HACKMANITE, HELLSTONE_OF_WITHDRAWAL_ID, "Hellstone of Withdrawal", "This gem seems to contain power to untangle that which is entangled." );
+
+
+            HELLSTONE_OF_WITHDRAWAL = NewHellstone(HACKMANITE, HELLSTONE_OF_WITHDRAWAL_ID, "Hellstone of Withdrawal", "This gem seems to contain power to untangle that which is entangled.");
+            HELLSTONE_OF_TEMPERING = NewHellstone(HACKMANITE, HELLSTONE_OF_TEMPERING_ID, "Hellstone of Tempering", "This gem can be used to temper gear.");
 
         }
 
@@ -34,11 +38,12 @@ namespace grindward
                       
             var template = new SL_Item()
             {
-            Name = name,
+            Name = name,            
             Description = desc,
             Target_ItemID = baseItemID,
             New_ItemID = newItemId,
             Tags = new List<string>()
+
             {
             CURRENCY_TAG_ID,
             },

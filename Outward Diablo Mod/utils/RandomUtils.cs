@@ -13,7 +13,7 @@ namespace grindward.utils
 
         public static bool Roll(float chance)
         {
-            return UnityEngine.Random.Range(0, 100) >= chance;
+            return chance >= UnityEngine.Random.Range(0, 100) ;
 
         }
         public static T WeightedRandom<T>(List<T> coll) where T : IWeighted
