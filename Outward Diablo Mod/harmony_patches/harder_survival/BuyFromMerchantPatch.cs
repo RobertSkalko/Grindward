@@ -16,13 +16,12 @@ namespace grindward.harmony_patches.harder_survival
         {
             if (__instance.IsEquippable)
             {
-                __result = (int)(3D * __result);
+                __result = (int)(2 * __result);
             }
             else if(__instance.IsIngredient)
             {
                 __result = (int)(2D * __result);
-            }
-          
+            }         
 
         }
     }

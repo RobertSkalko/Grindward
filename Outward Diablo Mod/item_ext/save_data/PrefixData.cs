@@ -7,7 +7,7 @@ using System.Text;
 
 namespace grindward
 {
-    class PrefixData   : BaseAffixData<Prefix>
+    public class PrefixData   : BaseAffixData<Prefix>
     {
         public override Prefix GetAffix()
         {

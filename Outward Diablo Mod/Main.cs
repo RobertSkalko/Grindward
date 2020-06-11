@@ -13,6 +13,8 @@ using grindward.database.tiers.bases;
 using grindward.database.registers;
 using System.Reflection;
 using System.Linq;
+using NodeCanvas.Framework;
+using NodeCanvas.BehaviourTrees;
 
 namespace grindward
 {
@@ -69,8 +71,48 @@ namespace grindward
             Application.Quit();
         }
 
+
+        private void OnSceneChange()
+        {
+            AddRecipesToShops();
+        }
+
+        void AddRecipesToShops()
+        {
+
+            Log.Debug("finding npcs");
+
+            List<GameObject> list = Resources.FindObjectsOfTypeAll<GameObject>().Where(x => x.name == "HumanSNPC_CaravanTrader").ToList();
+
+            foreach (GameObject obj in list)
+            {
+
+                Log.Debug("found npc");
+
+                if (obj.GetComponentInChildren<MerchantPouch>(true) is MerchantPouch pouch)
+                {
+                    foreach (RecipeItem recipe in Recipes.recipeItems)
+                    {
+                        if (!recipe.GetIsLearned(CharacterManager.Instance.GetWorldHostCharacter())) { // only spawn if host doesnt know
+                            if (!pouch.ContainsOfSameID(recipe.ItemID))
+                            {
+                                Item gen = ItemManager.Instance.GenerateItemNetwork(recipe.ItemID);
+                                gen.transform.parent = pouch.transform;
+
+                                Log.Debug("added recipe item");
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+
+
+
         internal void Awake()
-        {          
+        {
+
+            SL.OnSceneLoaded += OnSceneChange;
 
             try
             {

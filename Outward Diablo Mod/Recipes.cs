@@ -19,6 +19,8 @@ namespace grindward
 
         }
 
+        public static List<RecipeItem> recipeItems = new List<RecipeItem>();
+
         private static void Create(Item result, List<int> ingredients, int recipeItemID)
         {
             SL_Recipe recipe = new SL_Recipe();
@@ -59,6 +61,9 @@ namespace grindward
 
             Log.Print("recpe");
             recipeitem.Recipe = CustomItems.ALL_RECIPES[recipe.UID];
+
+            recipeItems.Add(recipeitem);
+
         }
     }
 

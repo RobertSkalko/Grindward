@@ -16,13 +16,13 @@ namespace grindward.utils
             return chance >= UnityEngine.Random.Range(0, 100) ;
 
         }
-        public static T WeightedRandom<T>(List<T> coll) where T : IWeighted
+        public static T WeightedRandom<T>(IList<T> coll) where T : IWeighted
         {
            
             return WeightedRandom(coll, ran.NextDouble());
         }
 
-        public static T RandomFromList<T>(List<T> list)
+        public static T RandomFromList<T>(IList<T> list)
         {
             if (list == null || list.Count ==0)
             {
@@ -33,7 +33,7 @@ namespace grindward.utils
             return list[random];
 
         }
-        private static T WeightedRandom<T>(List<T> lootTable, double nextDouble) where T : IWeighted
+        private static T WeightedRandom<T>(IList<T> lootTable, double nextDouble) where T : IWeighted
         {
 
             double value = Total(lootTable) * nextDouble;
@@ -49,7 +49,7 @@ namespace grindward.utils
             return default(T);
         }
 
-        private static int Total<T>(List<T> list) where T : IWeighted
+        private static int Total<T>(IList<T> list) where T : IWeighted
         {
 
             int total = 0;

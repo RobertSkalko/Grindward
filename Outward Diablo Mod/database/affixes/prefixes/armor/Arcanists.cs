@@ -26,7 +26,7 @@ namespace grindward.database.affixes.prefixes.armor
 
         public override List<VanillaStatMod> GetVanillaStatMods()
         {
-            return new List<VanillaStatMod> { new VanillaStatMod(3F, 5F, VanillaStats.Instance.manaCost) };
+            return new List<VanillaStatMod> { new VanillaStatMod(-3F, -5F, VanillaStats.Instance.manaCost) };
         }
 
         public override int GetWeight()

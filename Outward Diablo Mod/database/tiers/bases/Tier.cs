@@ -9,7 +9,7 @@ using System.Text;
 
 namespace grindward.database.tiers.bases
 {
-    public abstract class Tier : RegistryEntry
+    public abstract class Tier : RegistryEntry , IWeighted
     {
         public abstract string GetId();
 
@@ -117,5 +117,6 @@ namespace grindward.database.tiers.bases
                       
         }
 
+        public abstract int GetWeight();
     }
 }

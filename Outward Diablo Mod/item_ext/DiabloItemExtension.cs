@@ -13,7 +13,7 @@ using grindward.item_ext.save_data;
 
 namespace grindward
 {
-    class DiabloItemExtension : ItemExtension
+    public class DiabloItemExtension : ItemExtension
     {
 
 
@@ -95,13 +95,12 @@ namespace grindward
                 suffix.Randomize(this.Item);
 
                 this.prefix = new PrefixData();
-                prefix.Randomize(this.Item);
-
-                this.ApplyStats();
-
-                this.init = true;                
+                prefix.Randomize(this.Item);                           
             }
 
+            this.ApplyStats();
+
+            this.init = true;
         }
 
         public void ApplyStats()
@@ -124,9 +123,8 @@ namespace grindward
 
             try
             {
-                Debug.Log(str.Length);
-                Debug.Log(str);
-
+                //Debug.Log(str.Length);
+                //Debug.Log(str);
 
                 if (str.Length == Enum.GetNames(typeof(SyncOrder)).Length) 
                     {
@@ -153,7 +151,8 @@ namespace grindward
                     }
                     else
                     {
-                    Log.Print("Error, item didn't get enogh sync strings!");
+
+                         Log.Print("Error, item didn't get enogh sync strings!");
 
                     }
 

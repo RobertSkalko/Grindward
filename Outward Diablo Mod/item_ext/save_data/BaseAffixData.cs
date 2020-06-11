@@ -54,7 +54,7 @@ namespace grindward
                 this.id = affix.GetId();
                 this.percent = new System.Random().Next(25, 100);
 
-                UnityEngine.Debug.Log("Affix generated succesfully");
+                //UnityEngine.Debug.Log("Affix generated succesfully");
             }
 
             ChangeItemStats((Equipment)item, StatChangeType.ADD);
@@ -90,7 +90,7 @@ namespace grindward
                         this.id = parts[0];
                         this.percent = int.Parse(parts[1]);
 
-                        UnityEngine.Debug.Log("Loaded Affix: " + id + " " + percent);
+                        //UnityEngine.Debug.Log("Loaded Affix: " + id + " " + percent);
 
                     }
                 }
@@ -107,7 +107,11 @@ namespace grindward
             if (type == StatChangeType.ADD && addedStats)
             {
                 return;
-            }           
+            }
+            if (type == StatChangeType.REMOVE && !addedStats)
+            {                
+                return;
+            }
 
             Affix affix = GetAffix();
 

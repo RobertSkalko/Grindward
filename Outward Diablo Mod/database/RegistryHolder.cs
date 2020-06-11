@@ -1,4 +1,5 @@
 ﻿using grindward.database.affixes;
+using grindward.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace grindward.database
 
             return entry;
         }
+             
 
         public bool Has(String id)
         {

@@ -30,7 +30,7 @@ namespace grindward.save_data
 
                 if (val != 0)
                 {
-                    percents.Add(RollPercent());
+                    percents.Add(RollPercent());                  
                 }
             }
 
@@ -59,8 +59,7 @@ namespace grindward.save_data
         int RollPercent()
         {
             return UnityEngine.Random.Range(50, 100);
-        }
-             
+        }             
 
         public string GetSaveString()
         {
@@ -81,8 +80,8 @@ namespace grindward.save_data
                 }
                 else
                 {
-                    percents.Clear();
-                    Log.Print("Random stats failed to load: " + str);
+                    percents.Add(RollPercent());
+                    Log.Print("Random stat failed to load: " + str + " . re-generating it.");                   
                 }
             }
         }
@@ -94,7 +93,10 @@ namespace grindward.save_data
             {
                 return;
             }
-           
+            if (type == StatChangeType.REMOVE && !addedStats)
+            {              
+                return;
+            }
 
             Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
 

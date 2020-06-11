@@ -33,5 +33,9 @@ namespace grindward.database.tiers
         {
             return 0;
         }
+        public override int GetWeight()
+        {
+            return 1000;
+        }
     }
 }
