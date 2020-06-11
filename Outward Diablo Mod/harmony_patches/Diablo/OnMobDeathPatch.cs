@@ -51,7 +51,7 @@ namespace grindward.harmony_patches.diablo
 
            ItemContainer container = __instance.Character.Inventory.Pouch;
 
-           LootUtils.GenerateLoot(container, __instance.Character, DiabloItemExtension.ItemSource.MobDrop);
+           LootUtils.TryGenerateLoot(container, __instance.Character, DiabloItemExtension.ItemSource.MobDrop);
 
         }
     }

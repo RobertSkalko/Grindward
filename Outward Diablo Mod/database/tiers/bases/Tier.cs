@@ -11,12 +11,15 @@ namespace grindward.database.tiers.bases
 {
     public abstract class Tier : RegistryEntry , IWeighted
     {
+        public static int MAX_RANDOM_PERCENT = 90;
+
         public abstract string GetId();
 
         public abstract int GetTierNumber();
         public abstract float GetItemTierReq();
         public abstract float GetMobTierReq();
 
+        public abstract MinMax GetRandomStatsPercents();
 
         public abstract List<Weighted<Tier>> GetItemTierDropChances();
 

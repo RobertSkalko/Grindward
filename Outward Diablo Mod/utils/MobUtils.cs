@@ -32,6 +32,7 @@ namespace grindward.utils
         {
             float multi = 1;
 
+         
             multi += HP * mob.Stats.MaxHealth;
             multi += PROTECTION * mob.Stats.GetDamageProtection(DamageType.Types.Physical);
 

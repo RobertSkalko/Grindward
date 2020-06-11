@@ -11,7 +11,7 @@ namespace grindward.database.affixes.prefixes.armor
     {
         public override List<GearType> GetGearTypesAllowedOn()
         {
-            return GearTypes.Instance.armors;
+            return new List<GearType>() { GearTypes.Instance.helmet };
         }
 
         public override string GetId()
@@ -31,7 +31,7 @@ namespace grindward.database.affixes.prefixes.armor
 
         public override int GetWeight()
         {
-            return 1000;
+            return 222;
         }
     }
 }

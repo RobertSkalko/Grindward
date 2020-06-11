@@ -10,8 +10,32 @@ namespace grindward.utils
 {
    public class LootUtils
     {
-        public static void GenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source)
+          static float BaseChestDropChance = 4F;
+
+        public static void TryGenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source)
         {
+
+            bool dropGear;
+
+            if (source == DiabloItemExtension.ItemSource.ChestLoot)
+            {
+                float multi = 1;
+
+                if (container is TreasureChest)
+                {
+                    multi = 2;
+                }
+                dropGear = RandomUtils.Roll(BaseChestDropChance * multi);
+            }
+            else
+            {
+                dropGear = RandomUtils.Roll(MobUtils.GetLootMulti(character));
+            }
+
+            if (!dropGear)
+            {
+                return;
+            }
 
             Tier tier = Registry.Tiers.GetAll().RandomWeighted();
 
@@ -23,8 +47,8 @@ namespace grindward.utils
             Tier itemTier = tier.GetRandomItemDropTier();
 
 
-            for (int i = 0; i < 50; i++)
-            {
+           // for (int i = 0; i < 50; i++)
+            //{
 
                 GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
 
@@ -50,7 +74,7 @@ namespace grindward.utils
 
                 }
 
-            }
+            
         }
     }
 }

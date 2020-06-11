@@ -116,6 +116,7 @@
     <Compile Include="item_ext\save_data\IApplyableItemStats.cs" />
     <Compile Include="item_ext\save_data\PrefixData.cs" />
     <Compile Include="item_ext\save_data\RandomStatsData.cs" />
+    <Compile Include="MinMax.cs" />
     <Compile Include="Recipes.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\LootUtils.cs" />

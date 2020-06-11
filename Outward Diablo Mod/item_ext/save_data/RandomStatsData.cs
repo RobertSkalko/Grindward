@@ -1,5 +1,6 @@
 ﻿using grindward.database;
 using grindward.database.registers;
+using grindward.database.tiers.bases;
 using grindward.item_ext.save_data;
 using grindward.utils;
 using System;
@@ -30,7 +31,7 @@ namespace grindward.save_data
 
                 if (val != 0)
                 {
-                    percents.Add(RollPercent());                  
+                    percents.Add(RollPercent(item));                  
                 }
             }
 
@@ -56,9 +57,11 @@ namespace grindward.save_data
             ChangeItemStats(item, StatChangeType.ADD);
         }
 
-        int RollPercent()
+        int RollPercent(Equipment item)
         {
-            return UnityEngine.Random.Range(50, 100);
+            Tier tier = Tier.GetTierOfItem(item);
+
+            return (int) UnityEngine.Random.Range(tier.GetRandomStatsPercents().min, tier.GetRandomStatsPercents().max);
         }             
 
         public string GetSaveString()
@@ -79,9 +82,8 @@ namespace grindward.save_data
                     percents.Add(perc);
                 }
                 else
-                {
-                    percents.Add(RollPercent());
-                    Log.Print("Random stat failed to load: " + str + " . re-generating it.");                   
+                {                   
+                    Log.Print("Random stat failed to load: " + str );                   
                 }
             }
         }
@@ -106,7 +108,7 @@ namespace grindward.save_data
 
             while (percents.Count < stats.Count)
             {
-                percents.Add(RollPercent());
+                percents.Add(RollPercent(item));
             }
 
             foreach (VanillaStat stat in stats)

@@ -20,7 +20,7 @@ namespace grindward.harmony_patches.diablo
                     return;
                 }
 
-                LootUtils.GenerateLoot(__instance, null, DiabloItemExtension.ItemSource.ChestLoot);
+                LootUtils.TryGenerateLoot(__instance, null, DiabloItemExtension.ItemSource.ChestLoot);
             }
         }
     }
