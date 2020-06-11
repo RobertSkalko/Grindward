@@ -27,7 +27,7 @@ namespace grindward.database.tiers
         }
         public override float GetItemTierReq()
         {
-            return 0.2F;
+            return 0.3F;
         }
         public override float GetMobTierReq()
         {

@@ -12,7 +12,7 @@ namespace grindward.utils
     {
           static float BaseChestDropChance = 4F;
 
-        public static void TryGenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source)
+        public static void TryGenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source, TreasureChest chest = null)
         {
 
             bool dropGear;
@@ -23,7 +23,18 @@ namespace grindward.utils
 
                 if (container is TreasureChest)
                 {
-                    multi = 2;
+                    if (chest.LootGenQuality == TreasureChest.LootQuality.Low)
+                    {
+                        multi = 1;
+                    }
+                    if (chest.LootGenQuality == TreasureChest.LootQuality.Med)
+                    {
+                        multi = 2;
+                    }
+                    if (chest.LootGenQuality == TreasureChest.LootQuality.High)
+                    {
+                        multi = 3;
+                    }
                 }
                 dropGear = RandomUtils.Roll(BaseChestDropChance * multi);
             }
