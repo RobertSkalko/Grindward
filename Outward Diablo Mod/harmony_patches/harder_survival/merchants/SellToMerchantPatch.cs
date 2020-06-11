@@ -15,11 +15,19 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(Item __instance, ref int __result)
         {
+            if (__instance.HasSameBuyAndSellValue())
+            {
+                return;
+            }
+
             if (ItemUtils.IsValidGear(__instance))
             {
                 __result = (int)(0.5D * __result);
-            }    
-
+            }
+            else
+            {
+                __result = (int)(0.75D * __result);
+            }
         }
     }
 }

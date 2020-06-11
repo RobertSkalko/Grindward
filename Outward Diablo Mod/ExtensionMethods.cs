@@ -13,5 +13,17 @@ namespace grindward
         {
             return RandomUtils.WeightedRandom(list);
         }
+
+
+        public static bool HasSameBuyAndSellValue(this Item item)
+        {
+            if (item.ItemID == ItemIDs.SILVER_COIN || item.ItemID == ItemIDs.GOLD_BAR)
+            {
+                return true;
+            }
+
+            return item.HasTag(TagSourceManager.Valuable);
+
+        }
     }
 }

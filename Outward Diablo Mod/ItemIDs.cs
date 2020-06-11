@@ -7,6 +7,11 @@ namespace grindward
 {
    public class ItemIDs
     {
+
+
+        public static int GOLD_BAR = 9000000;
+        public static int SILVER_COIN = 9000010;
+
         public static  int CRYSTAL_POWDER = 6600040;
         public static  int GOLD_LICH_MECHANISM = 6600210;
         public static  int OCCULT_REMAINS = 6600110;

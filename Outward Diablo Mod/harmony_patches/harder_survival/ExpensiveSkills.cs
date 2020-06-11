@@ -13,7 +13,7 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(SkillSlot __instance, ref int __result)
         {          
-           __result = (int)(3D * __result);
+           __result = (int)(2D * __result);
 
         }
     }

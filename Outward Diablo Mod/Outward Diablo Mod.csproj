@@ -92,7 +92,7 @@
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
-    <Compile Include="harmony_patches\harder_survival\SellToMerchantPatch.cs" />
+    <Compile Include="harmony_patches\harder_survival\merchants\SellToMerchantPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\StopTownDeployables.cs" />
     <Compile Include="ItemIDs.cs" />
     <Compile Include="Items.cs" />
@@ -143,7 +143,7 @@
     <Compile Include="database\registers\VanillaStats.cs" />
     <Compile Include="item_ext\DiabloItemExtension.cs" />
     <Compile Include="utils\EnumUtils.cs" />
-    <Compile Include="harmony_patches\harder_survival\BuyFromMerchantPatch.cs" />
+    <Compile Include="harmony_patches\harder_survival\merchants\BuyFromMerchantPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\NoRegenInHomeBed.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="reflection\Fields.cs" />
