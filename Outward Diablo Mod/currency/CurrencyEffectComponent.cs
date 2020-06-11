@@ -29,7 +29,7 @@ namespace grindward
 		{
 			var list = CurrencyEffects.ALL[this.ParentItem.ItemID];
 
-			list.ForEach(x => x.ChangeItem(item));			
+			list.RandomWeighted().Get().ChangeItem(item);	
 
 		}
 	}

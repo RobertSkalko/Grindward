@@ -8,10 +8,18 @@ namespace grindward.currency
     public class CurrencyEffects
     {       
 
-        public static  Dictionary<int, List<ItemChanger>> ALL = new Dictionary<int, List<ItemChanger>>()
+        public static  Dictionary<int, List<Weighted<ItemChanger>>> ALL = new Dictionary<int, List<Weighted<ItemChanger>>>()
         {
-            {  Items.HELLSTONE_OF_WITHDRAWAL_ID, new List<ItemChanger>() { new RerollAffixes(), new ChanceToRemoveAffixes(5)} },
-            {  Items.HELLSTONE_OF_TEMPERING_ID, new List<ItemChanger>() { new ChanceToIncreaseStats(100, 5), new ChanceToDestroy(10)} }
+            {  Items.HELLSTONE_OF_WITHDRAWAL_ID, new List<Weighted<ItemChanger>>() {
+                new Weighted<ItemChanger>(new RerollAffixes(),95),
+                new Weighted<ItemChanger>(new RemoveAffixes(),5),
+            }
+            },
+            {  Items.HELLSTONE_OF_TEMPERING_ID, new List<Weighted<ItemChanger>>() {
+                new Weighted<ItemChanger>(new IncreaseRandomStats(5),90),
+                new Weighted<ItemChanger>(new DestroyItem(),10),
+            }
+            }                      
 
         };
         

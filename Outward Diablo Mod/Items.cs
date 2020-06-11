@@ -30,9 +30,17 @@ namespace grindward
 
         private static Item NewHellstone(int baseItemID, int newItemId, String name, String desc)
         {
+
+            int totalWeight = CurrencyEffects.ALL[newItemId].Sum(x => x.GetWeight());
+
             desc += "\n";
 
-            CurrencyEffects.ALL[newItemId].ForEach(x => desc += "\n" + x.GetDescription() + "\n");
+            CurrencyEffects.ALL[newItemId].ForEach(x =>
+            {
+                float chance = (float) x.GetWeight() / (float) totalWeight;
+
+                desc += "\n" + chance + "% to: " + x.Get().GetDescription() + "\n";
+            });
 
             desc += "\n Use when your desired gear is in your pouch (and no other gear there).";
                       

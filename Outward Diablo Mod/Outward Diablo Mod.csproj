@@ -74,14 +74,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="currency\ChanceToDestroy.cs" />
-    <Compile Include="currency\ChanceToIncreaseStats.cs" />
-    <Compile Include="currency\ChanceToLowerStats.cs" />
-    <Compile Include="currency\ChanceToRemoveAffixes.cs" />
+    <Compile Include="currency\effects\DestroyItem.cs" />
+    <Compile Include="currency\effects\IncreaseRandomStats.cs" />
+    <Compile Include="currency\effects\LowerRandomStats.cs" />
+    <Compile Include="currency\effects\RemoveAffixes.cs" />
     <Compile Include="currency\CurrencyEffectComponent.cs" />
     <Compile Include="currency\CurrencyEffects.cs" />
     <Compile Include="currency\ItemChanger.cs" />
-    <Compile Include="currency\RerollAffixes.cs" />
+    <Compile Include="currency\effects\RerollAffixes.cs" />
     <Compile Include="database\affixes\prefixes\armor\Acrobats.cs" />
     <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
