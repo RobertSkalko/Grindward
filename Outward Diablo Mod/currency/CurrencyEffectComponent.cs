@@ -19,17 +19,20 @@ namespace grindward
 
 					if (items.Count() == 1)
 					{
-						UseOnGear((Equipment)items[0]);	
+						UseOnGear((Equipment)items[0], character);	
 
 					}								
 			}			
 		}
-
-		public  void UseOnGear(Equipment item)
+		public  void UseOnGear(Equipment item, Character character)
 		{
 			var list = CurrencyEffects.ALL[this.ParentItem.ItemID];
 
-			list.RandomWeighted().Get().ChangeItem(item);	
+			var effect = list.RandomWeighted().Get();
+			
+			effect.ChangeItem(item);
+
+			character.CharacterUI.ShowInfoNotification(effect.GetChatNotification());
 
 		}
 	}

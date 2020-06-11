@@ -19,6 +19,10 @@ namespace grindward.currency
 
             
         }
+        public override string GetChatNotification()
+        {
+            return "Your item's stats have lowered.";
+        }
 
         public override string GetDescription()
         {

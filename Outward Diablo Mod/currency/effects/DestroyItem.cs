@@ -17,6 +17,11 @@ namespace grindward.currency
             
         }
 
+        public override string GetChatNotification()
+        {
+            return "Unfortunately, the item crumbled.";
+        }
+
         public override string GetDescription()
         {
             return "Destroys the item.";

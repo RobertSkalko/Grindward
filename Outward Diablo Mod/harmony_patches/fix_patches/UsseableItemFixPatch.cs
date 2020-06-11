@@ -10,7 +10,7 @@ namespace grindward
 
 	// setting my own item as consumable/usable gives null errors, unless i manually patch this method.
 	[HarmonyPatch(typeof(ItemListDisplay), "SortByConsumable")]
-	public class UsePatch
+	public class UsseableItemFixPatch
 	{
 
 		[HarmonyPrefix]

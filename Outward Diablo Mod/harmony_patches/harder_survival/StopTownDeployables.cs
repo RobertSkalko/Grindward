@@ -70,6 +70,7 @@ namespace grindward.harmony_patches.harder_survival
             {
                 if (!IsNearChest(character))
                 {
+                    character.CharacterUI.ShowInfoNotification("You can only place stuff in town when inside your home.");
                     return false;
                 }
             }

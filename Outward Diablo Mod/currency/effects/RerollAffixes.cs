@@ -20,6 +20,10 @@ namespace grindward.currency
                 ext.prefix.Randomize(item);
             }
         }
+        public override string GetChatNotification()
+        {
+            return "The item's affixes have been re-rolled.";
+        }
 
         public override string GetDescription()
         {

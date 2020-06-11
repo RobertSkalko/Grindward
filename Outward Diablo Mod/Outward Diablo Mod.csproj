@@ -87,7 +87,7 @@
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
-    <Compile Include="harmony_patches\diablo\UsePatch.cs" />
+    <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />

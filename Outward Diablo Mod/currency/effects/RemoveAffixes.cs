@@ -29,6 +29,10 @@ namespace grindward.currency
                 }
             
         }
+        public override string GetChatNotification()
+        {
+            return "The item was cleared of its affixes.";
+        }
 
         public override string GetDescription()
         {

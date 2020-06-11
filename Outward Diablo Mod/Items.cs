@@ -37,7 +37,7 @@ namespace grindward
 
             CurrencyEffects.ALL[newItemId].ForEach(x =>
             {
-                float chance = (float) x.GetWeight() / (float) totalWeight;
+                float chance = (float) x.GetWeight() / (float) totalWeight * 100;
 
                 desc += "\n" + chance + "% to: " + x.Get().GetDescription() + "\n";
             });

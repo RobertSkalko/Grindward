@@ -11,5 +11,8 @@ namespace grindward.currency
 
         public abstract String GetDescription();
 
+        public abstract String GetChatNotification();
+
+
     }
 }
