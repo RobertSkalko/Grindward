@@ -86,9 +86,8 @@ namespace grindward.death_penalties
 
 
             RemoveMoney(loss, character, bag);
-            character.CharacterUI.ShowInfoNotification(GetChatNotification());
+            this.SendMessage(character);
 
-        
         }
 
         public override bool CanHappen(Character character, Bag bag)

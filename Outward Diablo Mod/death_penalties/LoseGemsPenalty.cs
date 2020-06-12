@@ -1,5 +1,6 @@
 ﻿using grindward.utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace grindward.death_penalties
         static int MAX_LOSS = 6;
 
         static float LOSS_MULTI_CIERZO = 0.5F;
+
+      
 
         public override void Activate(Character character, Bag bag)
         {
@@ -34,7 +37,7 @@ namespace grindward.death_penalties
                 items.AddRange(bag.Container.GetItemsFromTag(TagSourceManager.Valuable));                
             }
 
-            character.CharacterUI.ShowInfoNotification(GetChatNotification());
+            this.SendMessage(character);
 
             for (int i =0; i< items.Count(); i++)
             {

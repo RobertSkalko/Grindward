@@ -23,11 +23,14 @@ namespace grindward.harmony_patches.harder_survival
             {
                 __result = (int)(2D * __result);
             }
-            else if(__instance.IsIngredient)
+            else if (__instance.IsIngredient)
             {
-                __result = (int)(2D * __result);
-            }         
-
+                __result = (int)(3D * __result);
+            }
+            else
+            {
+                __result = (int)(2 * __result);
+            }
         }
     }
 }
