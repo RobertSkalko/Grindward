@@ -4,37 +4,57 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static AreaManager;
 
 namespace grindward
 {
     public static class ExtensionMethods
     {
-        public static Bag FindNearestBackpack(this Character character)
+
+        static List<AreaEnum> towns = new List<AreaEnum>() { AreaEnum.CierzoVillage, AreaEnum.Levant, AreaEnum.Monsoon, AreaEnum.Berg };
+        static List<AreaEnum> outdoors = new List<AreaEnum>() { AreaEnum.CierzoOutside, AreaEnum.Abrassar, AreaEnum.HallowedMarsh, AreaEnum.Emercar };
+        public static bool IsOutdoor(this Area area)
         {
-            return character.Inventory.Equipment.LastOwnedBag;
-            
-
-            foreach (Item item in Fields.INSTANCE.ItemManager_WorldItems.GetValue(ItemManager.Instance).Values)
+            foreach (AreaEnum areaenum in outdoors)
             {
-                if (item is Bag && !item.IsEquipped)
+                Area current = AreaManager.Instance.GetArea(areaenum);
+
+                if (current == area)
+                {                  
+                    return true;
+                }
+            }            
+
+            return false;
+
+        }
+        public static bool IsTown(this Area area)
+        {           
+            foreach (AreaEnum areaenum in towns)
+            {
+                Area current = AreaManager.Instance.GetArea(areaenum);
+
+                if (current == area)
                 {
-                    float distance = Vector3.Distance(character.CenterPosition, item.PreviousPos);
-
-                    if (distance < 250)
-                    {
-                        return (Bag)item;
-                    }
-
+                    //Log.Debug("Is in town");
+                    return true;
                 }
             }
+            //Log.Debug("Is not in town");
 
-            return null;
+            return false;
+
         }
+
+        public static Bag FindNearestBackpack(this Character character)
+        {
+            return character.Inventory.Equipment.LastOwnedBag;   
+        }
+
         public static T RandomWeighted<T>(this IList<T> list) where T : IWeighted
         {
             return RandomUtils.WeightedRandom(list);
         }
-
 
         public static bool HasSameBuyAndSellValue(this Item item)
         {

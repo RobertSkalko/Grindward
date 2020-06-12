@@ -23,10 +23,12 @@ namespace grindward.death_penalties
             if (character.Inventory.HasABag)
             {
                 character.Inventory.RemoveMoney(loss);
+                character.CharacterUI.ShowInfoNotification(GetChatNotification());
             }
             else if (bag)
             {
                 bag.Container.RemoveSilver(loss);
+                character.CharacterUI.ShowInfoNotification(GetChatNotification());
             }
             else
             {

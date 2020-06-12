@@ -37,8 +37,10 @@ namespace grindward
 
         String areaid = "";
 
-        void Update()
-        {
+        void Update()        {
+
+
+
             // TODO, figuring out how defeat scenarios work
             if (DefeatScenariosManager.Instance != null && DefeatScenariosManager.Instance.Container != null)
             {
@@ -75,6 +77,8 @@ namespace grindward
         private void OnSceneChange()
         {
             AddRecipesToShops();
+
+            AISquadManager.Instance.SpawnTime = 30; // 60 is default
         }
 
         void AddRecipesToShops()

@@ -40,34 +40,14 @@ namespace grindward.harmony_patches.harder_survival
 
         }
 
-       static List<AreaEnum> towns = new List<AreaEnum>() { AreaEnum.CierzoVillage, AreaEnum.Levant, AreaEnum.Monsoon, AreaEnum.Berg };
-
-        public static bool IsInTown()
-        {
-            var area = AreaManager.Instance.CurrentArea;
-                       
-            foreach (AreaEnum areaenum in towns)
-            {
-                Area current = AreaManager.Instance.GetArea(areaenum);
-
-                if (current == area)
-                {
-                    //Log.Debug("Is in town");
-                    return true;
-                }
-            }
-            //Log.Debug("Is not in town");
-
-            return false;
-
-        }
+    
 
         [HarmonyPrefix]
         public static bool Prefix(Deployable __instance)
         {
             Character character = __instance.Item.OwnerCharacter;
 
-            if (IsInTown())
+            if (AreaManager.Instance.CurrentArea.IsTown())
             {
                 if (!IsNearChest(character))
                 {
