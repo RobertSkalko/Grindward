@@ -9,7 +9,7 @@ namespace grindward
     {
 
 
-        public static int GOLD_BAR = 9000000;
+        public static int GOLD_BAR = 6300030;
         public static int SILVER_COIN = 9000010;
 
         public static  int CRYSTAL_POWDER = 6600040;

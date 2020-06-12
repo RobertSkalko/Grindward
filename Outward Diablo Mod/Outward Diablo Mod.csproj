@@ -90,7 +90,7 @@
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
-    <Compile Include="harmony_patches\diablo\OnDeathSpawnPatch.cs" />
+    <Compile Include="harmony_patches\diablo\OnPlayerDeathSpawnPatch.cs" />
     <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />

@@ -27,24 +27,20 @@ namespace grindward.death_penalties
 
             if (character.Inventory.HasABag)
             {
-                items = character.Inventory.GetOwnedItems(TagSourceManager.Valuable);
-                character.CharacterUI.ShowInfoNotification(GetChatNotification());
+                items.AddRange(character.Inventory.GetOwnedItems(TagSourceManager.Valuable));               
             }
-            else if (bag)
+            if (bag)
             {
-                items = bag.Container.GetItemsFromTag(TagSourceManager.Valuable);
-                character.CharacterUI.ShowInfoNotification(GetChatNotification());
+                items.AddRange(bag.Container.GetItemsFromTag(TagSourceManager.Valuable));                
             }
-            else
-            {
-                Log.Print("Failed to activate death penalty even when the previous check returned it can be possible???");
-            }
+
+            character.CharacterUI.ShowInfoNotification(GetChatNotification());
 
             for (int i =0; i< items.Count(); i++)
             {
                 if (loss > 0)
                 {
-                    ItemManager.Instance.DestroyItem(items[i].UID);
+                    items[i].RemoveQuantity(1);
                     loss--;
                 }
                 else
@@ -61,11 +57,11 @@ namespace grindward.death_penalties
 
             if (character.Inventory.HasABag)
             {
-                items = character.Inventory.GetOwnedItems(TagSourceManager.Valuable);               
+                items.AddRange(character.Inventory.GetOwnedItems(TagSourceManager.Valuable));               
             }
-            else if (bag)
+            if (bag)
             {
-                items = bag.Container.GetItemsFromTag(TagSourceManager.Valuable);              
+                items.AddRange(bag.Container.GetItemsFromTag(TagSourceManager.Valuable));              
             }
 
             return items.Count() > MIN_LOSS;

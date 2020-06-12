@@ -15,6 +15,65 @@ namespace grindward.death_penalties
 
         static float LOSS_MULTI_CIERZO = 0.5F;
 
+        private static int GetTotalMoney(Character character, Bag bag)
+        {
+
+            int silver = character.Inventory.Pouch.GetContainedItems().Where(x => x.ItemID == ItemIDs.GOLD_BAR).Sum(x=> +100);
+
+            if (bag)
+            {
+                silver += bag.Container.GetContainedItems().Where(x => x.ItemID == ItemIDs.GOLD_BAR).Sum(x => +100);
+            }
+
+            silver += character.Inventory.ContainedSilver;
+
+            return silver;
+
+        }
+
+        private static void RemoveMoney(int money, Character character, Bag bag)
+        {
+
+            int golds = money / 100;
+
+            for (int i =0; i< golds; i++)
+            {
+                List<Item> goldItems = character.Inventory.GetOwnedItems(ItemIDs.GOLD_BAR);
+
+                if (bag)
+                {
+                    goldItems.AddRange(bag.Container.GetContainedItems().Where(x => x.ItemID == ItemIDs.GOLD_BAR));
+                }
+
+                Log.Debug("Found " + goldItems.Count() + " gold bar items");
+
+                if (goldItems.Count() > 0)
+                {
+                    if (money > 100)
+                    {                        
+                        goldItems[0].RemoveQuantity(1);
+                        money -= 100;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }               
+
+            }
+
+            if (money > 0)
+            {
+                character.Inventory.RemoveMoney(money);
+            }
+
+            if (money > 0 && bag)
+            {
+                bag.Container.RemoveSilver(money);
+            }
+
+        }            
+
         public override void Activate(Character character, Bag bag)
         {          
 
@@ -25,35 +84,17 @@ namespace grindward.death_penalties
                 loss = (int) (loss *  LOSS_MULTI_CIERZO);
             }
 
-            // if in cierzo multi todo
 
-            if (character.Inventory.HasABag)
-            {
-                character.Inventory.RemoveMoney(loss);
-                character.CharacterUI.ShowInfoNotification(GetChatNotification());
-            }
-            else if (bag)
-            {
-                bag.Container.RemoveSilver(loss);
-                character.CharacterUI.ShowInfoNotification(GetChatNotification());
-            }
-            else
-            {
-                Log.Print("Failed to activate death penalty even when the previous check returned it can be possible???");
-            }
+            RemoveMoney(loss, character, bag);
+            character.CharacterUI.ShowInfoNotification(GetChatNotification());
 
+        
         }
 
         public override bool CanHappen(Character character, Bag bag)
         {
-            if (character.Inventory.HasABag)
-            {
-                return character.Inventory.AvailableMoney > MIN_LOSS;
-            }
-            else
-            {               
-                return bag.ContainedSilver > MIN_LOSS;
-            }
+            return GetTotalMoney(character, bag) > MIN_LOSS;
+           
         }
 
         public override string GetChatNotification()
