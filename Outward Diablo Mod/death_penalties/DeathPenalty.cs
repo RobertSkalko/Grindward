@@ -10,8 +10,7 @@ namespace grindward.death_penalties
     {
         public static List<DeathPenalty> GetAll()
         {
-
-            return new List<DeathPenalty>() {new LoseMoneyPenalty() };
+            return new List<DeathPenalty>() {new LoseMoneyPenalty() , new LoseGemsPenalty() };
         }
 
         public abstract int GetWeight();

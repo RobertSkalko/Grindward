@@ -2,39 +2,37 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using UnityEngine;
 
 namespace grindward.death_penalties
 {
-    class LoseMoneyPenalty : DeathPenalty
+    class LoseGemsPenalty : DeathPenalty
     {
-        static int MIN_LOSS = 100;
-        static int MAX_LOSS = 250;
+        static int MIN_LOSS = 1;
+        static int MAX_LOSS = 6;
 
         static float LOSS_MULTI_CIERZO = 0.5F;
 
         public override void Activate(Character character, Bag bag)
-        {          
-
+        {
             int loss = UnityEngine.Random.Range(MIN_LOSS, MAX_LOSS);
 
             if (AreaManager.Instance.CurrentArea.IsChersonese())
             {
-                loss = (int) (loss *  LOSS_MULTI_CIERZO);
+                loss = (int)(loss * LOSS_MULTI_CIERZO);
             }
 
-            // if in cierzo multi todo
+            List<Item> items= new List<Item>();
 
             if (character.Inventory.HasABag)
             {
-                character.Inventory.RemoveMoney(loss);
+                items = character.Inventory.GetOwnedItems(TagSourceManager.Valuable);
                 character.CharacterUI.ShowInfoNotification(GetChatNotification());
             }
             else if (bag)
             {
-                bag.Container.RemoveSilver(loss);
+                items = bag.Container.GetItemsFromTag(TagSourceManager.Valuable);
                 character.CharacterUI.ShowInfoNotification(GetChatNotification());
             }
             else
@@ -42,28 +40,46 @@ namespace grindward.death_penalties
                 Log.Print("Failed to activate death penalty even when the previous check returned it can be possible???");
             }
 
+            for (int i =0; i< items.Count(); i++)
+            {
+                if (loss > 0)
+                {
+                    ItemManager.Instance.DestroyItem(items[i].UID);
+                    loss--;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
         }
 
         public override bool CanHappen(Character character, Bag bag)
         {
+            List<Item> items = new List<Item>();
+
             if (character.Inventory.HasABag)
             {
-                return character.Inventory.AvailableMoney > MIN_LOSS;
+                items = character.Inventory.GetOwnedItems(TagSourceManager.Valuable);               
             }
-            else
-            {               
-                return bag.ContainedSilver > MIN_LOSS;
+            else if (bag)
+            {
+                items = bag.Container.GetItemsFromTag(TagSourceManager.Valuable);              
             }
+
+            return items.Count() > MIN_LOSS;
+
         }
 
         public override string GetChatNotification()
         {
-            return "You notice some money is missing from your inventory.";
+            return "You notice some gems are missing from your inventory.";
         }
 
         public override int GetWeight()
         {
-            return 1000;
+            return 250;
         }
     }
 }

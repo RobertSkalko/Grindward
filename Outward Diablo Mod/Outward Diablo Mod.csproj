@@ -86,6 +86,7 @@
     <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
     <Compile Include="death_penalties\DeathPenalty.cs" />
+    <Compile Include="death_penalties\LoseGemsPenalty.cs" />
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />

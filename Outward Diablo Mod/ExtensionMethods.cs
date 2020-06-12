@@ -28,6 +28,12 @@ namespace grindward
             return false;
 
         }
+
+        public static bool IsChersonese(this Area area)
+        {
+            return AreaManager.AreaFamilies[0].FamilyKeywords.Any(x => area.SceneName.Contains(x));
+        }
+
         public static bool IsTown(this Area area)
         {           
             foreach (AreaEnum areaenum in towns)
