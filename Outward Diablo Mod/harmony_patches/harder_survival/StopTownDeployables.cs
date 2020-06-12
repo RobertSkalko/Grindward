@@ -16,6 +16,7 @@ namespace grindward.harmony_patches.harder_survival
 
         public static bool IsNearChest(Character character)
         {
+            
            foreach (TreasureChest chest in Resources.FindObjectsOfTypeAll<TreasureChest>())
             {
                 if (chest.SpecialType == ItemContainer.SpecialContainerTypes.Stash)
@@ -70,13 +71,12 @@ namespace grindward.harmony_patches.harder_survival
             {
                 if (!IsNearChest(character))
                 {
-                    character.CharacterUI.ShowInfoNotification("You can only place stuff in town when inside your home.");
+                    character.CharacterUI.ShowInfoNotification("The Guards won't allow you to place stuff outside your home.");
                     return false;
                 }
             }
 
             return true;
-
 
         }
     }

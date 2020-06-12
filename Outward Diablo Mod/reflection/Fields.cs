@@ -12,8 +12,9 @@ namespace grindward
         public static Fields INSTANCE = null;
 
         public SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>> TOOLTIP = new SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>>("m_detailRows");
+        public SafeField<ItemManager, DictionaryExt<string, Item>> ItemManager_WorldItems = new SafeField<ItemManager, DictionaryExt<string, Item>>("m_worldItems");
+              
 
-        
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");
 

@@ -85,6 +85,8 @@
     <Compile Include="database\affixes\prefixes\armor\Acrobats.cs" />
     <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
+    <Compile Include="death_penalties\DeathPenalty.cs" />
+    <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
     <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="item_ext\save_data\RandomStatsData.cs" />
     <Compile Include="MinMax.cs" />
     <Compile Include="Recipes.cs" />
+    <Compile Include="utils\CharacterUtils.cs" />
     <Compile Include="utils\Log.cs" />
     <Compile Include="utils\LootUtils.cs" />
     <Compile Include="utils\MobUtils.cs" />
