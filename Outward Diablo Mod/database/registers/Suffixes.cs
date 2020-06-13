@@ -27,6 +27,12 @@ namespace grindward.database.registers
         public Suffix OfVoltBearers = Reg(new OfEleDmgRare(DamageType.Types.Electric, "Of Volt Bearers"));
         public Suffix OfVenomBearers = Reg(new OfEleDmgRare(DamageType.Types.Decay, "Of Venom Bearers"));
 
+        public Suffix OfBashing = Reg(new OfBashing());
+        public Suffix OfCursedEarth = Reg(new OfCursedEarth());
+        public Suffix OfExcessiveCold = Reg(new OfExcessiveCold());
+        public Suffix OfExcessiveHeat = Reg(new OfExcessiveHeat());
+        public Suffix OfWeeping = Reg(new OfWeeping());
+        public Suffix OfDeathchill = Reg(new OfDeathchill());
 
         static private Suffix Reg(Suffix suffix)
         {

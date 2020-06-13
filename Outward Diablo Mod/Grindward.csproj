@@ -84,7 +84,16 @@
     <Compile Include="currency\effects\RerollAffixes.cs" />
     <Compile Include="database\affixes\prefixes\armor\Acrobats.cs" />
     <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
+    <Compile Include="database\affixes\prefixes\armor\Brute.cs" />
+    <Compile Include="database\affixes\prefixes\armor\DivineCurse.cs" />
+    <Compile Include="database\affixes\prefixes\weapon\Plain.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfCursedEarth.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfDeathchill.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfExcessiveCold.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfExcessiveHeat.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfWeeping.cs" />
+    <Compile Include="database\affixes\suffixes\weapon\OfBashing.cs" />
     <Compile Include="death_penalties\DeathPenalty.cs" />
     <Compile Include="death_penalties\LoseGemsPenalty.cs" />
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
@@ -102,7 +111,7 @@
     <Compile Include="Items.cs" />
     <Compile Include="item_ext\save_data\BaseAffixData.cs" />
     <Compile Include="Cached.cs" />
-    <Compile Include="database\affixes\prefixes\ElelWepDmgPrefix.cs" />
+    <Compile Include="database\affixes\prefixes\weapon\ElelWepDmgPrefix.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfWarmth.cs" />
     <Compile Include="database\IWeighted.cs" />
     <Compile Include="database\registers\Prefixes.cs" />
@@ -165,8 +174,6 @@
     <Compile Include="VanillaStatMod.cs" />
     <Compile Include="Weighted.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="database\affixes\prefixes\weapon\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

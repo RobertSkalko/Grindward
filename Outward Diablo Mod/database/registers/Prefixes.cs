@@ -1,6 +1,7 @@
 ﻿using grindward.database.affixes;
 using grindward.database.affixes.prefixes;
 using grindward.database.affixes.prefixes.armor;
+using grindward.database.affixes.prefixes.weapon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace grindward.database.registers
 
         public Prefix Arcanists = Reg(new Arcanists());
         public Prefix Acrobats = Reg(new Acrobats());
+
+        public Prefix Brute = Reg(new Brute());
+        public Prefix DivineCurse = Reg(new DivineCurse());
+        public Prefix Plain = Reg(new Plain());
+        
 
         static private Prefix Reg(Prefix prefix)
         {
