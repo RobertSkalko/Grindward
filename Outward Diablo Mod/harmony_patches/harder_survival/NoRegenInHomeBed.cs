@@ -18,6 +18,11 @@ namespace grindward.HarmonyPatches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(ref float __result)
         {
+            if (!Configs.Instance.EnableNoRegenInHomeBed.Value)
+            {
+                return;
+            }
+
             __result = 0;
 
         }
@@ -28,6 +33,10 @@ namespace grindward.HarmonyPatches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(ref float __result)
         {
+            if (!Configs.Instance.EnableNoRegenInHomeBed.Value)
+            {
+                return;
+            }
             __result = 0;
 
         }
@@ -38,6 +47,10 @@ namespace grindward.HarmonyPatches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(CharacterResting __instance, ref float __result)
         {
+            if (!Configs.Instance.EnableNoRegenInHomeBed.Value)
+            {
+                return;
+            }
             __result = Methods.INSTANCE.CharacterResting_GetStat.Call(__instance, new object[] { CharacterResting.CompilationType.Average, CharacterResting.CompiledStat.DrinkConsumption });
                         
         }
@@ -48,6 +61,10 @@ namespace grindward.HarmonyPatches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(CharacterResting __instance, ref float __result)
         {
+            if (!Configs.Instance.EnableNoRegenInHomeBed.Value)
+            {
+                return;
+            }
             __result = Methods.INSTANCE.CharacterResting_GetStat.Call(__instance, new object[] { CharacterResting.CompilationType.Average, CharacterResting.CompiledStat.FoodConsumption });
 
         }

@@ -24,20 +24,20 @@ namespace grindward
     {
         public static bool DEBUG = true;
 
-       public static Items Items;    
+       public static Items Items;
+
+        public static Main Instance = null;
       
-        const string ID = "com.treborx555.grindward"; 
+        const string ID = "grindward"; 
         const string NAME = "Grindward";
         const string VERSION = "1.0";
+        public static  String MODID = "grindward";
 
-         public static  String MODID = "grindward";
-
-        public static ConfigEntry<bool> EnableDeathPenalties;
-
+       
         internal void Awake()
         {
-            EnableDeathPenalties = this.Config.Bind<bool>(MODID, "Enable Additional Death Penalties", true);
-
+            Instance = this;
+            Configs.Instance = new Configs();             
 
             SL.OnSceneLoaded += OnSceneChange;
 

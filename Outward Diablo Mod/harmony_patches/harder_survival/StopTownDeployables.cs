@@ -45,6 +45,11 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPrefix]
         public static bool Prefix(Deployable __instance)
         {
+            if (!Configs.Instance.EnableStopTownDeployables.Value)
+            {
+                return true;
+            }
+
             Character character = __instance.Item.OwnerCharacter;
 
             if (AreaManager.Instance.CurrentArea.IsTown())

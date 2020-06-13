@@ -14,6 +14,11 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPostfix]
          public  static void Postfix(Item __instance, ref int __result)
         {
+            if (!Configs.Instance.EnableMerchantPrices.Value)
+            {
+                return;
+            }
+
             if (__instance.HasSameBuyAndSellValue())
             {
                 return;
@@ -25,7 +30,7 @@ namespace grindward.harmony_patches.harder_survival
             }
             else if (__instance.IsIngredient)
             {
-                __result = (int)(3D * __result);
+                __result = (int)(2D * __result);
             }
             else
             {

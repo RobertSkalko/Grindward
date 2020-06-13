@@ -15,6 +15,11 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(Item __instance, ref int __result)
         {
+            if (!Configs.Instance.EnableMerchantPrices.Value)
+            {
+                return;
+            }
+
             if (__instance.HasSameBuyAndSellValue())
             {
                 return;

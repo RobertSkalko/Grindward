@@ -14,6 +14,12 @@ namespace grindward.harmony_patches.diablo
             [HarmonyPrefix]
             public static void Prefix(DefeatPlayerSpawn __instance, Character __0)
             {
+
+            if (!Configs.Instance.EnableDeathPenalties.Value)
+            {
+                return;
+            }
+
             Bag bag = __0.FindNearestBackpack();
 
             if (!bag)

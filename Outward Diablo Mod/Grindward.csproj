@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs.cs" />
     <Compile Include="currency\effects\DestroyItem.cs" />
     <Compile Include="currency\effects\IncreaseRandomStats.cs" />
     <Compile Include="currency\effects\LowerRandomStats.cs" />
@@ -100,7 +101,7 @@
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
-    <Compile Include="harmony_patches\diablo\OnPlayerDeathSpawnPatch.cs" />
+    <Compile Include="harmony_patches\harder_survival\OnPlayerDeathSpawnPatch.cs" />
     <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />

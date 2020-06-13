@@ -12,8 +12,13 @@ namespace grindward.harmony_patches.harder_survival
     {
         [HarmonyPostfix]
         public static void Postfix(SkillSlot __instance, ref int __result)
-        {          
-           __result = (int)(2D * __result);
+        {
+            if (!Configs.Instance.EnableExpensiveSkillCosts.Value)
+            {
+                return;
+            }
+
+            __result = (int)(2D * __result);
 
         }
     }
