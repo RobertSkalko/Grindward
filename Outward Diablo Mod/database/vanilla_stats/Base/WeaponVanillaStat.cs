@@ -20,37 +20,12 @@ namespace grindward.database.vanilla_stats.Base
         public override void SetStat(Equipment item, float val)
         {
             if (item is Weapon wep) {
-
-                /*
-                SL_WeaponStats holder = new SL_WeaponStats();
-                SL_WeaponStats.ParseWeaponStats(wep.Stats, holder);
-
-                int index = (int)type;
-
-                var opt = holder.BaseDamage.Find(x => x.Type == type);
-
-                if (opt == null)
-                {
-                    SL_Damage dmg = new SL_Damage();
-                    dmg.Type = type;
-                    dmg.Damage = val;
-
-                    holder.BaseDamage.Add(dmg);
-                }
-                else
-                {
-                    opt.Damage = val;
-                }          
-
-                holder.ApplyToItem(wep.Stats);
-                */
-
                
                 if (wep.Stats.BaseDamage.Contains(type))
                 {
                     wep.Stats.BaseDamage[type].Damage = val;
 
-                    if (wep.Stats.BaseDamage[type].Damage == 0)
+                    if (wep.Stats.BaseDamage[type].Damage < 1) // dont do damages in minus or show zero damage
                     {
                         wep.Stats.BaseDamage.Remove(type); // so it doesnt show on tooltips
                     }

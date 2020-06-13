@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Linq;
 using NodeCanvas.Framework;
 using NodeCanvas.BehaviourTrees;
+using BepInEx.Configuration;
 
 namespace grindward
 {
@@ -23,10 +24,7 @@ namespace grindward
     {
         public static bool DEBUG = true;
 
-       public static Items Items;
-
-       
-
+       public static Items Items;    
       
         const string ID = "com.treborx555.grindward"; 
         const string NAME = "Grindward";
@@ -34,8 +32,47 @@ namespace grindward
 
          public static  String MODID = "grindward";
 
+        public static ConfigEntry<bool> EnableDeathPenalties;
+
+        internal void Awake()
+        {
+            EnableDeathPenalties = this.Config.Bind<bool>(MODID, "Enable Additional Death Penalties", true);
+
+
+            SL.OnSceneLoaded += OnSceneChange;
+
+            try
+            {
+
+                Cached.Instance = new Cached();
+
+                Fields.INSTANCE = new Fields();
+                Methods.INSTANCE = new Methods();
+
+                Registry.Init();
+                RegistryRegister.RegisterAll();
+
+                SL.OnPacksLoaded += SL_OnPacksLoaded;
+
+                var harmony = new Harmony(ID);
+                harmony.PatchAll();
+
+
+                Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod is done initiating.");
+            }
+            catch (Exception e)
+            {
+                Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod had failed to init!");
+                Console.Write(e.ToString());
+                Crash();
+            }
+
+        }
+
 
         String areaid = "";
+
+
 
         void Update()        {
 
@@ -113,38 +150,6 @@ namespace grindward
 
 
 
-        internal void Awake()
-        {
-
-            SL.OnSceneLoaded += OnSceneChange;
-
-            try
-            {
-               
-                Cached.Instance = new Cached();
-
-                Fields.INSTANCE = new Fields();
-                Methods.INSTANCE = new Methods();
-
-                Registry.Init();
-                RegistryRegister.RegisterAll();
-
-                SL.OnPacksLoaded += SL_OnPacksLoaded;
-
-                var harmony = new Harmony(ID);
-                harmony.PatchAll();
-
-               
-                Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod is done initiating.");
-            }
-            catch(Exception e)
-            {               
-                Logger.Log(LogLevel.Message, "Treborx555: Outward Diablo Mod had failed to init!");
-                Console.Write(e.ToString());
-                Crash();                  
-            }          
-
-        }
 
         private void DoTests()
         {

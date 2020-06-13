@@ -31,7 +31,7 @@ namespace grindward.database.registers
         public Prefix Brute = Reg(new Brute());
         public Prefix DivineCurse = Reg(new DivineCurse());
         public Prefix Plain = Reg(new Plain());
-        
+        public Prefix Merchants = Reg(new Merchants());
 
         static private Prefix Reg(Prefix prefix)
         {

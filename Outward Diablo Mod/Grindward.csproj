@@ -86,6 +86,7 @@
     <Compile Include="database\affixes\prefixes\armor\Arcanists.cs" />
     <Compile Include="database\affixes\prefixes\armor\Brute.cs" />
     <Compile Include="database\affixes\prefixes\armor\DivineCurse.cs" />
+    <Compile Include="database\affixes\prefixes\armor\Merchants.cs" />
     <Compile Include="database\affixes\prefixes\weapon\Plain.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfCursedEarth.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfDeathchill.cs" />
