@@ -19,14 +19,8 @@ namespace grindward
         public ConfigEntry<bool> EnableStopTownDeployables = newBool(BALANCE_ENABLE_CATEGORY, "Enable Stop Town Deployables", "Stops you from putting tents, cooking pots etc in the middle of towns. Use your home instead. No more hobo camps!");
 
         private static ConfigEntry<bool> newBool(String category, String name, String desc="")
-        {
-            ConfigDescription descc = null;
-            if (desc.Length > 0)
-            {
-                descc = new ConfigDescription(desc);
-            }
-
-            return Main.Instance.Config.Bind<bool>(category, name, true,desc);
+        {           
+            return Main.Instance.Config.Bind<bool>(category, name, true, desc);
         }
       
 

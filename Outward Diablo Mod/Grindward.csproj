@@ -75,12 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs.cs" />
+    <Compile Include="currency\effects\AscendToHigherTier.cs" />
     <Compile Include="currency\effects\DestroyItem.cs" />
     <Compile Include="currency\effects\IncreaseRandomStats.cs" />
     <Compile Include="currency\effects\LowerRandomStats.cs" />
     <Compile Include="currency\effects\RemoveAffixes.cs" />
     <Compile Include="currency\CurrencyEffectComponent.cs" />
     <Compile Include="currency\CurrencyEffects.cs" />
+    <Compile Include="currency\effects\RerollAllNumbers.cs" />
     <Compile Include="currency\ItemChanger.cs" />
     <Compile Include="currency\effects\RerollAffixes.cs" />
     <Compile Include="database\affixes\prefixes\armor\Acrobats.cs" />

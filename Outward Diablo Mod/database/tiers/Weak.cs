@@ -40,7 +40,7 @@ namespace grindward.database.tiers
 
         public override MinMax GetRandomStatsPercents()
         {
-            return new MinMax(65, MAX_RANDOM_PERCENT);
+            return new MinMax(55, MAX_RANDOM_PERCENT);
         }
     }
 }

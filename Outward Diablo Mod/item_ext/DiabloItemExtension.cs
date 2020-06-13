@@ -78,6 +78,8 @@ namespace grindward
             return ext;
         }
 
+        static int AFFIX_CHANCE = 25;
+
         public override void InitFromItem()
         {                                 
             if (init)
@@ -89,13 +91,18 @@ namespace grindward
             this.randomStats.Randomize((Equipment)this.Item);
 
             if (source == ItemSource.ChestLoot || source == ItemSource.MobDrop) 
-            {   
-                
-                this.suffix = new SuffixData();
-                suffix.Randomize(this.Item);
+            {
+                if (RandomUtils.Roll(AFFIX_CHANCE))
+                {
+                    this.suffix = new SuffixData();
+                    suffix.Randomize(this.Item);
+                }
+                if (RandomUtils.Roll(AFFIX_CHANCE))
+                {
+                    this.prefix = new PrefixData();
+                    prefix.Randomize(this.Item);
+                }                   
 
-                this.prefix = new PrefixData();
-                prefix.Randomize(this.Item);                           
             }
 
             this.ApplyStats();

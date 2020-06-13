@@ -31,6 +31,17 @@ namespace grindward
 
         }
 
+        public void RandomizeNumbers(Equipment item)
+        {
+
+            ChangeItemStats((Equipment)item, StatChangeType.REMOVE);
+
+            percent = RollPercent(); 
+            
+            ChangeItemStats((Equipment)item, StatChangeType.ADD);
+
+        }
+
         public void Randomize(Item item)
         {
 
@@ -52,13 +63,18 @@ namespace grindward
                 A affix = RandomUtils.WeightedRandom(possible);
 
                 this.id = affix.GetId();
-                this.percent = new System.Random().Next(25, 100);
+                this.percent = RollPercent();
 
                 //UnityEngine.Debug.Log("Affix generated succesfully");
             }
 
             ChangeItemStats((Equipment)item, StatChangeType.ADD);
 
+        }
+
+        private int RollPercent()
+        {
+            return UnityEngine.Random.Range(25, 100);
         }
 
 

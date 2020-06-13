@@ -21,6 +21,19 @@ namespace grindward.database.tiers.bases
 
         public abstract MinMax GetRandomStatsPercents();
 
+        public Tier GetHigherTier()
+        {
+            if (Registry.Tiers.GetAll().Max(x=> x.GetTierNumber()) == this.GetTierNumber())
+            {
+                return this;
+            }
+            else
+            {
+                return Registry.Tiers.GetAll().Where(x => x.GetTierNumber() == GetTierNumber() + 1).First();
+            }
+
+        }
+
         public abstract List<Weighted<Tier>> GetItemTierDropChances();
 
         public Tier GetRandomItemDropTier()

@@ -123,11 +123,10 @@ namespace grindward
 
             Log.Debug("finding npcs");
 
-            List<GameObject> list = Resources.FindObjectsOfTypeAll<GameObject>().Where(x => x.name == "HumanSNPC_CaravanTrader").ToList();
+            List<GameObject> list = Resources.FindObjectsOfTypeAll<GameObject>().Where(x => x.name.Contains("CaravanTrader")).ToList();
 
             foreach (GameObject obj in list)
             {
-
                 Log.Debug("found npc");
 
                 if (obj.GetComponentInChildren<MerchantPouch>(true) is MerchantPouch pouch)

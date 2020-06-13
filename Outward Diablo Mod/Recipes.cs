@@ -16,6 +16,8 @@ namespace grindward
         {
             Create(Main.Items.HELLSTONE_OF_WITHDRAWAL, new List<int>() { HACKMANITE, OCCULT_REMAINS, CRYSTAL_POWDER, SMALL_SAPPHIRE }, 8887771);
             Create(Main.Items.HELLSTONE_OF_TEMPERING, new List<int>() { LARGE_EMERALD, GOLD_LICH_MECHANISM, CRYSTAL_POWDER, OBSIDIAN_SHARD }, 8887772);
+            Create(Main.Items.HELLSTONE_OF_WHIRLING, new List<int>() { MEDIUM_RUBY, POWER_COIL, FIRE_STONE, GHOST_EYE }, 8887773);
+            Create(Main.Items.HELLSTONE_OF_OVERHAUL, new List<int>() { MANA_STONE, BLUE_SAND, ELE_RES_POTION, PALLADIUM_SCRAP }, 8887774);
 
         }
 

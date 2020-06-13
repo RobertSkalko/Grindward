@@ -25,6 +25,8 @@ namespace grindward.save_data
 
             Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
 
+            percents.Clear();
+
             foreach(VanillaStat stat in VanillaStats.Instance.GetAllStatsOrderedByIndex())
             {
                 float val = stat.GetStat(def);
@@ -47,7 +49,7 @@ namespace grindward.save_data
             {
                 int modified = percent + amount;
 
-                modified = Mathf.Clamp(modified, 0, 100);
+                modified = Mathf.Clamp(modified, 0, Tier.MAX_RANDOM_PERCENT);
 
                 percents[i] = modified;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using grindward.currency.effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,17 @@ namespace grindward.currency
                 new Weighted<ItemChanger>(new IncreaseRandomStats(5),90),
                 new Weighted<ItemChanger>(new DestroyItem(),10),
             }
-            }                      
+            },
+            {  Items.HELLSTONE_OF_WHIRLING_ID, new List<Weighted<ItemChanger>>() {
+                new Weighted<ItemChanger>(new RerollAllNumbers(),100)
+            }
+            },
+            {  Items.HELLSTONE_OF_OVERHAUL_ID, new List<Weighted<ItemChanger>>() {
+                new Weighted<ItemChanger>(new AscendToHigherTier(),100)
+            }
+            }
 
-        };
+};
         
     }
 }
