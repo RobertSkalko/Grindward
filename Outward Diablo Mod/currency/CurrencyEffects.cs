@@ -28,8 +28,12 @@ namespace grindward.currency
             {  Items.HELLSTONE_OF_OVERHAUL_ID, new List<Weighted<ItemChanger>>() {
                 new Weighted<ItemChanger>(new AscendToHigherTier(),100)
             }
+            },
+            {  Items.HELLSTONE_OF_INCORPORATION_ID, new List<Weighted<ItemChanger>>() {
+                new Weighted<ItemChanger>(new AddAffix(),75),
+                new Weighted<ItemChanger>(new DestroyItem(),25),
+            } 
             }
-
 };
         
     }

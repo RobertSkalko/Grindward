@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs.cs" />
+    <Compile Include="currency\effects\AddAffix.cs" />
     <Compile Include="currency\effects\AscendToHigherTier.cs" />
     <Compile Include="currency\effects\DestroyItem.cs" />
     <Compile Include="currency\effects\IncreaseRandomStats.cs" />

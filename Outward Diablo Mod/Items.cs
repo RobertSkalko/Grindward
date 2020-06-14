@@ -18,11 +18,13 @@ namespace grindward
         public static int HELLSTONE_OF_TEMPERING_ID = 999322;
         public static int HELLSTONE_OF_WHIRLING_ID = 999323;
         public static int HELLSTONE_OF_OVERHAUL_ID = 999324;
+        public static int HELLSTONE_OF_INCORPORATION_ID = 999325;
 
         public Item HELLSTONE_OF_WITHDRAWAL;
         public Item HELLSTONE_OF_TEMPERING;
         public Item HELLSTONE_OF_WHIRLING;
         public Item HELLSTONE_OF_OVERHAUL;
+        public Item HELLSTONE_OF_INCORPORATION;
 
         public Items() {
 
@@ -31,6 +33,7 @@ namespace grindward
             HELLSTONE_OF_TEMPERING = NewHellstone(HACKMANITE, HELLSTONE_OF_TEMPERING_ID, "Hellstone of Tempering", "This gem contains boundless but reckless power.");
             HELLSTONE_OF_WHIRLING = NewHellstone(HACKMANITE, HELLSTONE_OF_WHIRLING_ID, "Hellstone of Whirling", "This gem seems to keep spinning.");
             HELLSTONE_OF_OVERHAUL = NewHellstone(HACKMANITE, HELLSTONE_OF_OVERHAUL_ID, "Hellstone of Overhaul", "Power to remake, into something better.");
+            HELLSTONE_OF_INCORPORATION = NewHellstone(HACKMANITE, HELLSTONE_OF_INCORPORATION_ID, "Hellstone of Incorporation", "Become more, yet remain the same.");
 
         }
 
