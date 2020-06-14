@@ -4,12 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using static AreaManager;
 
 namespace grindward
 {
     public static class ExtensionMethods
     {
+
+        public static void AddStatusEffect(this Character c, string effectid)
+        {
+            var eff = ResourcesPrefabManager.Instance.GetStatusEffectPrefab(effectid);
+
+            if (!eff)
+            {
+                Log.Print("getting Effect returns null");
+            }
+
+            //eff.Activate(c);
+
+           c.StatusEffectMngr.AddStatusEffect(eff, (Transform)null);
+        }
+
 
         static List<AreaEnum> towns = new List<AreaEnum>() { AreaEnum.CierzoVillage, AreaEnum.Levant, AreaEnum.Monsoon, AreaEnum.Berg };
         static List<AreaEnum> outdoors = new List<AreaEnum>() { AreaEnum.CierzoOutside, AreaEnum.Abrassar, AreaEnum.HallowedMarsh, AreaEnum.Emercar };

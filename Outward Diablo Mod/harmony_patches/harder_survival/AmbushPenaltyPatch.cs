@@ -1,4 +1,5 @@
-﻿using grindward.utils;
+﻿using grindward.ambush_penalties;
+using grindward.utils;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,14 @@ namespace grindward.harmony_patches.harder_survival
 {
 
     [HarmonyPatch(typeof(CampingEvent), "OnActivate")]
-    public class FoodEtcPenaltyOnAmbush
+    public class AmbushPenaltyPatch
     {
         static int divideBy = 5;
+
+
+
+        static List<AmbushPenalty> PENALTIES = new List<AmbushPenalty>() { new SadistBleed(), new WitchEleVulne(), new PranksterPoison() };
+
 
         [HarmonyPostfix]
         public static void Postfix()
@@ -23,15 +29,13 @@ namespace grindward.harmony_patches.harder_survival
 
             Log.Debug("activating ambush penalty");
 
-            foreach (Character player in CharacterUtils.GetAllPlayers())
-            {
-                player.PlayerStats.Food -= player.PlayerStats.MaxFood / divideBy;
-                player.PlayerStats.Drink -= player.PlayerStats.MaxDrink / divideBy;
-                player.PlayerStats.Sleep -= player.PlayerStats.MaxSleep / (divideBy * 2);
-            }
+
+            PENALTIES.RandomWeighted().Activate(CharacterUtils.GetAllPlayers());                      
 
         }
     }
+
+
 
  
 }

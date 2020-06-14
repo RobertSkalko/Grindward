@@ -74,6 +74,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ambush_penalties\AmbushPenalty.cs" />
+    <Compile Include="ambush_penalties\PranksterPoison.cs" />
+    <Compile Include="ambush_penalties\SadistBleed.cs" />
+    <Compile Include="ambush_penalties\WitchEleVulne.cs" />
     <Compile Include="Configs.cs" />
     <Compile Include="currency\effects\AddAffix.cs" />
     <Compile Include="currency\effects\AscendToHigherTier.cs" />
@@ -105,7 +109,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
     <Compile Include="harmony_patches\easier_survival\ChanceToNotConsumeSigilStones.cs" />
-    <Compile Include="harmony_patches\harder_survival\FoodEtcPenaltyOnAmbush.cs" />
+    <Compile Include="harmony_patches\harder_survival\AmbushPenaltyPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\OnPlayerDeathSpawnPatch.cs" />
     <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
     <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
