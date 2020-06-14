@@ -21,9 +21,13 @@ namespace grindward
                 Log.Print("getting Effect returns null");
             }
 
-            //eff.Activate(c);
+            Log.Debug("Effect name: "+ eff.name + " id: " + eff.IdentifierName);
 
-           c.StatusEffectMngr.AddStatusEffect(eff, (Transform)null);
+         
+            c.StatusEffectMngr.AddStatusEffect(eff, (Transform)null);        
+
+            Log.Debug("Player has effect: " + c.StatusEffectMngr.HasStatusEffect(eff.EffectFamily));
+           
         }
 
 

@@ -20,8 +20,14 @@ namespace grindward.ambush_penalties
 
         public  void Activate(List<Character> players)
         {
+
+           
+
             foreach (Character p in players)
             {
+                p.AddStatusEffect(DIZZY);
+                p.AddStatusEffect(BLEED);
+
                 act(p);
                 p.CharacterUI.ShowInfoNotification(GetNotification());
             }

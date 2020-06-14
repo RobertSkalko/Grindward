@@ -11,10 +11,7 @@ namespace grindward.harmony_patches.harder_survival
 
     [HarmonyPatch(typeof(CampingEvent), "OnActivate")]
     public class AmbushPenaltyPatch
-    {
-        static int divideBy = 5;
-
-
+    { 
 
         static List<AmbushPenalty> PENALTIES = new List<AmbushPenalty>() { new SadistBleed(), new WitchEleVulne(), new PranksterPoison() };
 
@@ -27,12 +24,19 @@ namespace grindward.harmony_patches.harder_survival
                 return;
             }
 
-            Log.Debug("activating ambush penalty");
-
-
-            PENALTIES.RandomWeighted().Activate(CharacterUtils.GetAllPlayers());                      
+          
+            NetworkLevelLoader.Instance.onAllPlayersLoadingDone += Activate;                             
 
         }
+
+        public static void Activate()
+        {
+            Log.Debug("activating ambush penalty");
+
+            PENALTIES.RandomWeighted().Activate(CharacterUtils.GetAllPlayers());
+        }
+        
+        
     }
 
 

@@ -1,4 +1,5 @@
-﻿using grindward.utils;
+﻿using grindward.ambush_penalties;
+using grindward.utils;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace grindward.harmony_patches.harder_survival
             }
 
             Character character = __instance.Item.OwnerCharacter;
-
+                     
             if (AreaManager.Instance.CurrentArea.IsTown())
             {
                 if (!IsNearChest(character))
