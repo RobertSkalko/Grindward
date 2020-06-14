@@ -13,7 +13,9 @@ namespace grindward
 
         public SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>> TOOLTIP = new SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>>("m_detailRows");
         public SafeField<ItemManager, DictionaryExt<string, Item>> ItemManager_WorldItems = new SafeField<ItemManager, DictionaryExt<string, Item>>("m_worldItems");
-              
+        public SafeField<CharacterManager, DictionaryExt<string, string>> CharacterManager_Playerchars = new SafeField<CharacterManager, DictionaryExt<string, string>>("m_playerCharacters");
+
+                 
 
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");

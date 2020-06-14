@@ -20,6 +20,7 @@ namespace grindward
         public static int HELLSTONE_OF_OVERHAUL_ID = 999324;
         public static int HELLSTONE_OF_INCORPORATION_ID = 999325;
 
+        // Keep the names similar so they will be near each other at crafting order :)
         public Item HELLSTONE_OF_WITHDRAWAL;
         public Item HELLSTONE_OF_TEMPERING;
         public Item HELLSTONE_OF_WHIRLING;
