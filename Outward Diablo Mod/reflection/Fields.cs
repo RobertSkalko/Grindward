@@ -14,8 +14,11 @@ namespace grindward
         public SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>> TOOLTIP = new SafeField<ItemDetailsDisplay, List<ItemDetailRowDisplay>>("m_detailRows");
         public SafeField<ItemManager, DictionaryExt<string, Item>> ItemManager_WorldItems = new SafeField<ItemManager, DictionaryExt<string, Item>>("m_worldItems");
         public SafeField<CharacterManager, DictionaryExt<string, string>> CharacterManager_Playerchars = new SafeField<CharacterManager, DictionaryExt<string, string>>("m_playerCharacters");
+        public SafeField<CharacterManager, DictionaryExt<string, Character>> CharacterManager_chars = new SafeField<CharacterManager, DictionaryExt<string, Character>>("m_characters");
 
-                 
+
+        
+
 
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");
@@ -39,7 +42,7 @@ namespace grindward
         public SafeField<EquipmentStats, float> EquipmentStats_m_movementPenalty = new SafeField<EquipmentStats, float>("m_movementPenalty");
         
      
-        public SafeField<EquipmentStats, float> EquipmentStats_m_manaUsePenalty = new SafeField<EquipmentStats, float>("m_realManaUseModifier");
+        public SafeField<EquipmentStats, float> EquipmentStats_m_manaUsePenalty = new SafeField<EquipmentStats, float>("m_manaUseModifier");
         public SafeField<EquipmentStats, float> EquipmentStats_m_staminaUsePenalty = new SafeField<EquipmentStats, float>("m_staminaUsePenalty");
 
         public SafeField<EquipmentStats, float> EquipmentStats_m_maxHealthBonus = new SafeField<EquipmentStats, float>("m_maxHealthBonus"); 

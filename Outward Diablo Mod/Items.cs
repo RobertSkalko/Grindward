@@ -83,6 +83,9 @@ namespace grindward
 
             var png = CustomTextures.LoadTexture(@"BepInEx\plugins\Grindward\Icons\" + newItemId + ".png", false, false);
             var sprite = CustomTextures.CreateSprite(png, CustomTextures.SpriteBorderTypes.ItemIcon);
+
+            CustomItemVisuals.SetSpriteLink(item, sprite);
+
             At.SetValue(sprite, typeof(Item), item, "m_itemIcon");
 
             return item;

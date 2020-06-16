@@ -16,6 +16,7 @@ using System.Linq;
 using NodeCanvas.Framework;
 using NodeCanvas.BehaviourTrees;
 using BepInEx.Configuration;
+using UnityEngine.SceneManagement;
 
 namespace grindward
 {
@@ -31,11 +32,11 @@ namespace grindward
         const string ID = "grindward"; 
         const string NAME = "Grindward";
         const string VERSION = "1.0";
-        public static  String MODID = "grindward";
+        public static  String MODID = "grindward";       
 
-       
         internal void Awake()
-        {
+        {    
+
             Instance = this;
             Configs.Instance = new Configs();             
 
