@@ -68,7 +68,7 @@ namespace grindward
         {
             if (item.GetExtension(ID) is DiabloItemExtension extension)
             {
-                Debug.Log(item.name + " already has a " + ID + " component!");
+                 Log.Print(item.name + " already has a " + ID + " component!");
                 return extension;
             }
 
@@ -81,11 +81,16 @@ namespace grindward
         static int AFFIX_CHANCE = 25;
 
         public override void InitFromItem()
-        {                                 
+        {
+
+            Log.Debug(Item.Name + " Checking if should init");
+
             if (init)
             {
                 return; 
             }
+            Log.Debug(Item.Name + " Initializing");
+
 
             this.randomStats = new RandomStatsData();
             this.randomStats.Randomize((Equipment)this.Item);
@@ -110,6 +115,23 @@ namespace grindward
             this.init = true;
         }
 
+        private void ClearAll(Equipment item)
+        {
+            randomStats.Clear(item);
+
+            if (HasPrefix())
+            {
+                prefix.ClearAffix(item);
+            }
+            if (HasSuffix())
+            {
+                suffix.ClearAffix(item);
+            }
+
+
+        }
+
+
         public bool IsValidRandomDrop()
         {
             return source == ItemSource.ChestLoot || source == ItemSource.MobDrop || source == ItemSource.MobDrop;
@@ -133,17 +155,34 @@ namespace grindward
         public override void OnReceiveNetworkSync(string[] str)
         {
 
+            if (this.Item is Equipment == false)
+            {
+                Log.Print("Not equipment? Aborting diablo item ext sync");
+                return;
+            }
+
             try
             {
-                //Debug.Log(str.Length);
-                //Debug.Log(str);
+
+                 ClearAll((Equipment)this.Item);
+               
+                 Log.Debug(this.Item.Name + ": " + String.Join(";",str));
 
                 if (str.Length == Enum.GetNames(typeof(SyncOrder)).Length) 
                     {
-                        int boolInt = 0;
-                        int.TryParse(str[(int)SyncOrder.Init], out boolInt);
-                        this.init = boolInt == 1 ? true : false;
+                       
+                    string initstr = str[(int)SyncOrder.Init];
 
+                    if (initstr == "t")
+                    {
+                        this.init = true;
+                    }
+                                       
+                    if (this.init == false && str[(int)SyncOrder.RandomStats].Length > 0)
+                    {
+                        Log.Print("Item says it didn't INIT, but random stats are initalized already???");
+                        Log.Print("Init save string: " + initstr);
+                    }
 
                     String sourcesave = str[(int)SyncOrder.Source];
                     if (sourcesave.Length > 0)
@@ -155,8 +194,15 @@ namespace grindward
                         {
 
                         String savestr = str[(int)sync];
-                        Log.Debug("Loading " + sync.ToString() + savestr);
-                        Get(sync).LoadFromString(savestr);
+                        if (savestr.Length > 0)
+                        {
+                            Get(sync).LoadFromString(savestr);
+                            Log.Debug("Loading item ext part: " + sync.ToString() + " " + savestr);
+                        }
+                        else
+                        {
+                            //Log.Debug("Item ext part is empty: " + sync.ToString());
+                        } 
 
                         }                  
                     
@@ -190,8 +236,8 @@ namespace grindward
         {
 
             String[] list = Enumerable.Repeat("", Enum.GetValues(typeof(SyncOrder)).Length).ToArray();
-                        
-            String initsave = init.ToInt().ToString();
+
+            String initsave = init ? "t" : "f";
 
             String suffixsave = "";
             if (HasSuffix())

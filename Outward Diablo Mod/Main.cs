@@ -23,7 +23,7 @@ namespace grindward
     [BepInPlugin(ID, NAME, VERSION)]
     class Main : BaseUnityPlugin
     {
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
 
        public static Items Items;
 

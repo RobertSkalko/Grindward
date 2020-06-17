@@ -45,6 +45,9 @@ namespace grindward
         public void Randomize(Item item)
         {
 
+            Log.Debug("Randomizing item's affix: " + item.Name);
+
+
             ChangeItemStats((Equipment)item, StatChangeType.REMOVE);
 
 
@@ -98,7 +101,7 @@ namespace grindward
 
            try
                 {
-                    UnityEngine.Debug.Log(str);
+                    Log.Debug(str);
 
                     String[] parts = str.Split('#');
                     if (parts.Length == 2)

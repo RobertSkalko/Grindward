@@ -21,6 +21,8 @@ namespace grindward.save_data
 
         public void Randomize(Equipment item)
         {
+            Log.Debug("Randomizing item's random stats: " + item.Name);
+
             ChangeItemStats((Equipment)item, StatChangeType.REMOVE);
 
             Equipment def = (Equipment)Cached.GetDefaultItemPrefab(item);
@@ -38,6 +40,15 @@ namespace grindward.save_data
             }
 
             ChangeItemStats((Equipment)item, StatChangeType.ADD);
+        }
+
+        public void Clear(Equipment item)
+        {
+
+            ChangeItemStats(item, StatChangeType.REMOVE);
+
+            percents.Clear();
+
         }
 
         public void AddToAllPercents(Equipment item, int amount)
@@ -73,6 +84,8 @@ namespace grindward.save_data
 
         public void LoadFromString(string str)
         {
+            percents = new List<int>();
+
            foreach ( String s in str.Split('#'))
             {
                 int perc = -1;
