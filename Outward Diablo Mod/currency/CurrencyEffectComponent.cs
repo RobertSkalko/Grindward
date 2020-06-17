@@ -24,8 +24,18 @@ namespace grindward
 					}								
 			}			
 		}
-		public  void UseOnGear(Equipment item, Character character)
+		public void UseOnGear(Equipment item, Character character)
 		{
+			DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
+
+			if (!ext.IsValidRandomDrop())
+            {
+				character.CharacterUI.ShowInfoNotification("This item isn't a random drop, and therefore hellstones can't be used on it. ");
+				Item back = ItemManager.Instance.GenerateItemNetwork(ParentItem.ItemID);
+				back.ChangeParent(character.Inventory.Pouch.transform);
+				return;
+			}
+
 			var list = CurrencyEffects.ALL[this.ParentItem.ItemID];
 
 			var effect = list.RandomWeighted().Get();

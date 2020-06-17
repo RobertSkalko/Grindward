@@ -17,15 +17,24 @@ namespace grindward.harmony_patches.harder_survival
 
 
         [HarmonyPostfix]
-        public static void Postfix()
+        public static void Postfix(CampingEvent __instance)
         {
             if (!Configs.Instance.EnableAmbushPenalties.Value)
             {
                 return;
             }
 
-          
-            NetworkLevelLoader.Instance.onAllPlayersLoadingDone += Activate;                             
+            if (Fields.INSTANCE.CampingEvent_squadtospawn.GetValue(__instance))
+            {
+                if (RandomUtils.Roll(50))
+                {
+                    NetworkLevelLoader.Instance.onAllPlayersLoadingDone += Activate;
+                }
+            }
+            else
+            {
+                Log.Debug("Not an ambush camp event");
+            }
 
         }
 

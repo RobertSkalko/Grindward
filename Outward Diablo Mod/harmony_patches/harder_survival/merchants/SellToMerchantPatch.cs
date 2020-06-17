@@ -20,18 +20,29 @@ namespace grindward.harmony_patches.harder_survival
                 return;
             }
 
+            int saved = __result;
+
             if (__instance.HasSameBuyAndSellValue())
             {
                 return;
             }
 
-            if (ItemUtils.IsValidGear(__instance))
+            if (__instance.IsFood)
+            {
+                __result = (int)(0.6D * __result);
+            }
+            else if (ItemUtils.IsValidGear(__instance))
             {
                 __result = (int)(0.25D * __result);
             }
             else
             {
-                __result = (int)(0.75D * __result);
+                __result = (int)(0.5D * __result);
+            }
+
+            if (saved > 0 && __result < 1)
+            {
+                __result = 1; // make 1 minimum sell price
             }
         }
     }

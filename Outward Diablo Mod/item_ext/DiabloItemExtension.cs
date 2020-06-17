@@ -110,6 +110,11 @@ namespace grindward
             this.init = true;
         }
 
+        public bool IsValidRandomDrop()
+        {
+            return source == ItemSource.ChestLoot || source == ItemSource.MobDrop || source == ItemSource.MobDrop;
+        }
+
         public void ApplyStats()
         {
             randomStats.ChangeItemStats((Equipment)Item, StatChangeType.ADD);

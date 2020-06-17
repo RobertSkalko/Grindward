@@ -15,6 +15,7 @@ namespace grindward
         public SafeField<ItemManager, DictionaryExt<string, Item>> ItemManager_WorldItems = new SafeField<ItemManager, DictionaryExt<string, Item>>("m_worldItems");
         public SafeField<CharacterManager, DictionaryExt<string, string>> CharacterManager_Playerchars = new SafeField<CharacterManager, DictionaryExt<string, string>>("m_playerCharacters");
         public SafeField<CharacterManager, DictionaryExt<string, Character>> CharacterManager_chars = new SafeField<CharacterManager, DictionaryExt<string, Character>>("m_characters");
+        public SafeField<CampingEvent,AISquad> CampingEvent_squadtospawn = new SafeField<CampingEvent, AISquad>("m_squadToSpawn");
 
 
         
