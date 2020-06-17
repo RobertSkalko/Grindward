@@ -45,20 +45,23 @@ namespace grindward.database.tiers.bases
         {            
                 float powerlvl = MobUtils.GetLootMulti(mob);
 
-                Log.Debug(mob.Name + " Mob power lvl: " + powerlvl);
-
+             
                 Tier tier = Tiers.Instance.Weak;
 
                 foreach (Tier t in Registry.Tiers.GetAll())
                 {
                     if (t.GetTierNumber() > tier.GetTierNumber())
                     {
-                        if (powerlvl >= t.GetItemTierReq())
+                        if (powerlvl >= t.GetMobTierReq())
                         {
                             tier = t;
                         }
                     }
-            }            
+            }
+
+            Log.Debug(mob.Name + " Mob power lvl: " + powerlvl + " tier: " + tier.GetId());
+
+
             return tier;
         }
 

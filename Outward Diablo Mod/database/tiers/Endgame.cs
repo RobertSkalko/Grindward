@@ -34,7 +34,7 @@ namespace grindward.database.tiers
         }
         public override float GetMobTierReq()
         {
-            return 3.5F;
+            return 6;
         }
 
         public override int GetWeight()

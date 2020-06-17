@@ -80,9 +80,9 @@ namespace grindward
                 {
                 return LogWhy(item, "No item stats", log);
                 }
-                if (item.Value < 1)
+                if (item.Value < 3)
                 {
-                return LogWhy(item, "Value is less than 1", log);
+                return LogWhy(item, "Value is less than 3", log);
                 }
                 if (name.Length < 3)
                 {

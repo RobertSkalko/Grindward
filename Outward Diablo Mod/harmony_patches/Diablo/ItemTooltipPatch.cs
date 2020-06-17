@@ -74,7 +74,7 @@ namespace grindward.harmony_patches.diablo
                 if (Main.DEBUG)
                 {
                     Tier tier = Tier.GetTierOfItem(item);
-                    //AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber() + "");
+                    AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber() + "");
                 }
             }
         }

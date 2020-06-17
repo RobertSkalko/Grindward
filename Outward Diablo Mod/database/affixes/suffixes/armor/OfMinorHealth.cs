@@ -32,7 +32,7 @@ namespace grindward.database.affixes.suffixes
 
         public override int GetWeight()
         {
-            return 1000;
+            return 200;
         }
     }
 }

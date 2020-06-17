@@ -22,8 +22,7 @@ namespace grindward
             }
 
             Log.Debug("Effect name: "+ eff.name + " id: " + eff.IdentifierName);
-
-         
+                     
             c.StatusEffectMngr.AddStatusEffect(eff, c, (Transform)null);        
 
             Log.Debug("Player has effect: " + c.StatusEffectMngr.HasStatusEffect(eff.EffectFamily));
@@ -32,13 +31,13 @@ namespace grindward
 
 
         static List<AreaEnum> towns = new List<AreaEnum>() { AreaEnum.CierzoVillage, AreaEnum.Levant, AreaEnum.Monsoon, AreaEnum.Berg };
-        static List<AreaEnum> outdoors = new List<AreaEnum>() { AreaEnum.CierzoOutside, AreaEnum.Abrassar, AreaEnum.HallowedMarsh, AreaEnum.Emercar };
+        static List<AreaEnum> outdoors = new List<AreaEnum>() { AreaEnum.CierzoOutside, AreaEnum.Abrassar, AreaEnum.HallowedMarsh, AreaEnum.Emercar, AreaEnum.AntiqueField };
         public static bool IsOutdoor(this Area area)
         {
             foreach (AreaEnum areaenum in outdoors)
             {
                 Area current = AreaManager.Instance.GetArea(areaenum);
-
+                
                 if (current == area)
                 {                  
                     return true;
@@ -54,24 +53,7 @@ namespace grindward
             return AreaManager.AreaFamilies[0].FamilyKeywords.Any(x => area.SceneName.Contains(x));
         }
 
-        public static bool IsTown(this Area area)
-        {           
-            foreach (AreaEnum areaenum in towns)
-            {
-                Area current = AreaManager.Instance.GetArea(areaenum);
-
-                if (current == area)
-                {
-                    //Log.Debug("Is in town");
-                    return true;
-                }
-            }
-            //Log.Debug("Is not in town");
-
-            return false;
-
-        }
-
+      
         public static Bag FindNearestBackpack(this Character character)
         {
             return character.Inventory.Equipment.LastOwnedBag;   

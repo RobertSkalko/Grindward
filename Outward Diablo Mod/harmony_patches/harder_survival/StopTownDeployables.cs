@@ -50,14 +50,13 @@ namespace grindward.harmony_patches.harder_survival
             {
                 return true;
             }
-
-            Character character = __instance.Item.OwnerCharacter;
+            Character c = __instance.Item.OwnerCharacter;        
                      
-            if (AreaManager.Instance.CurrentArea.IsTown())
+            if (AreaManager.Instance.GetIsCurrentAreaTownOrCity())
             {
-                if (!IsNearChest(character))
+                if (!IsNearChest(c))
                 {
-                    character.CharacterUI.ShowInfoNotification("The Guards won't allow you to place stuff outside your home.");
+                    c.CharacterUI.ShowInfoNotification("The Guards won't allow you to place stuff outside your home.");
                     return false;
                 }
             }

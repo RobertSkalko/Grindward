@@ -71,10 +71,10 @@ namespace grindward
         }
 
 
-        String areaid = "";
-
-
-
+        
+        
+        //String areaid = "";
+        /*
         void Update()        {
 
 
@@ -105,6 +105,7 @@ namespace grindward
                 }
             }
         }
+        */
 
         void Crash()
         {
