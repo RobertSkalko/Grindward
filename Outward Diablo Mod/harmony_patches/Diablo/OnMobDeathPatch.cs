@@ -31,10 +31,14 @@ namespace grindward.harmony_patches.diablo
             {
                 if (!loadedead && !PhotonNetwork.isNonMasterClientInRoom)
                 {
+                    Log.Debug("Generating mob loot");
+
                     return true;
                 }
 
             }
+            Log.Debug("Can't gen mob loot");
+
             return false;
         }
 
@@ -44,6 +48,7 @@ namespace grindward.harmony_patches.diablo
         [HarmonyPrefix]
         public static void Prefix(LootableOnDeath __instance, ref bool __0)
         {
+         
             if (!ShouldGenLoot(__instance,ref __0))
             {
                 return;

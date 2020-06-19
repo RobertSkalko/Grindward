@@ -65,13 +65,11 @@ namespace grindward.death_penalties
             if (money > 0)
             {
                 character.Inventory.RemoveMoney(money);
-            }
-
+            }         
             if (money > 0 && bag)
             {
                 bag.Container.RemoveSilver(money);
             }
-
         }            
 
         public override void Activate(Character character, Bag bag)

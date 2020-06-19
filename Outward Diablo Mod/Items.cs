@@ -53,7 +53,8 @@ namespace grindward
             });
 
             desc += "\n Use when your desired gear is in your pouch (and no other gear there).";
-                      
+            desc += "\n Only works on Magical items.";
+
             var template = new SL_Item()
             {
             Name = name,            

@@ -45,6 +45,11 @@ namespace grindward.database.tiers
         {
             return new MinMax(40, MAX_RANDOM_PERCENT);
         }
+
+        public override string GetItemTierName()
+        {
+            return "Legendary";
+        }
     }
 }
 

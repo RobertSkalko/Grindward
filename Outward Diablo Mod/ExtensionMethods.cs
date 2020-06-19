@@ -63,15 +63,23 @@ namespace grindward
         {
             return RandomUtils.WeightedRandom(list);
         }
+        public static bool IsMoney(this Item item)
+        {
+            return item.ItemID == ItemIDs.SILVER_COIN || item.ItemID == ItemIDs.GOLD_BAR;
+        }
+        public static bool IsValuables(this Item item)
+        {
+            return item.HasTag(TagSourceManager.Valuable);
+        }
 
         public static bool HasSameBuyAndSellValue(this Item item)
         {
-            if (item.ItemID == ItemIDs.SILVER_COIN || item.ItemID == ItemIDs.GOLD_BAR)
+            if (item.IsMoney())
             {
                 return true;
             }
 
-            return item.HasTag(TagSourceManager.Valuable);
+            return item.IsValuables();
 
         }
     }

@@ -15,41 +15,52 @@ namespace grindward.utils
         public static void TryGenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source, TreasureChest chest = null)
         {
 
-            bool dropGear;
-
-            if (source == DiabloItemExtension.ItemSource.ChestLoot)
+            for (int i = 0; i < 1; i++) // change I to big number to test loot drops
             {
-                float multi = 1;
 
-                if (container is TreasureChest)
+                bool dropGear = false;
+
+                if (source == DiabloItemExtension.ItemSource.ChestLoot)
                 {
-                    if (chest.LootGenQuality == TreasureChest.LootQuality.Low)
+                    float multi = 1;
+
+                    if (container is TreasureChest)
                     {
-                        multi = 1;
+                        if (chest.LootGenQuality == TreasureChest.LootQuality.Low)
+                        {
+                            multi = 1;
+                        }
+                        if (chest.LootGenQuality == TreasureChest.LootQuality.Med)
+                        {
+                            multi = 2;
+                        }
+                        if (chest.LootGenQuality == TreasureChest.LootQuality.High)
+                        {
+                            multi = 3;
+                        }
                     }
-                    if (chest.LootGenQuality == TreasureChest.LootQuality.Med)
+                    dropGear = RandomUtils.Roll(BaseChestDropChance * multi);
+                }
+                else
+                {
+                    if (character is Character)
                     {
-                        multi = 2;
+                        float chance = MobUtils.GetLootMulti(character) * 2;
+                        dropGear = RandomUtils.Roll(chance);
+
+                        Log.Debug("Loot generating with chance " + chance + " " + dropGear);
                     }
-                    if (chest.LootGenQuality == TreasureChest.LootQuality.High)
+                    else
                     {
-                        multi = 3;
+                        Log.Print("Character null when trying to generate loot???");
                     }
                 }
-                dropGear = RandomUtils.Roll(BaseChestDropChance * multi);
-            }
-            else
-            {
-                dropGear = RandomUtils.Roll(MobUtils.GetLootMulti(character));
-            }
 
 
-         
-            if (!dropGear)
-            {
-                return;
-            }
-
+                if (!dropGear)
+                {
+                    continue;
+                }
 
                 Tier tier = Registry.Tiers.GetAll().RandomWeighted();
 
@@ -57,27 +68,29 @@ namespace grindward.utils
                 {
                     tier = Tier.TierGetTierOfMob(character);
                 }
-
-                Tier itemTier = tier.GetRandomItemDropTier();
-                            
-                GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
-
-             
-                Item randomItem = RandomUtils.RandomFromList(type.GetAllItemsOfTier(itemTier));
-
-         
-                Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
-
-                if (generatedItem != null)
-                {                 
-                    generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
-                                      
-                    generatedItem.ChangeParent(container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
-                                      
-
+                else
+                {
+                    Log.Debug("No character, using random tiers");
                 }
 
+                Tier itemTier = tier.GetRandomItemDropTier();
 
+                GearType type = RandomUtils.WeightedRandom(Registry.GearTypes.GetAll());
+
+                Item randomItem = RandomUtils.RandomFromList(type.GetAllItemsOfTier(itemTier));
+
+                Item generatedItem = ItemManager.Instance.GenerateItemNetwork(randomItem.ItemID);
+
+                if (generatedItem is Item)
+                {
+                    generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
+
+                    generatedItem.ChangeParent(container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
+
+                    Log.Debug("Generated item and added to loot container: " + generatedItem.Name);
+
+                }
+            }
             
         }
     }

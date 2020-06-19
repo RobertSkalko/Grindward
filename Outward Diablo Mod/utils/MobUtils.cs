@@ -47,6 +47,8 @@ namespace grindward.utils
             multi += RES * res;
 
 
+            Log.Debug(mob.Name + " Mob loot multi is: "+ multi);
+
             return multi;
         }
 

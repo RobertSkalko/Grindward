@@ -15,6 +15,8 @@ namespace grindward.database.tiers.bases
 
         public abstract string GetId();
 
+        public abstract string GetItemTierName();
+
         public abstract int GetTierNumber();
         public abstract float GetItemTierReq();
         public abstract float GetMobTierReq();
@@ -125,7 +127,7 @@ namespace grindward.database.tiers.bases
 
             if (item.IsIndestructible)
             {
-                durabilityMulti = 1F;
+                durabilityMulti = 1F + 0.2F; // indestructable items are usually super rare op ones
             }
 
             float result= (durabilityMulti + priceMulti) / 2F;

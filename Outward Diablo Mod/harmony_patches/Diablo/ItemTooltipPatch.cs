@@ -49,32 +49,19 @@ namespace grindward.harmony_patches.diablo
 
 
                 DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
-
+                              
                 if (ext != null)
                 {
-                    /*
-                    if (ext.HasPrefix() || ext.HasSuffix())
+                    Tier tier = Tier.GetTierOfItem(item);
+
+                    String tiername = tier.GetItemTierName();
+
+                    if (ext.IsValidRandomDrop())
                     {
-                        AddStatTooltip(__instance, "","");
+                        tiername = "Magical " + tiername;
                     }
 
-                    if (ext.HasSuffix())
-                    {
-                        AddStatTooltip(__instance, "Suffix:", ext.suffix.GetAffix().GetName());
-                         }
-                    if (ext.HasPrefix())
-                    {
-                        AddStatTooltip(__instance, "Prefix:", ext.prefix.GetAffix().GetName());
-                           }
-
-                    */
-                  
-                }
-
-                if (Main.DEBUG)
-                {
-                    Tier tier = Tier.GetTierOfItem(item);
-                    AddStatTooltip(__instance, "Tier: " + tier.GetId(),tier.GetTierNumber() + "");
+                    AddTooltip(__instance, tiername);
                 }
             }
         }
@@ -94,6 +81,18 @@ namespace grindward.harmony_patches.diablo
 
             Fields.INSTANCE.TOOLTIP.SetValue(__instance, tooltip);
         }
+        private static void AddTooltip(ItemDetailsDisplay __instance, String val)
+        {
+            List<ItemDetailRowDisplay> tooltip = Fields.INSTANCE.TOOLTIP.GetValue(__instance);
+
+            ItemDetailRowDisplay statRow = Methods.INSTANCE.ItemDetailsDisplay_GetRow.Call(__instance, new object[] { tooltip.Count });
+
+            statRow.SetInfo("", val);          
+
+            Fields.INSTANCE.TOOLTIP.SetValue(__instance, tooltip);
+        }
+
+
     }
 
    

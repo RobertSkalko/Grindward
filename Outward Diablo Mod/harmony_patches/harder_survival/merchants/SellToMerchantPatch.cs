@@ -22,12 +22,15 @@ namespace grindward.harmony_patches.harder_survival
 
             int saved = __result;
 
-            if (__instance.HasSameBuyAndSellValue())
+            if (__instance.IsMoney())
             {
                 return;
             }
-
-            if (__instance.IsFood)
+            else if (__instance.IsValuables())
+            {
+                __result = (int)(0.8D * __result);
+            }
+            else if (__instance.IsFood)
             {
                 __result = (int)(0.6D * __result);
             }

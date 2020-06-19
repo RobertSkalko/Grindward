@@ -17,11 +17,11 @@ namespace grindward.harmony_patches.diablo
             {
                 if (__instance.IsOutdoor())
                 {
-                    __result = __result / 2F;
+                    __result /= 2F;
                 }
                 else
                 {
-                    __result = __result / 1.5F;
+                    __result /= 1.5F;
                 }
                 
             }
