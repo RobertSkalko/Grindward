@@ -24,7 +24,7 @@ namespace grindward
 
         public RandomStatsData randomStats = new RandomStatsData();
 
-        public ItemSource source = ItemSource.None;
+        public bool isMagical = false;
 
         public bool init = false;
 
@@ -95,7 +95,7 @@ namespace grindward
             this.randomStats = new RandomStatsData();
             this.randomStats.Randomize((Equipment)this.Item);
 
-            if (source == ItemSource.ChestLoot || source == ItemSource.MobDrop) 
+            if (isMagical) 
             {
                 if (RandomUtils.Roll(AFFIX_CHANCE))
                 {
@@ -134,7 +134,7 @@ namespace grindward
 
         public bool IsValidRandomDrop()
         {
-            return source == ItemSource.ChestLoot || source == ItemSource.MobDrop || source == ItemSource.MobDrop;
+            return isMagical;
         }
 
         public void ApplyStats()
@@ -184,10 +184,13 @@ namespace grindward
                         Log.Print("Init save string: " + initstr);
                     }
 
-                    String sourcesave = str[(int)SyncOrder.Source];
+                    String sourcesave = str[(int)SyncOrder.IsMagical];
                     if (sourcesave.Length > 0)
                     {
-                        this.source = (ItemSource)Enum.Parse(typeof(SyncOrder), sourcesave);
+                        if (sourcesave == "t")
+                        {
+                            this.isMagical = true;
+                        }                        
                     }
 
                     foreach (SyncOrder sync in GetSavables())
@@ -255,7 +258,7 @@ namespace grindward
 
             list[(int)SyncOrder.Init] = initsave;
             list[(int)SyncOrder.Suffix] = suffixsave;
-            list[(int)SyncOrder.Source] = ((int)source)+ "";
+            list[(int)SyncOrder.IsMagical] = isMagical ? "t" : "f";
             list[(int)SyncOrder.Prefix] = prefixsave;
             list[(int)SyncOrder.RandomStats] = randomsave;
 
@@ -267,7 +270,7 @@ namespace grindward
         {
             Init = 0,
             Suffix =  1,
-            Source = 2,
+            IsMagical = 2,
             Prefix = 3,
             RandomStats = 4,
         }

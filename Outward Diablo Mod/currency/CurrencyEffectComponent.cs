@@ -28,9 +28,9 @@ namespace grindward
 		{
 			DiabloItemExtension ext = item.GetComponent<DiabloItemExtension>();
 
-			if (!ext.IsValidRandomDrop())
+			if (this.ParentItem.ItemID != Items.HELLSTONE_OF_ARCANA_ID && !ext.IsValidRandomDrop())
             {
-				character.CharacterUI.ShowInfoNotification("This item isn't a random drop, and therefore hellstones can't be used on it. ");
+				character.CharacterUI.ShowInfoNotification("This item isn't magical, and therefore most hellstones can't be used on it. ");
 				Item back = ItemManager.Instance.GenerateItemNetwork(ParentItem.ItemID);
 				back.ChangeParent(character.Inventory.Pouch.transform);
 				return;

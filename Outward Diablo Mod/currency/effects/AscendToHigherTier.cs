@@ -23,7 +23,7 @@ namespace grindward.currency.effects
             Item newitem = ItemManager.Instance.GenerateItemNetwork(RandomUtils.RandomFromList(possible).ItemID);
 
             DiabloItemExtension ext = newitem.GetComponent<DiabloItemExtension>();
-            ext.source = DiabloItemExtension.ItemSource.MobDrop;
+            ext.isMagical = true;
 
             newitem.ChangeParent(item.ParentContainer.transform);
 

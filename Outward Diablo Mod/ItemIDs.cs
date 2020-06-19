@@ -38,6 +38,8 @@ namespace grindward
         public static int ELE_RES_POTION = 4300140;
         public static int FIREFLY_POWDER = 6000010;
         public static int GABBERY_WINE = 6000010;
+        public static int SPIRITUAL_VARNISH = 4400060;
+        public static int AZURE_SHRIMP = 4000090;
 
     }
 }

@@ -30,7 +30,7 @@ namespace grindward.harmony_patches.harder_survival
             }
             else if (__instance.IsIngredient)
             {
-                __result = (int)(1.75D * __result);
+                __result = (int)(1.5D * __result);
             }
             else
             {

@@ -83,7 +83,7 @@ namespace grindward.utils
 
                 if (generatedItem is Item)
                 {
-                    generatedItem.GetComponent<DiabloItemExtension>().source = DiabloItemExtension.ItemSource.MobDrop;
+                    generatedItem.GetComponent<DiabloItemExtension>().isMagical = true;
 
                     generatedItem.ChangeParent(container.transform); // container.additem() bugs out, use this instead. DONT ASK WHY
 

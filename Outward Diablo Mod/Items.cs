@@ -19,6 +19,7 @@ namespace grindward
         public static int HELLSTONE_OF_WHIRLING_ID = 999323;
         public static int HELLSTONE_OF_OVERHAUL_ID = 999324;
         public static int HELLSTONE_OF_INCORPORATION_ID = 999325;
+        public static int HELLSTONE_OF_ARCANA_ID = 999326;
 
         // Keep the names similar so they will be near each other at crafting order :)
         public Item HELLSTONE_OF_WITHDRAWAL;
@@ -26,6 +27,7 @@ namespace grindward
         public Item HELLSTONE_OF_WHIRLING;
         public Item HELLSTONE_OF_OVERHAUL;
         public Item HELLSTONE_OF_INCORPORATION;
+        public Item HELLSTONE_OF_ARCANA;
 
         public Items() {
 
@@ -35,6 +37,7 @@ namespace grindward
             HELLSTONE_OF_WHIRLING = NewHellstone(HACKMANITE, HELLSTONE_OF_WHIRLING_ID, "Hellstone of Whirling", "This gem seems to keep spinning.");
             HELLSTONE_OF_OVERHAUL = NewHellstone(HACKMANITE, HELLSTONE_OF_OVERHAUL_ID, "Hellstone of Overhaul", "Power to remake, into something better.");
             HELLSTONE_OF_INCORPORATION = NewHellstone(HACKMANITE, HELLSTONE_OF_INCORPORATION_ID, "Hellstone of Incorporation", "Become more, yet remain the same.");
+            HELLSTONE_OF_INCORPORATION = NewHellstone(HACKMANITE, HELLSTONE_OF_ARCANA_ID, "Hellstone of Arcana", "Forget yourself.");
 
         }
 
@@ -53,7 +56,15 @@ namespace grindward
             });
 
             desc += "\n Use when your desired gear is in your pouch (and no other gear there).";
-            desc += "\n Only works on Magical items.";
+
+            if (HELLSTONE_OF_ARCANA_ID != newItemId) // this hellstone is used on non magical items, unlike others
+            {
+                desc += "\n Only works on Magical items.";
+            }
+            else
+            {
+                desc += "\n Only works on Non Magical items.";
+            }
 
             var template = new SL_Item()
             {
