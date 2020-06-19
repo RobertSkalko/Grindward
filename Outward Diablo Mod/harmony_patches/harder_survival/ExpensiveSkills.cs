@@ -18,7 +18,14 @@ namespace grindward.harmony_patches.harder_survival
                 return;
             }
 
-            __result = (int)(2D * __result);
+            if (__result < 200)
+            {
+                __result = (int)(2D * __result);
+            }
+            else
+            {
+
+            }          
 
         }
     }
