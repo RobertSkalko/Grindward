@@ -8,7 +8,7 @@ using System.Text;
 
 namespace grindward.harmony_patches.harder_survival
 {
-
+    /*
     [HarmonyPatch(typeof(CampingEvent), "OnActivate")]
     public class AmbushPenaltyPatch
     { 
@@ -19,6 +19,7 @@ namespace grindward.harmony_patches.harder_survival
         [HarmonyPostfix]
         public static void Postfix(CampingEvent __instance)
         {
+            /*
             if (!Configs.Instance.EnableAmbushPenalties.Value)
             {
                 return;
@@ -36,6 +37,7 @@ namespace grindward.harmony_patches.harder_survival
                 Log.Debug("Not an ambush camp event");
             }
 
+            
         }
 
         public static void Activate()
@@ -48,7 +50,7 @@ namespace grindward.harmony_patches.harder_survival
         
     }
 
-
+            */
 
  
 }

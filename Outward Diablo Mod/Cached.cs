@@ -1,6 +1,7 @@
 ﻿using grindward.database;
 using grindward.database.gear_types;
 using grindward.database.registers;
+using grindward.database.tiers;
 using grindward.database.tiers.bases;
 using SideLoader;
 using System;
@@ -16,7 +17,7 @@ namespace grindward
         public Cached()
         {
             ITEM_TIER = new Dictionary<int, Tier>();
-            ITEM_TIER.Add(5100080, Tiers.Instance.Endgame); // lanern of souls
+            ITEM_TIER.Add(5100080, new Endgame()); // lanern of souls
 
         }
 
