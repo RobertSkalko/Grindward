@@ -26,12 +26,14 @@ namespace grindward.currency
             }
             },
             {  Items.HELLSTONE_OF_OVERHAUL_ID, new List<Weighted<ItemChanger>>() {
-                new Weighted<ItemChanger>(new AscendToHigherTier(),100)
+                new Weighted<ItemChanger>(new AscendToHigherTier(),10),
+                new Weighted<ItemChanger>(new AscendToSameTier(),90)                
             }
             },
             {  Items.HELLSTONE_OF_ARCANA_ID, new List<Weighted<ItemChanger>>() {
                 new Weighted<ItemChanger>(new TurnMagical(),50),
-                new Weighted<ItemChanger>(new DoNothing(),50)
+                new Weighted<ItemChanger>(new DestroyItem(),25),
+                new Weighted<ItemChanger>(new DoNothing(),25)
             }
             },
             {  Items.HELLSTONE_OF_INCORPORATION_ID, new List<Weighted<ItemChanger>>() {

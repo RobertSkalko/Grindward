@@ -37,7 +37,7 @@ namespace grindward
             HELLSTONE_OF_WHIRLING = NewHellstone(HACKMANITE, HELLSTONE_OF_WHIRLING_ID, "Hellstone of Whirling", "This gem seems to keep spinning.");
             HELLSTONE_OF_OVERHAUL = NewHellstone(HACKMANITE, HELLSTONE_OF_OVERHAUL_ID, "Hellstone of Overhaul", "Power to remake, into something better.");
             HELLSTONE_OF_INCORPORATION = NewHellstone(HACKMANITE, HELLSTONE_OF_INCORPORATION_ID, "Hellstone of Incorporation", "Become more, yet remain the same.");
-            HELLSTONE_OF_INCORPORATION = NewHellstone(HACKMANITE, HELLSTONE_OF_ARCANA_ID, "Hellstone of Arcana", "Forget yourself.");
+            HELLSTONE_OF_ARCANA = NewHellstone(HACKMANITE, HELLSTONE_OF_ARCANA_ID, "Hellstone of Arcana", "Forget yourself.");
 
         }
 

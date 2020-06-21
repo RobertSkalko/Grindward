@@ -20,11 +20,16 @@ namespace grindward.harmony_patches.harder_survival
                 return;
             }
 
-            int saved = __result;
-
             if (__instance.IsMoney())
             {
                 return;
+            }
+
+            int saved = __result;
+
+            if (ItemUtils.IsValidGear(__instance))
+            {
+                __result = (int)(0.25D * __result);
             }
             else if (__instance.IsValuables())
             {
@@ -33,11 +38,7 @@ namespace grindward.harmony_patches.harder_survival
             else if (__instance.IsFood)
             {
                 __result = (int)(0.6D * __result);
-            }
-            else if (ItemUtils.IsValidGear(__instance))
-            {
-                __result = (int)(0.25D * __result);
-            }
+            }             
             else
             {
                 __result = (int)(0.5D * __result);

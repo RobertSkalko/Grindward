@@ -69,7 +69,14 @@ namespace grindward.database.tiers.bases
 
             public static Tier GetTierOfItem(Item item)
         {
-            float powerlvl = GetPowerLevelEstimateOfItem(item);
+
+
+            if (Cached.Instance.ITEM_TIER.ContainsKey(item.ItemID))
+            {
+                return Cached.Instance.ITEM_TIER[item.ItemID];
+              }
+
+        float powerlvl = GetPowerLevelEstimateOfItem(item);
 
             //Log.Debug(item.Name + " Item power lvl: " + powerlvl);
 
@@ -85,6 +92,7 @@ namespace grindward.database.tiers.bases
                     }
                 }
             }
+            Cached.Instance.ITEM_TIER.Add(item.ItemID, tier);
 
             return tier;
         }

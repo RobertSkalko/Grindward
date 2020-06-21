@@ -19,7 +19,7 @@ namespace grindward
             Create(Main.Items.HELLSTONE_OF_WHIRLING, new List<int>() { MEDIUM_RUBY, POWER_COIL, FIRE_STONE, GHOST_EYE }, 8887773);
             Create(Main.Items.HELLSTONE_OF_OVERHAUL, new List<int>() { MANA_STONE, BLUE_SAND, ELE_RES_POTION, PALLADIUM_SCRAP }, 8887774);
             Create(Main.Items.HELLSTONE_OF_INCORPORATION, new List<int>() { HACKMANITE, BLUE_SAND, GABBERY_WINE, FIREFLY_POWDER }, 8887774);
-            Create(Main.Items.HELLSTONE_OF_ARCANA, new List<int>() { MANA_STONE, SPIRITUAL_VARNISH , AZURE_SHRIMP }, 8887775);
+            Create(Main.Items.HELLSTONE_OF_ARCANA, new List<int>() { SMALL_SAPPHIRE, SPIRITUAL_VARNISH , AZURE_SHRIMP }, 8887775);
 
         }
 

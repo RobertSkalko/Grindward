@@ -82,6 +82,7 @@
     <Compile Include="Configs.cs" />
     <Compile Include="currency\effects\AddAffix.cs" />
     <Compile Include="currency\effects\AscendToHigherTier.cs" />
+    <Compile Include="currency\effects\AscendToSameTier.cs" />
     <Compile Include="currency\effects\DestroyItem.cs" />
     <Compile Include="currency\effects\DoNothing.cs" />
     <Compile Include="currency\effects\IncreaseRandomStats.cs" />
