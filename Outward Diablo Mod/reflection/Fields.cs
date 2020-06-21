@@ -18,8 +18,8 @@ namespace grindward
         public SafeField<CampingEvent,AISquad> CampingEvent_squadtospawn = new SafeField<CampingEvent, AISquad>("m_squadToSpawn");
 
 
-        
-
+        public SafeField<CharacterStats, float[]> CharStats_DmgResistance = new SafeField<CharacterStats, float[]>("m_totalDamageResistance");
+        public SafeField<CharacterStats, Stat> CharStats_ManaUse = new SafeField<CharacterStats, Stat>("m_manaUseModifiers");
 
         public SafeField<LootableOnDeath, bool> LootableOnDeath_WasAlive = new SafeField<LootableOnDeath, bool>("m_wasAlive");
         public SafeField<LootableOnDeath, Dropable[]> LootableOnDeath_lootDroppers = new SafeField<LootableOnDeath, Dropable[]>("m_lootDroppers");
