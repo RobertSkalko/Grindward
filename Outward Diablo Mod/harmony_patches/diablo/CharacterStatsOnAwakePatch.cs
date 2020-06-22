@@ -13,7 +13,12 @@ namespace grindward.harmony_patches.diablo
     {
         [HarmonyPostfix]
         public static void Postfix(CharacterStats __instance)
-        {          
+        {
+            if (!Configs.Instance.EnableStatCaps.Value)
+            {
+                return;
+            }
+
             Stat mana = Fields.INSTANCE.CharStats_ManaUse.GetValue(__instance);
 
             mana.RangeLimit = Stat.RangeLimitType.Min;
@@ -26,7 +31,12 @@ namespace grindward.harmony_patches.diablo
     {
         [HarmonyPostfix]
         public static void Postfix(CharacterStats __instance)
-        {         
+        {
+            if (!Configs.Instance.EnableStatCaps.Value)
+            {
+                return;
+            }
+
             float[] resstats = Fields.INSTANCE.CharStats_DmgResistance.GetValue(__instance);
 
             for (int i =0; i< resstats.Length; i++)

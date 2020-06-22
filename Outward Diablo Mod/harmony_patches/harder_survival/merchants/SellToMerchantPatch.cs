@@ -33,7 +33,7 @@ namespace grindward.harmony_patches.harder_survival
             }
             else if (__instance.IsValuables())
             {
-                __result = (int)(0.8D * __result);
+                __result = (int)(0.9D * __result);
             }
             else if (__instance.IsFood)
             {
