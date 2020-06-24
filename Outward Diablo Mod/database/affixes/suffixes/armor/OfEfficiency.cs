@@ -5,19 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace grindward.database.affixes.prefixes.armor
+namespace grindward.database.affixes.suffixes.armor
 {
-    public class EleEssencePrefix : Prefix
+    class OfEfficiency : Suffix
     {
-        DamageType.Types type;
-        string name;
-
-        public EleEssencePrefix(DamageType.Types type, string name)
-        {
-            this.type = type;
-            this.name = name;
-        }
-
         public override List<GearType> GetGearTypesAllowedOn()
         {
             return GearTypes.Instance.armors;
@@ -25,24 +16,25 @@ namespace grindward.database.affixes.prefixes.armor
 
         public override string GetId()
         {
-            return type.ToString() + "_essence";
+            return "of_eff";
         }
 
         public override string GetName()
         {
-            return name;
+            return "Of Efficiency";
         }
 
         public override List<VanillaStatMod> GetVanillaStatMods()
         {
             return new List<VanillaStatMod> {
-                new VanillaStatMod(4, 10, VanillaStats.Instance.ele_damageBoosts[type])
+                new VanillaStatMod(3, 6, VanillaStats.Instance.staminaCost),
+                new VanillaStatMod(3, 6, VanillaStats.Instance.manaCost),
             };
         }
 
         public override int GetWeight()
         {
-            return 1000 / EnumUtils.NON_PHYS_ELEMENTS_COUNT;
+            return 200;
         }
     }
 }

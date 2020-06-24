@@ -29,6 +29,7 @@ namespace grindward.database.registers
 
         public List<GearType> armors;
         public List<GearType> weapons;
+        
 
 
     }

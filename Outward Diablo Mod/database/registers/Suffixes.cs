@@ -34,6 +34,11 @@ namespace grindward.database.registers
         public Suffix OfWeeping = Reg(new OfWeeping());
         public Suffix OfDeathchill = Reg(new OfDeathchill());
 
+        public Suffix OfBlazing = Reg(new OfBlazing());
+        public Suffix OfHarshWinter = Reg(new OfHarshWinter());
+        public Suffix OfEfficiency = Reg(new OfEfficiency());
+        
+
         static private Suffix Reg(Suffix suffix)
         {
             return Registry.Suffixes.Register(suffix);

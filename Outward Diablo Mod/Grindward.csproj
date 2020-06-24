@@ -102,11 +102,14 @@
     <Compile Include="database\affixes\prefixes\weapon\Plain.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfCursedEarth.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfDeathchill.cs" />
+    <Compile Include="database\affixes\suffixes\armor\OfEfficiency.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfEleDmgRare.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfExcessiveCold.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfExcessiveHeat.cs" />
     <Compile Include="database\affixes\suffixes\armor\OfWeeping.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBashing.cs" />
+    <Compile Include="database\affixes\suffixes\weapon\OfBlazing.cs" />
+    <Compile Include="database\affixes\suffixes\weapon\OfHarshWinter.cs" />
     <Compile Include="death_penalties\DeathPenalty.cs" />
     <Compile Include="death_penalties\LoseGemsPenalty.cs" />
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
@@ -117,7 +120,7 @@
     <Compile Include="harmony_patches\harder_survival\AmbushPenaltyPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\OnPlayerDeathSpawnPatch.cs" />
     <Compile Include="harmony_patches\fix_patches\UsseableItemFixPatch.cs" />
-    <Compile Include="database\affixes\prefixes\armor\EleEssencePrefix.cs" />
+    <Compile Include="database\affixes\prefixes\all\EleEssencePrefix.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfBurningBrilliance.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfNecroTouch.cs" />
     <Compile Include="database\affixes\suffixes\weapon\OfSnakeBite.cs" />
