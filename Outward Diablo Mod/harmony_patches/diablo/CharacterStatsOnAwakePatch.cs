@@ -7,7 +7,7 @@ using System.Text;
 
 namespace grindward.harmony_patches.diablo
 {
-
+    /*
     [HarmonyPatch(typeof(CharacterStats), "OnAwake")]
     public class CharacterStatsOnAwakePatch
     {
@@ -25,6 +25,7 @@ namespace grindward.harmony_patches.diablo
             mana.MinRange = 10;
         }
     }
+    */
 
     [HarmonyPatch(typeof(CharacterStats), "UpdateEquipmentStats")]
     public class CharacterStatsOnCalcualtePatch

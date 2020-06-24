@@ -38,13 +38,14 @@ namespace grindward
         {    
 
             Instance = this;
-            Configs.Instance = new Configs();             
-
-            SL.OnSceneLoaded += OnSceneChange;
 
             try
             {
+            
+                Configs.Instance = new Configs();             
 
+                SL.OnSceneLoaded += OnSceneChange;
+                           
                 Cached.Instance = new Cached();
 
                 Fields.INSTANCE = new Fields();
@@ -69,8 +70,6 @@ namespace grindward
             }
 
         }
-
-
         
         
         //String areaid = "";

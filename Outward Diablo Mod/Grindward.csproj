@@ -111,6 +111,7 @@
     <Compile Include="death_penalties\LoseGemsPenalty.cs" />
     <Compile Include="death_penalties\LoseMoneyPenalty.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="harmony_patches\diablo\ChanceToNotUseSigilStones.cs" />
     <Compile Include="harmony_patches\diablo\CharacterStatsOnAwakePatch.cs" />
     <Compile Include="harmony_patches\diablo\ChestLootPatch.cs" />
     <Compile Include="harmony_patches\harder_survival\AmbushPenaltyPatch.cs" />

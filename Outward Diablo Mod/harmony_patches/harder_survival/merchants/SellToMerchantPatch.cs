@@ -29,7 +29,7 @@ namespace grindward.harmony_patches.harder_survival
 
             if (ItemUtils.IsValidGear(__instance))
             {
-                __result = (int)(0.25D * __result);
+                __result = (int)(0.33D * __result);
             }
             else if (__instance.IsValuables())
             {

@@ -10,7 +10,7 @@ namespace grindward.utils
 {
    public class LootUtils
     {
-          static float BaseChestDropChance = 1F;
+          static float BaseChestDropChance = 2F;
 
         public static void TryGenerateLoot(ItemContainer container, Character character, DiabloItemExtension.ItemSource source, TreasureChest chest = null)
         {
@@ -22,7 +22,7 @@ namespace grindward.utils
 
                 if (source == DiabloItemExtension.ItemSource.ChestLoot)
                 {
-                    float multi = 2;
+                    float multi = 1;
 
                     if (container is TreasureChest)
                     {
@@ -45,7 +45,7 @@ namespace grindward.utils
                 {
                     if (character is Character)
                     {
-                        float chance = 2 + (MobUtils.GetLootMulti(character) * 2);
+                        float chance = 3 + (MobUtils.GetLootMulti(character) * 2);
                         dropGear = RandomUtils.Roll(chance);
 
                         Log.Debug("Loot generating with chance " + chance + " " + dropGear);

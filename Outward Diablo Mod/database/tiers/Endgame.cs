@@ -18,8 +18,8 @@ namespace grindward.database.tiers
         {
             return new List<Weighted<Tier>>() {
                 new Weighted<Tier>(this, 40),
-                new Weighted<Tier>(Tiers.Instance.HighEnd, 25),
-                new Weighted<Tier>(Tiers.Instance.HighEnd, 15)
+                new Weighted<Tier>(Tiers.Instance.HighEnd, 20),
+                new Weighted<Tier>(Tiers.Instance.Normal, 10)
             };
         }
 
