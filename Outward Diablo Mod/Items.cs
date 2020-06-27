@@ -78,7 +78,7 @@ namespace grindward
             TagSourceManager.Valuable.TagName
             },
             IsUsable = true
-            };
+            };          
 
             var item = CustomItems.CreateCustomItem(template);
 

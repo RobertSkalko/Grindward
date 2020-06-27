@@ -24,7 +24,7 @@ namespace grindward.harmony_patches.diablo
 
                     if (__instance.RequiredItems.Any(x => x.Item.ItemID == ItemIDs.COLD_STONE || x.Item.ItemID == ItemIDs.FIRE_STONE))
                     {
-                        if (RandomUtils.Roll(75))
+                        if (RandomUtils.Roll(66))
                         {
                             return false;
                         }
