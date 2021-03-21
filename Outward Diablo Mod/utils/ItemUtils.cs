@@ -11,14 +11,10 @@ using SideLoader;
 
 namespace grindward
 {
-    public class ItemUtils { 
+    public class ItemUtils {
 
-
-        public static Dictionary<string, Item> GetAllItemPrefabs()
-        {
-            return CustomItems.RPM_ITEM_PREFABS;
-                  
-                
+        public static Dictionary<string, Item> GetAllItemPrefabs()        {
+            return References.RPM_ITEM_PREFABS;
         }
 
         public static int GetStatAmount(Equipment item)

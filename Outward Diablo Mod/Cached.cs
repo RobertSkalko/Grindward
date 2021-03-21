@@ -31,7 +31,7 @@ namespace grindward
 
         public static Item GetDefaultItemPrefab(Item item)
         {
-            return CustomItems.RPM_ITEM_PREFABS[item.ItemIDString];
+            return CustomItems.GetOriginalItemPrefab(item.ItemID);
 
         }
     }

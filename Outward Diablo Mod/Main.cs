@@ -210,8 +210,8 @@ namespace grindward
                 List<Item> correct = new List<Item>();
                 List<Item> incorrect = new List<Item>();
 
-
-                foreach (Item item in CustomItems.RPM_ITEM_PREFABS.Values)
+               
+                foreach (Item item in References.RPM_ITEM_PREFABS.Values)
                 {
                     if (ItemUtils.IsValidGear(item, true))
                     {

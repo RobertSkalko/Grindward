@@ -72,7 +72,7 @@ namespace grindward
             Description = desc,
             Target_ItemID = baseItemID,
             New_ItemID = newItemId,
-            Tags = new List<string>()
+            Tags = new string[]
 
             {
             TagSourceManager.Valuable.TagName

@@ -19,7 +19,7 @@ namespace grindward.database.gear_types
 
         public List<Item> GetAllItems()
         {
-            List<Item> list = CustomItems.RPM_ITEM_PREFABS.Values.Where(x => ItemUtils.IsValidGear(x) && isType(x)).ToList();
+            List<Item> list = ItemUtils.GetAllItemPrefabs().Values.Where(x => ItemUtils.IsValidGear(x) && isType(x)).ToList();
 
             if (list.Count < 1)
             {

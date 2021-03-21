@@ -64,7 +64,7 @@ namespace grindward
             });
 
             Log.Print("recpe");
-            recipeitem.Recipe = CustomItems.ALL_RECIPES[recipe.UID];
+            recipeitem.Recipe = References.ALL_RECIPES[recipe.UID];
 
             recipeItems.Add(recipeitem);
 
